@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10"><br/>
+    	<!-- <ol class="breadcrumb" my-crumb info="CaseList"></ol> -->
+		<div id="agingListView" class="span10 sect-pad" ng-init="dataInit('getagingelist', 'i')"> 
+			<div class="span7">
+				<div class="widget stacked widget-table action-table">
+					<div class="widget-header">
+						<i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+						<span>Aging List</span>
+						<!-- <div class="pull-right" style="width:35%;">
+							<form ng-submit='dataInit("getCaselist","s")'>
+								<div class="input-group" style="top:4px;">
+									<input type="text" class="form-control input-sm" placeholder="Search" name="reportrange" id="reportrange" ng-model="srch.searchtxt">
+									<div class="input-group-btn">
+										<button class="btn btn-default input-sm popover-examples" type="submit" id="advSearch1"><i class="glyphicon glyphicon-search"></i></button>
+										<button class="btn btn-default input-sm" type="button" id="advSearch1" value="All"  ng-click='dataInit("getCaselist","c")'><i class="glyphicon glyphicon-refresh"></i></button>
+									</div>
+								</div>
+							</form>
+						</div> -->
+					</div> <!-- /widget-header -->
+					
+					<div class="widget-content">
+						<table ng-table="tableParams" show-filter="false" class="table table-striped">
+					        <tr>
+					            <th ng-repeat="(key, value) in colsName"
+					                class="text-center sortable" ng-class="{
+					                    'sort-asc': tableParams.isSortBy(key, 'asc'),
+					                    'sort-desc': tableParams.isSortBy(key, 'desc')
+					                  }"
+					                ng-click="tableParams.sorting(key, tableParams.isSortBy(key, 'asc') ? 'desc' : 'asc')" ng-bind="value"></th>
+					        </tr>
+							<tr ng-repeat="case in $data">
+								<td nowrap ng-repeat="(key, value) in case" header-class="text-left" ng-bind="getagingListValue(value, key)"></td>
+							</tr>
+							<tr ng-show = "$data.length == 0">
+								<td colspan="4" style="text-align:center; font-weight:bold;">
+									No Record Found
+								</td>
+							</tr>
+						</table>
+					</div> <!-- /widget-content -->
+				</div> <!-- /widget -->
+			</div>
+		</div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+

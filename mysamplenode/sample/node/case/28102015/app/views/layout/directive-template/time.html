@@ -1,0 +1,7 @@
+<div class="col-md-6 form-group" ng-hide="{{hideOptions}}">
+	<label for="{{formName+index}}" class="col-sm-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
+	<div class="col-sm-8">
+		<input type="text" id="{{formName+index}}" validator-required="{{required}}" validator-group="{{formName}}" class="form-control" ng-click="timepicker(formName+index)" ng-readonly="true" placeholder="{{placeholder}}" ng-model="inputText" ng-init="inputText = '';">
+		<p class='help-block'>{{description}}</p>
+	</div>
+</div>

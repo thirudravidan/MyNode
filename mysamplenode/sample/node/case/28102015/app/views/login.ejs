@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Singpost || CRM</title>
+		
+		<!-- Stylesheets -->
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet'>
+		<link rel="stylesheet" href="css/login.css">
+
+		<!-- Optimize for mobile devices -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+	</head>
+	<body>
+		<!-- HEADER -->
+		<div id="header">
+			<div class="page-full-width cf">
+				<div id="login-intro" class="fl">
+				<img src="img/logo.png" />
+				</div> <!-- login-intro -->
+				
+				<!-- Change this image to your own company's logo -->
+				<!-- The logo will automatically be resized to 39px height. -->
+				<a href="#" id="company-branding" class="fr"><img src="https://www.csscorp.com/wp-content/uploads/logo-csscorp1.jpg" alt="CSS CORP" /></a>
+			</div> <!-- end full-width -->	
+		</div> <!-- end header -->
+		
+		<!-- MAIN CONTENT -->
+		<div id="content">
+			<form action="/login" method="POST" id="login-form">
+				<fieldset>
+					<p>
+						<label for="login-username">username</label>
+						<input type="text" id="login-username" name="username" class="round full-width-input" autofocus />
+					</p>
+					<p>
+						<label for="login-password">password</label>
+						<input type="password" id="login-password" name="password" class="round full-width-input" />
+					</p>
+					<p> <a href="#">Forgot my password</a>.</p>
+					<p> <a style="color:#FF0000; padding-top:5px;"><%- message%></a></p>
+					<button class="button round blue image-right ic-right-arrow" style="border:none">LOG IN</button>
+				</fieldset>
+				<br/>
+			</form>
+		</div> <!-- end content -->
+		
+		<!-- FOOTER -->
+		<div id="footer">
+			<p>&copy; Copyright 2015<a href="#"> CSS Corp</a>. All rights reserved.</p>
+		</div> <!-- end footer -->
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <div id="formBuilder" class="widget stacked widget-table action-table" ng-init="viewCustomer();loadForm();">
+            <div ng-show="showCust">
+                <div class="widget-header flavour-1">
+                    <i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+                    <span>Customer Info</span>
+                </div> <!-- /widget-header -->
+                <div class="widget-content">
+                    <div class="form-box-content">
+                        <div class="row form-horizontal form-box ui-formwizard">
+                            <div class="col-lg-6 form-group">
+                                <label class="control-label col-sm-4" for="custname">Customer Name : </label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="custname" name="custname" ng-model="frmData.custname" class="form-control chkAlpha" placeholder="Customer Name" maxlength="40" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label class="control-label col-sm-4" for="custemail">Customer Email: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="custemail" name="custemail" ng-model="frmData.Email" class="form-control" placeholder="Customer Email" maxlength="40" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-header">
+                <i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+                <span>Create Case</span>
+            </div> <!-- /widget-header -->
+            <div class="widget-content">
+                <form id="frmCaseTracker" method="post" class="form-horizontal form-box ui-formwizard">
+                    <div class="form-box-content">
+                        <div class="row">
+                            <div ng-model="input" fb-form="default" fb-default="defaultValue"></div>
+                        </div>
+                        <div class = "row"> 
+                            <div class="col-md-5 col-md-offset-5">
+                                <input type="submit" ng-click="submit()" class="btn btn-primary"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<div class="checkbox">
+    <label><input type="checkbox" ng-model="isShowScope" ng-init="isShowScope=true" />
+        Show scope
+    </label>
+</div>
+<pre ng-if="isShowScope">{{input}}</pre>

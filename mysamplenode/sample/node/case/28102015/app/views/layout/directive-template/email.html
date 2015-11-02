@@ -1,0 +1,15 @@
+<div class="col-md-12 form-group" ng-hide="{{hideOptions}}">
+    <label for="{{formName+index}}" class="col-sm-2 control-label">{{label}}</label>
+    <div class="col-sm-9">
+        <select ng-options="value.id as value.label for value in options" ng-change="callmethodForm(this, $root.mailList);" class="form-control" ng-model="emailTemplate" ng-init="inputText = ''">
+            <option value=""><--Select {{label}}--></option>
+        </select>
+        <p class='help-block'>{{description}}</p>
+    </div>
+</div>
+<div class="col-md-12 form-group" ng-hide="{{hideOptions}}">
+    <label for="{{formName+index}}" class="col-sm-2 control-label" ng-class="{'fb-required':required}">Email Response</label>
+    <div class="col-sm-9">
+        <textarea type="text" ng-model="inputText" ng-bind-html="inputText" contenteditable="true" validator-required="{{required}}" validator-group="{{formName}}" id="{{formName+index}}" col="10" row="10" class="form-control" placeholder="{{placeholder}}"/>
+    </div>
+</div>

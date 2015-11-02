@@ -1,0 +1,47 @@
+<div class="logo">
+    <h1 class="pull-left"><a href="#"><img src="img/css-corp-logo-png.png" /></a></h1>
+    <h1 class="pull-right"><a href="#"><img src="img/singpost.png" /></a></h1>
+</div>
+<div class="clearfix"></div>
+<header class="menu_header white-bg">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="horizontal-menu navbar-collapse collapse " ng-class="{showhide:enableShow}">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="mMenu in userMainMenu" ng-show="mMenu.role.indexOf(usrRole)>-1" ng-class="{ active: isCurrentPath(mMenu.path) }" class="dropdown"> <!-- {active:mMenu.selected}-->
+                    <a ng-if="!mMenu.subMenu.length > 0" href="#{{mMenu.path}}" id="{{mMenu.path}}" class="menu" ng-click="select(mMenu)">{{mMenu.pageName}}</a>
+                    <a ng-if="mMenu.subMenu.length > 0" href="" id="{{mMenu.path}}" class="menu dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" aria-expanded="false">{{mMenu.pageName}} <span ng-show = "mMenu.subMenu.length > 0" class="caret"></span></a> 
+                    <ul class="dropdown-menu dropdown" role="menu" ng-show = "mMenu.subMenu.length > 0">
+                        <li class="block" ng-repeat="sMenu in mMenu.subMenu">
+                            <a id="mnu-{{sMenu.path}}" href="#{{sMenu.path}}" ng-click="select(mMenu)">{{sMenu.pageName}}</a>
+                        </li>
+                    </ul>   
+                </li>
+            </ul>
+        </div>
+        <div class="top-nav ">
+            <ul class="nav pull-right top-menu">
+                <li><input type="text" class="form-control search" placeholder=" Search"></li>
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img alt="" src="img/avatar1_small.jpg">
+                        <span class="username" ng-bind="userDet.name"></span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <div class="log-arrow-up"></div>
+                        <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                        <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
+                        <li><a href="/logout" id="Logout"><i class="fa fa-key"></i> Logout</a></li>
+                    </ul>
+                </li>
+                <li class="sb-toggle-right"><i class="fa  fa-align-right"></i></li>
+                <!-- user login dropdown end -->
+            </ul>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,153 @@
+        <!--left filter & chart area -->
+         <form id="frmAddCalendarevent" name="frmAddCalendarevent" class="form-horizontal" role="form" method="post" ng-controller="calendarCtrl" ng-init="dateTimeControls();">
+
+         <div class="form-group">
+            <div class="col-sm-8">
+             <label for="eventtype" class="col-sm-2 control-label">Event Type</label>
+            <div class="col-sm-6">
+             <select class="form-control" id="ddleventtype" name="ddleventtype" ng-model="frmData.ddleventtype">
+                <option value="">-- Select --</option>
+                <option value="Callback">Callback</option>
+                <option value="Meeting">Meeting</option> 
+             </select>
+            </div>
+            </div>
+        </div> 
+
+        <div class="span10 sect-pad add-height" id="dvshow">
+            <!--chart area-->
+            <div class="col-md-12">
+                <!--Graph view start-->
+                <div id="report-view">
+                    <div class="">
+                    <div id="callback">
+                         <my-callback></my-callback>
+                    </div>      
+
+                      <div id="meeting">
+                         <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">Meeting</legend>
+                            
+                                <div class="span10">  
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="startdate" class="col-sm-4 control-label">Start Date</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="frmData.startdate" id="startdate" name="startdate" placeholder="Start Date"/>
+                                            </div>
+                                        </div>
+                                         
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="starttime" class="col-sm-4 control-label">Start Time</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="frmData.starttime" id="starttime" name="starttime" placeholder="Start Time"/> 
+                                            </div>
+                                        </div>
+                                         
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="role" class="col-sm-4 control-label">End Date</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="frmData.enddate" id="enddate" name="enddate" placeholder="End Date"/>
+                                            </div>
+                                        </div>
+                                         
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="contactNo" class="col-sm-4 control-label">End Time</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="frmData.endtime" id="endtime" name="endtime" placeholder="End Time"/>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="participants" class="col-sm-4 control-label">Participants</label>
+                                            <div class="col-sm-8">
+                                                 <input type="text" class="form-control" ng-model="frmData.participants" id="participants" name="participants" placeholder="Participants"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="subject" class="col-sm-4 control-label">Subject</label>
+                                            <div class="col-sm-8">
+                                                 <input type="text" class="form-control" ng-model="frmData.subject" id="subject" name="participants" placeholder="Subject"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="occurence" class="col-sm-4 control-label">Occurence</label>
+                                            <div class="col-sm-8">
+                                                 <input type="text" class="form-control" ng-model="frmData.occurence" id="occurence" name="occurence" placeholder="Occurence"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                      </div>
+                        </fieldset>
+                            </div>  
+
+                            <div class="span10" style="text-align: left;">
+                                <input type="checkbox" name="sendmail" value="sendmail">Do you want to send a Mail.?<br>             
+                            </div> 
+
+                                <div class="span10" style=" text-align: right; width:77.4%;">
+                                    <button type="submit" ng-click="savecalendarEvents();" class="btn btn-primary" id="btnSave" >
+                                        Save
+                                    </button>&nbsp;
+                                    <button type="button" class="btn btn-primary" id="btnCancel">
+                                        Cancel
+                                    </button>
+                                </div> 
+
+                        <!--  </div>-->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!--Graph view End-->
+            </div>
+            <!--chart area end-->
+        </div>
+  </form>
+ 
+ <!--<script>
+  $(function() {
+    var items = [ 'Nalini@csscorp.com', 'Thiru@csscorp.com', 'Sashi@csscorp.com', 'Naga@csscorp.com','Arun@csscorp.com', 'Ajay@csscorp.com'];
+        
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#participants" )
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          response( $.ui.autocomplete.filter(
+            items, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  });
+  </script>-->

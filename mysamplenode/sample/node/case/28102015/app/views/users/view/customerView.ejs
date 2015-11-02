@@ -1,0 +1,207 @@
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10"><br/>
+        <div id="createCasePage" ng-init="viewCustomer();dataInit('getCaseByCust', 'i')">
+        	<div class="widget stacked widget-table action-table">                                  
+                <div class="widget-header flavour-1">
+                    <i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+                    <span>Customer Information</span>
+                </div> <!-- /widget-header -->
+                
+                <div class="widget-content">
+                    <form id="frmCaseTracker" action="" method="post" class="form-horizontal form-box ui-formwizard">
+                        <div class="form-box-content">
+                            <!-- Customer Information -->
+        					<!-- <div class="widget-header" align="center"><span>Customer Information</span></div><br/> -->
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label col-md-5" for="custname">Customer Name : </label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="custname" name="custname" ng-model="frmData.custname" class="form-control chkAlpha" placeholder="Customer Name" maxlength="40">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label col-md-5" for="custemail">Customer Email: </label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="custemail" name="custemail" ng-model="frmData.Email" class="form-control" placeholder="Customer Email" maxlength="40">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group" ng-hide="true">
+                                    <label class="control-label col-md-5" for="custid">Customer Id : </label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="custid" name="custid" ng-model="frmData.custid" class="form-control chkNumeric" placeholder="Customer Id" maxlength="40">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label col-md-5" for="phoneno">Phone Number : </label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="phoneno" name="phoneno" ng-model="frmData.phoneno" class="form-control chkNumeric" placeholder="Phone Number" maxlength="10">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label col-md-5" for="country">Country : </label>
+                                    <div class="col-md-7">
+                                        <input type="text" id="country" name="country" ng-model="frmData.country" class="form-control alphaNumeric" placeholder="Country" maxlength="40">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" align="center">
+        						<div class="col-md-12">                        
+                                    <div class="col-md-5 col-md-offset-4">
+                                        <a href="#/case/casetracker/4/{{frmData.id}}" type="button" class="btn btn-primary" id = "saveCase">Create Case</a>
+                                    </div>
+        							<!-- <div class="col-md-1 col-md-offset-4">
+        								<button type="button" class="btn btn-primary" id = "saveCase">Submit</button>
+        							</div>
+        							<div class="col-md-2">
+        								<button type="button" class="btn btn-primary" id = "savesend">Submit & Send Mail</button>
+        							</div>
+        							<div class="col-md-1">
+        								<button type="button" class="btn btn-primary" id = "reset">Reset</button>
+        							</div> -->
+        						</div>
+                            </div>
+                            <!---->
+                        </div>
+                    </form>
+                </div> <!-- /widget-content -->
+            </div>
+            <div class="widget stacked widget-table action-table">                          
+                <div class="widget-header flavour-2">
+                    <i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+                    <span>Case List</span>
+                </div> <!-- /widget-header -->
+                
+                <div class="widget-content">
+                    <table ng-table="tableParams" show-filter="false" class="table table-striped">
+                        <tr>
+                            <th ng-repeat="(key, value) in colsName" ng-hide="showFields(value);"
+                                class="text-center sortable" ng-class="{
+                                    'sort-asc': tableParams.isSortBy(key, 'asc'),
+                                    'sort-desc': tableParams.isSortBy(key, 'desc')
+                                  }"
+                                ng-click="tableParams.sorting(key, tableParams.isSortBy(key, 'asc') ? 'desc' : 'asc')" ng-bind="value"></th>
+                        </tr>
+                        <tr ng-repeat="case in $data">
+                            <td nowrap ng-repeat="(key, value) in case" header-class="text-left" ng-bind="getCatListValue(value, key)" ng-hide="showFields(key);"></td>
+                        </tr>
+                        <tr ng-show = "$data.length == 0">
+                            <td colspan="4" style="text-align:center; font-weight:bold;">
+                                No Record Found
+                            </td>
+                        </tr>
+                    </table>
+                </div> <!-- /widget-content -->
+            </div> <!-- /widget -->
+        </div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function () {
+        // For ShortCut Keys - Starts Here 
+        $(window).keydown(function (event) {
+            //Ctrl + v - to Save
+            if (event.ctrlKey && (event.which == 86 || event.which == 118)) {
+                $('#btnSave').trigger("click")
+                event.preventDefault();
+            }
+            //Ctrl + l - to reload
+            if (event.ctrlKey && (event.which == 76 || event.which == 108)) {
+                $('#btnCancel').trigger("click")
+                event.preventDefault();
+            }
+
+            //Ctrl + F1 - to reload
+            if (event.ctrlKey && (event.which == 112)) {
+                $('#btnCancel').trigger("click")
+                event.preventDefault();
+            }
+        });
+        $('#btnSave').click(function () {
+            //                alert("hello");
+        });
+        $('#btnCancel').click(function () {
+            location.reload(true);
+        });
+        // For ShortCut Keys - Ends Here 
+
+        //Add Case Tracker Validation
+        //acclocation callreason subcallreason localSupport actionTaken issueStatus escalationReason dealer
+        $('#frmCaseTracker').bootstrapValidator({
+            //        live: 'disabled',
+            excluded: [':disabled'],
+            live: 'enabled',
+            message: 'This value is not valid',
+            container: 'tooltip',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                customerId: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Enter Customer Id'
+                        }
+                    }
+                },
+                callreason: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Select Call Reason'
+                        }
+                    }
+                },
+                /*subcallreason: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Enter User Id'
+                        }
+                    }
+                },*/
+                localSupport: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Select Local Support Required to handle the call'
+                        }
+                    }
+                },
+                actionTaken: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Select Action Token'
+                        }
+                    }
+                },
+                issueStatus: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Select Issue Resolution status'
+                        }
+					}
+                },
+                escalationReason: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Select Escalation Reason'
+                        }
+                    }
+                },
+                timerLength: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Enter Call Length'
+                        }
+                    }
+                }
+            },
+        }).on('success.form.bv', function (e) {
+            // Prevent submit form
+          	e.preventDefault();
+	  		angular.element(document.getElementById('createCasePage')).scope().createCase();
+        });
+    });
+</script>

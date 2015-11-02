@@ -1,0 +1,9 @@
+<div class="col-md-6 form-group" ng-hide="{{hideOptions}}">
+	<label for="{{formName+index}}" class="col-sm-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
+	<div class="col-sm-8">
+		<select ng-options="value.id as value.label for value in options" id="{{formName+index}}" validator-required="{{required}}" validator-group="{{formName}}" ng-change="$root.loadDependencyOptions(this, description);functionCall" class="form-control" ng-model="inputText" ng-init="inputText = ''">
+			<option value=""><--Select {{label}}--></option>
+		</select>
+		<p class='help-block'>{{description}}</p>
+	</div>
+</div>

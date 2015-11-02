@@ -1,0 +1,229 @@
+
+<div id="dataListView" class="span10 sect-pad" ng-controller="calendarCtrl" ng-init="Datainit('geteventlist', 'all');dateTimeControls();"> 
+	
+	<div class="span7">   
+		<div class="widget stacked widget-table action-table">
+						
+			<div class="widget-header">
+				<i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+				<span>Calendar Event List</span>
+				<div class="pull-right" style="width:35%;">
+					<form ng-submit='Datainit("errorList","s")'>
+						<div class="input-group" style="top:4px;">
+							<input type="text" class="form-control input-sm" placeholder="Search" name="q" ng-model="searchtxt">
+							<div class="input-group-btn" style="top:-6px;">
+								<button class="btn btn-default input-sm popover-examples" type="submit" ng-click="searchData()" id="advSearch1"><i class="glyphicon glyphicon-search"></i></button>
+								<button class="btn btn-default input-sm" type="button" id="advSearch1" value="All"  ng-click='Datainit("errorList","c")'><i class="glyphicon glyphicon-refresh"></i></button>
+								<!--<button class="btn btn-default input-sm popover-examples" type="button" id="advSearch"><i class="glyphicon glyphicon-list"></i></button>-->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div> <!-- /widget-header -->
+			
+			<div class="widget-content">
+
+				<table ng-table="tableParams" show-filter="false" class="table table-striped">
+					<tr ng-repeat="user in $data track by $index">
+						<td data-title="'Event Type'" header-class="text-left" sortable="'Eventtype'">
+							{{user.Eventtype}}
+						</td>
+						<td data-title="'Start Date'" header-class="text-left" sortable="'startdate'">
+							{{user.startdate}}
+						</td>
+						<td nowrap data-title="'Start Time'" header-class="text-left" sortable="'starttime'">
+							{{ user.starttime}} 
+						</td>
+						<td data-title="'End Date'" header-class="text-left" sortable="'enddate'">
+							{{user.enddate}}
+						</td>
+						<td data-title="'End Time'" header-class="text-left" sortable="'endtime'">
+							{{ user.endtime}}
+						</td>
+						<td data-title="'Description'" header-class="text-left" sortable="'Description'">
+							{{ user.Description}}
+						</td>
+						<td data-title="'Participants'" header-class="text-left" sortable="'participants'">
+							{{ user.participants}}
+						</td>
+						<td data-title="'Occurence'" header-class="text-left" sortable="'occurence'">
+							{{ user.occurence}}
+						</td> 
+						<td ng-switch="user.Status" ng-show = "user.title != ''" data-title="'Action'" header-class="text-left" sortable="'Action'"> 
+							<a class="fa fa-cog" title="Edit" style="cursor: pointer;" data-toggle="modal" ng-click="editEvents(user);"></a>
+							<a class="glyphicon glyphicon-trash" title="Delete" style="cursor: pointer;" data-toggle="modal" ng-click="deleteEvents(user);"></a>
+						</td>
+ 
+					</tr>
+				</table>
+				<table id="norecords" class="table table-striped" style="display:none;">
+					<tr>
+						<td colspan="6" style="text-align:center; font-weight:bold;">
+							No Record Found
+						</td>
+					</tr>
+				</table>
+			</div> <!-- /widget-content -->
+				
+		</div> <!-- /widget --> 
+	</div>
+
+	
+
+
+	<!--For Callback Modal-->
+    <div class="modal fade" id="eventcallbackModel" tabindex="-1" role="dialog" aria-labelledby="updateLogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="width:750px;">
+                <div class="modal-header bg-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <span class="glyphicon glyphicon-user"></span>Update Callback
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">
+                                    Schedule Date
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="startdate" ng-model="frmData.startdate" id="startdate" placeholder="Schedule Date" class="form-control span3" required=""/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Time" class="col-sm-2 control-label">
+                                    Schedule Time
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="starttime" ng-model="frmData.starttime" placeholder="Schedule Time" class="form-control span3" required=""/> 
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="Description" class="col-sm-2 control-label">
+                                    Description
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" placeholder="Description" ng-model="frmData.desc" name="street" class="form-control span6 add-span6"/>
+                                </div>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="updateCallback();" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--For Meeting Modal-->
+    <div class="modal fade" id="eventmeetingModel" tabindex="-1" role="dialog" aria-labelledby="updateLogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="width:750px;">
+                <div class="modal-header bg-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <span class="glyphicon glyphicon-user"></span>Update Meeting
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">
+                                    Start Date
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="startdat" ng-model="frmData.startdate" id="startdat" placeholder="Start Date" class="form-control span3" required=""/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Time" class="col-sm-2 control-label">
+                                    Start Time
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="starttime" ng-model="frmData.starttime" placeholder="Start Time" class="form-control span3" required=""/> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Time" class="col-sm-2 control-label">
+                                    End Date
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="enddat" ng-model="frmData.enddat" placeholder="End Date" id="enddat" class="form-control span3" required=""/> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Time" class="col-sm-2 control-label">
+                                    End Time
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="starttime" ng-model="frmData.endtime" placeholder="End Time" class="form-control span3" required=""/> 
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="Participants" class="col-sm-2 control-label">
+                                    Participants
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" id="participant" placeholder="Participants" ng-model="frmData.Participants" name="Participants" class="form-control span6 add-span6"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Occurence" class="col-sm-2 control-label">
+                                    Occurence
+                                </label>
+                                <div class="col-sm-5">
+                                    <input type="text" placeholder="Occurence" ng-model="frmData.Occurence" name="Occurence" class="form-control span6 add-span6"/>
+                                </div>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-click="updateMeeting();"  class="btn btn-primary" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--<script>
+  $(function() {
+    var items = [ 'Nalini@csscorp.com', 'Thiru@csscorp.com', 'Sashi@csscorp.com', 'Naga@csscorp.com','Arun@csscorp.com', 'Ajay@csscorp.com'];
+        
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+ 
+    $( "#participant" )
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          response( $.ui.autocomplete.filter(
+            items, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  });
+  </script>-->
+
+ 

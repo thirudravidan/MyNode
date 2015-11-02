@@ -1,0 +1,12 @@
+.container {
+	width: 98% !important;
+}
+#formBuilder {
+	margin-bottom: 5px;
+}
+#formBuilder .widget-content, #createCasePage .widget-content{
+	padding:10px 20px !important;
+}
+.col-sm-9 {
+  padding-left: 10px !important
+}

@@ -1,0 +1,95 @@
+         <!--left filter & chart area -->
+         <form id="frmAddAgent" name="frmcalendarsettings" class="form-horizontal" role="form" method="post" ng-controller="calendarCtrl"> 
+        <div class="span10 sect-pad add-height">
+            <!--chart area-->
+            <div class="col-md-12">
+                <!--Graph view start-->
+                <div id="report-view">
+                    <div class="">
+                    <div>
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">Calendar Rule</legend>
+                           
+                                <div class="span10">  
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="Title" class="col-sm-4 control-label">Rule Type</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="ddlrulename" name="ddlrulename" ng-model="frmData.ddlrulename">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Callback">Callback</option>
+                                                    <option value="Meeting">Meeting</option> 
+                                                 </select>
+                                            </div>
+                                        </div> 
+                                        <div class="col-lg-6 form-group">
+                                            <label for="ruletype" class="col-sm-4 control-label">Condition</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="ddlruletype" name="ddlruletype" ng-model="frmData.ddlruletype">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Expired/overdue">Expired/overdue</option>
+                                                    <option value="10 mts before">10 mts before</option> 
+                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="row">
+                                        <div class="col-lg-6 form-group">
+                                            <label for="role" class="col-sm-4 control-label">Schedule(every)</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="ddlduration" name="ddlduration" ng-model="frmData.ddlduration">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="1 minute">1 minute</option>
+                                                    <option value="2 minute">2 minute</option>
+                                                    <option value="15 minutes">15 minutes</option>
+                                                    <option value="30 minutes">30 minutes</option>         
+                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 form-group">
+                                            <label for="alert" class="col-sm-4 control-label">Action</label>
+                                            <div class="col-sm-8"> 
+                                                <select class="form-control" id="ddlalert" name="ddlalert" ng-model="frmData.ddlalert">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Popup">Popup</option>
+                                                    <option value="Mail">Mail</option> 
+                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 form-group">
+                                            <label for="Template" class="col-sm-4 control-label">
+                                                Template
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" id="ddltemplate" name="ddltemplate" ng-model="frmData.ddltemplate">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Email Template">Email Tempalte</option> 
+                                                </select>
+                                            </div>
+                                        </div>  
+                                    </div>  
+                                </div> 
+                        </fieldset>
+                     </div> 
+                                <div class="span10" style=" text-align: right; width:77.4%;">
+                                    <button type="submit" ng-click="saveCalendarsettings();" class="btn btn-primary" id="btnSavecalendar" >
+                                        Save
+                                    </button>&nbsp;
+                                    <button type="button" class="btn btn-primary" id="btnCancel">
+                                        Cancel
+                                    </button>
+                                </div> 
+
+                        <!--  </div>-->
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!--Graph view End-->
+            </div>
+            <!--chart area end--> 
+        </div>  
+  </form>
+  
+  
+  
+  

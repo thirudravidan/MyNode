@@ -1,0 +1,142 @@
+body {
+    padding-top: 70px;
+    font-size: 13px;
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+body > .container {
+    padding: 20px 15px 0 !important;
+}
+
+ul {
+    list-style: none;   
+    margin:0;
+    padding:0 15px 0 0;
+}
+
+a {
+    cursor:pointer;
+}
+
+/* Top Menu */
+
+#iUserlog {
+    color:#1EBA28;
+}
+.active a {
+    background:none repeat scroll 0 0 #777777 !important;
+    text-decoration: none !important;
+    color:#fff !important;
+}
+
+.nav .open > a,
+.nav .open > a:hover {
+    background:none repeat scroll 0 0 #777777 !important;
+    text-decoration: none !important;
+    color:#fff;
+}
+
+.anchor a:focus{
+    color:#fff;
+}
+
+.anchor .open li a:hover {
+    background:none !important;
+    text-shadow:none !important;
+    color:#777777 !important;
+}
+.agentdropdown li a:hover .names{
+    background:none !important;
+    text-shadow:none !important;
+    color:#fff !important;
+}
+
+.agentdropdown .open a:hover i .names, .agentdropdown .open a:focus i .names {
+    text-shadow:none !important;
+    color:#fff !important;
+}
+
+.headerbg {
+    background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(229, 229, 229) 100%) repeat scroll 0% 0% transparent;
+}
+
+.nav {
+    font: bold 12px/18px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    color:#000;
+}
+
+.nav li.topMenu  {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(186, 186, 186) rgb(186, 186, 186) rgb(186, 186, 186) rgb(255, 255, 255);
+    background: -moz-linear-gradient(center top , rgb(247, 247, 247) 0%, rgb(237, 237, 237) 100%) repeat scroll 0% 0% transparent;
+    background: -webkit-linear-gradient(top, #f7f7f7 0%,#ededed 100%);
+    border-bottom:0;
+}
+
+.dropdown li{
+    border:none !important;
+    /*background:none !important;*/
+}
+
+.nav a:hover, .nav li.current a {
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 1px rgb(0, 0, 0);
+}
+
+.nav li:hover, .nav li.current {
+    box-shadow: 0 1px rgba(255,255,255,0.2) inset;
+    -webkit-box-shadow: 0 1px rgba(255,255,255,0.2) inset;
+}
+
+.navbar-header {
+    width:100% !important;
+    margin-bottom: 20px;
+}
+
+.navbar {
+    border-bottom: 1px solid #bbbaba !important;
+}
+
+.navbar .container {
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+/* Footer Menu */
+
+.footer {
+    position: absolute;
+    /* bottom: 0; */
+    width: 100%;
+    /* height: 50px; */
+    background-color: #000000;
+    opacity: 0.8;
+    
+}
+
+.footer .container {
+    margin:3px 0 0 0;
+}
+.text-muted {
+    font-weight: bold;
+    color:#FAF6F6;
+    text-align: center;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+	background: #777777; /* Old browsers */
+}
+.navbar-nav > li > a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+/*  Body Container  */
+#container{
+    min-height: 576px;
+}
+
+#login_Container {
+    min-height: 494px;
+}

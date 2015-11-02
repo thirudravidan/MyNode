@@ -1,0 +1,319 @@
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10"><br/>
+	    <!-- <ol class="breadcrumb" my-crumb info="CreateCustomer"></ol> -->
+		<div id="createCustomerPage">
+			<div class="widget stacked widget-table action-table">
+		        <div class="widget-header flavour-1">
+		            <i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+		            <span>Create Customer</span>
+		            <div class="pull-right">
+		                
+		            </div>
+		        </div> <!-- /widget-header -->
+		        <div class="widget-header flavour-2">
+		            <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;
+		        	<span>Section 1</span>
+		        </div>
+		       
+		        <div class="widget-content" style="padding:10px 0px;">
+					<form id="frmCustomerReg" action="" method="post" class="form-horizontal form-box ui-formwizard">
+						<div class="form-box-content">
+							<!---->
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="firstName">First Name </label>
+									<div class="col-md-7">
+										<input type="text" id="firstName" name="firstName" ng-model="frmData.firstName" class="form-control chkAlpha" placeholder="First Name" maxlength="20">
+									</div>
+								</div>
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="lastName">Last Name </label>
+									<div class="col-md-7">
+										<input type="text" id="lastName" name="lastName" ng-model="frmData.lastName" class="form-control chkAlpha" placeholder="Last Name" maxlength="15">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="primaryphone">Primaryphone </label>
+									<div class="col-md-7">
+										<input type="text" id="primaryphone" name="primaryphone" ng-model="frmData.primaryphone" class="form-control alphaNumeric" placeholder="Primaryphone" maxlength="10">
+									</div>
+								</div>
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="Email">Email </label>
+									<div class="col-md-7">
+										<input type="text" id="Email" name="Email" ng-model="frmData.Email" class="form-control" placeholder="Email">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+		                   <div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="Language">Language </label>
+									<div class="col-md-7">
+										<select class="form-control" ng-model="frmData.Language" id="Language" name="Language">
+											<option value="">--Select Language--</option>
+											<option value="Demo User">Demo User</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							 <div class="widget-header flavour-3">
+							    <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;
+		          				<span>Section 2</span>
+		          				</div>
+		          				<br>
+
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="company">Company </label>
+									<div class="col-md-7">
+										<input type="text" id="company" name="company" ng-model="frmData.company" class="form-control chkAlpha" placeholder="company" maxlength="20">
+									</div>
+								</div>
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="city">City </label>
+									<div class="col-md-7">
+										<input type="text" id="city" name="city" ng-model="frmData.city" class="form-control chkAlpha" placeholder="city" maxlength="15">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="country">Country </label>
+									<div class="col-md-7">
+										<select class="form-control" ng-model="frmData.country" id="country" name="country">
+											<option value="">--Select Country--</option>
+											<option value="Demo User">Demo User</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="state">State </label>
+									<div class="col-md-7">
+										<select class="form-control" ng-model="frmData.state" id="state" name="state">
+											<option value="">--Select State--</option>
+											<option value="Demo User">Demo User</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="addressline1">Addressline1 </label>
+									<div class="col-md-7">
+										<input type="text" id="addressline1" name="addressline1" ng-model="frmData.addressline1" class="form-control chkAlpha" placeholder="Addressline1" maxlength="20">
+									</div>
+								</div>
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="addressline2">Addressline1 </label>
+									<div class="col-md-7">
+										<input type="text" id="addressline2" name="addressline2" ng-model="frmData.addressline2" class="form-control chkAlpha" placeholder="Addressline2" maxlength="20">
+									</div>
+								</div>
+							</div>
+						
+							<div class="row">
+								<div class="col-md-6 form-group">
+									<label class="control-label col-md-5" for="zip">Zip/Post code</label>
+									<div class="col-md-7">
+										<input type="text" id="zip" name="zip" ng-model="frmData.zip" class="form-control chkAlpha" placeholder="zip" maxlength="20">
+									</div>
+							
+							</div>
+							<div class="row">
+		                        <div class="col-md-2 col-md-offset-10">
+		                            <button type="submit" class="btn btn-primary">Submit</button>
+		                        </div>
+		                    </div>
+							<!---->
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+
+
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function () {
+
+        // For ShortCut Keys - Starts Here 
+        $(window).keydown(function (event) {
+            //Ctrl + v - to Save
+            if (event.ctrlKey && (event.which == 86 || event.which == 118)) {
+                $('#btnSave').trigger("click")
+                event.preventDefault();
+            }
+            //Ctrl + l - to reload
+            if (event.ctrlKey && (event.which == 76 || event.which == 108)) {
+                $('#btnCancel').trigger("click")
+                event.preventDefault();
+            }
+
+            //Ctrl + F1 - to reload
+            if (event.ctrlKey && (event.which == 112)) {
+                $('#btnCancel').trigger("click")
+                event.preventDefault();
+            }
+        });
+        $('#btnSave').click(function () {
+            //                alert("hello");
+        });
+        $('#btnCancel').click(function () {
+            location.reload(true);
+        });
+        // For ShortCut Keys - Ends Here 
+
+        //Add Case Tracker Validation
+        //acclocation callreason subcallreason localSupport actionTaken issueStatus escalationReason dealer
+        $('#frmCustomerReg').bootstrapValidator({
+			//live: 'disabled',
+			excluded: [':disabled'],
+			live: 'enabled',
+			message: 'This value is not valid',
+			container: 'tooltip',
+			feedbackIcons: {
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				firstName: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter First Name'
+						}
+					}
+				},
+				lastName: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Last Name'
+						}
+					}
+				},
+				company: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter company'
+						}
+					}
+				},
+				
+				city: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter city'
+						}
+					}
+				},
+
+				addressline1: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter addressline1'
+						}
+					}
+				},
+				addressline2: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter addressline2'
+						}
+					}
+				},
+				zip: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter zip'
+						}
+						
+					}
+				},
+				Email: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Email'
+						},
+						emailAddress: {
+							message: 'The input is not a valid email address'
+						},
+                        regexp: {
+                            regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                            message: 'The input is not a valid email address'
+                        },
+						remote: {
+							url: 'roku/customer/chkEmailExist',
+							type: 'POST',
+							message: 'Email is not available'
+						}
+					}
+				},
+				primaryphone: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Phone Number'
+						},
+						greaterThan: {
+			                        value: 0,
+		                        	inclusive: false,
+									message: 'Please Enter Valid Phone Number'
+			                    },
+		                        stringLength: {
+		                            min: 10,
+		                            max: 15,
+		                            message: 'Please Enter Valid Phone Number'
+		                        }
+					}
+				},
+				country: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select Country'
+						}
+					}
+				},
+				state: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select State'
+						}
+					}
+				},
+
+				Language: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select Language'
+						}
+					}
+				},
+				
+				
+				cpassword: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Confirm Password'
+						},
+	                    identical: {
+	                        field: 'password',
+	                        message: 'The password and its confirm are not the same'
+	                    }
+					}
+				}
+			},
+		}).on('success.form.bv', function (e) {
+			// Prevent submit form
+			e.preventDefault();
+			angular.element(document.getElementById('createCustomerPage')).scope().createCustomer(); 
+		});
+    });
+</script>

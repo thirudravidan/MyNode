@@ -1,0 +1,399 @@
+<!-- <ol class="breadcrumb" my-crumb info="CreateUser"></ol> -->
+
+<div id="createUserPage" ng-controller="userCtrl">
+	<div class="widget stacked widget-table action-table">
+                                        
+        <div class="widget-header flavour-1">
+            <i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+            <span>Create User</span>
+            <div class="pull-right">
+                
+            </div>
+        </div> <!-- /widget-header -->
+        
+          <div class="widget-header">
+          <span>Section 1</span>
+          </div>
+
+
+        <div class="widget-content" style="padding:10px 0px;">
+			<form id="frmUserReg" action="" method="post" class="form-horizontal form-box ui-formwizard">
+				<div class="form-box-content">
+					<!---->
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="firstName">First Name </label>
+							<div class="col-md-7">
+								<input type="text" id="firstName" name="firstName" ng-model="frmData.firstName" class="form-control chkAlpha" placeholder="First Name" maxlength="20">
+							</div>
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="lastName">Last Name </label>
+							<div class="col-md-7">
+								<input type="text" id="lastName" name="lastName" ng-model="frmData.lastName" class="form-control chkAlpha" placeholder="Last Name" maxlength="15">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="empID">Emp ID </label>
+							<div class="col-md-7">
+								<input type="text" id="empID" name="empID" ng-model="frmData.empID" class="form-control alphaNumeric" placeholder="Emp ID" maxlength="10">
+							</div>
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="Email">Email </label>
+							<div class="col-md-7">
+								<input type="text" id="Email" name="Email" ng-model="frmData.Email" class="form-control" placeholder="Email">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="Phone">Phone </label>
+							<div class="col-md-7">
+								<input type="text" id="Phone" name="Phone" ng-model="frmData.Phone" class="form-control chkNumeric" placeholder="Phone" maxlength="15">
+							</div>
+						</div>
+
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="country">country </label>
+							<div class="col-md-7">
+								<select class="form-control" ng-model="frmData.country" id="country" name="country">
+									<option value="">--Select country--</option>
+									<option value="India">India</option>
+									<option value="US">US</option>
+									<option value="Japan">Japan</option>
+								</select>
+							</div>
+						</div>
+					
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="language">Prefered Language </label>
+							<div class="col-md-7">
+								<select ng-model="frmData.language" id="language" name="language" class="form-control">
+									<option value="">--Select Language--</option>
+									<option value="English">English</option>
+									<option value="German">German</option>
+									<option value="Chinese">Chinese</option>
+									<option value="French">French</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="widget-header">
+          <span>Section 2</span>
+          </div> <br>
+
+          <div class="row">
+                      <div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="username">User Name </label>
+							<div class="col-md-7">
+								<input type="text" id="username" name="username" ng-model="frmData.username" class="form-control chkAlpha" placeholder="username" maxlength="20">
+							</div>
+						</div>
+
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="userType">User Type </label>
+							<div class="col-md-7">
+								<select class="form-control" ng-model="frmData.userType" id="userType" name="userType">
+									<option value="">--Select Type--</option>
+									<option value="Agent">Agent</option>
+									<option value="TL">Team Lead</option>
+									<option value="TM">Team Manager</option>
+									<option value="PM">Project Manager</option>
+									<option value="QA">Quality Analysit</option>
+								</select>
+							</div>
+						</div>
+
+
+          </div>
+          	<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="password">Password </label>
+							<div class="col-md-7">
+								<input type="password" id="password" name="password" ng-model="frmData.password" class="form-control" placeholder="Password" maxlength="20">
+							</div>
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="cpassword">Confirm password </label>
+							<div class="col-md-7">
+								<input type="password" id="cpassword" name="cpassword" ng-model="frmData.cpassword" class="form-control" placeholder="Confirm password" maxlength="20">
+							</div>
+						</div>
+					</div>
+
+			<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="accountType">Account Type </label>
+							<div class="col-md-7">
+								<select class="form-control" ng-model="frmData.accountType" id="accountType" name="accountType">
+									<option value="">--Select Account Type--</option>
+									<option value="Demo User">Demo User</option>
+								</select>
+							</div>
+						</div>
+			</div>					
+
+
+
+
+
+
+					<div class="widget-header">
+          <span>Section 3</span>
+          </div> <br>
+
+          						
+
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="reportingTl">Reporting To(TL) </label>
+							<div class="col-md-7">
+								<select class="form-control" ng-model="frmData.reportingTl" id="reportingTl" name="reportingTl">
+									<option value="">--Select TL--</option>
+									<option value="Demo User">Demo User</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="reportingTM">Team Manger </label>
+							<div class="col-md-7">
+								<select class="form-control" ng-model="frmData.reportingTM" id="reportingTM" name="reportingTM">
+									<option value="">--Select TM--</option>
+									<option value="Demo User">Demo User</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+          				<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="role">Role </label>
+							<div class="col-md-7">
+								<select class="form-control" ng-model="frmData.role" id="role" name="role">
+									<option value="">--Select Role--</option>
+									<option value="Agent">Agent</option>
+									<option value="TL">Team Lead</option>
+									<option value="TM">Team Manager</option>
+									<option value="PM">Project Manager</option>
+									<option value="QA">Quality Analysit</option>
+								</select>
+							</div>
+						</div>
+					</div>	
+
+					
+					<!-- <div class="row">
+						<div class="col-md-6 form-group">
+							<label class="control-label col-md-5" for="Country"> </label>
+							<div class="col-md-7">
+								<input type="checkbox" id="getPassword" name="getPassword" ng-model="frmData.getPassword" value="yes"> Generate Password 
+							</div>
+						</div>
+					</div> -->
+				
+					<div class="row">
+                        <div class="col-md-2 col-md-offset-10">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+					<!---->
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="js/common.js"></script>
+<script>
+    $(document).ready(function () {
+
+        // For ShortCut Keys - Starts Here 
+        $(window).keydown(function (event) {
+            //Ctrl + v - to Save
+            if (event.ctrlKey && (event.which == 86 || event.which == 118)) {
+                $('#btnSave').trigger("click")
+                event.preventDefault();
+            }
+            //Ctrl + l - to reload
+            if (event.ctrlKey && (event.which == 76 || event.which == 108)) {
+                $('#btnCancel').trigger("click")
+                event.preventDefault();
+            }
+
+            //Ctrl + F1 - to reload
+            if (event.ctrlKey && (event.which == 112)) {
+                $('#btnCancel').trigger("click")
+                event.preventDefault();
+            }
+        });
+        $('#btnSave').click(function () {
+            //                alert("hello");
+        });
+        $('#btnCancel').click(function () {
+            location.reload(true);
+        });
+        // For ShortCut Keys - Ends Here 
+
+        //Add Case Tracker Validation
+        //acclocation callreason subcallreason localSupport actionTaken issueStatus escalationReason dealer
+        $('#frmUserReg').bootstrapValidator({
+			//live: 'disabled',
+			excluded: [':disabled'],
+			live: 'enabled',
+			message: 'This value is not valid',
+			container: 'tooltip',
+			feedbackIcons: {
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {
+				firstName: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter First Name'
+						}
+					}
+				},
+				lastName: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Last Name'
+						}
+					}
+				},
+				empID: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Employee ID'
+						},
+						remote: {
+							url: 'roku/user/chkEmpIdExist',
+							type: 'POST',
+							message: 'Employee ID is not available'
+						}
+					}
+				},
+				Email: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Email'
+						},
+						emailAddress: {
+							message: 'The input is not a valid email address'
+						},
+                        regexp: {
+                            regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                            message: 'The input is not a valid email address'
+                        },
+						remote: {
+							url: 'roku/user/chkEmailExist',
+							type: 'POST',
+							message: 'Email is not available'
+						}
+					}
+				},
+				Phone: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Phone Number'
+						},
+						greaterThan: {
+			                        value: 0,
+		                        	inclusive: false,
+									message: 'Please Enter Valid Phone Number'
+			                    },
+		                        stringLength: {
+		                            min: 10,
+		                            max: 15,
+		                            message: 'Please Enter Valid Phone Number'
+		                        }
+					}
+				},
+				role: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select Role'
+						}
+					}
+				},
+				reportingTl: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select Reporting TL'
+						}
+					}
+				},
+				country: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select Country'
+						}
+					}
+				},
+				reportingTM: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select Reporting TM'
+						}
+					}
+				},
+				userType: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select User Type'
+						}
+					}
+				},
+				accountType: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select Account Type'
+						}
+					}
+				},
+				language: {
+					validators: {
+						notEmpty: {
+							message: 'Please Select language'
+						}
+					}
+				},
+				password: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Password'
+						},
+                        stringLength: {
+                            min: 6,
+                            max: 20,
+                            message: 'The password must be more than 6 and less than 20 characters'
+                        }
+					}
+				},
+				cpassword: {
+					validators: {
+						notEmpty: {
+							message: 'Please Enter Confirm Password'
+						},
+	                    identical: {
+	                        field: 'password',
+	                        message: 'The password and its confirm are not the same'
+	                    }
+					}
+				}
+			},
+		}).on('success.form.bv', function (e) {
+			// Prevent submit form
+			e.preventDefault();
+			angular.element(document.getElementById('createUserPage')).scope().createUser(); 
+		});
+    });
+</script>

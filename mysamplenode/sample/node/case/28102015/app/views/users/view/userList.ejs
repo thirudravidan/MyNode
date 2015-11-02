@@ -1,0 +1,82 @@
+<!-- <ol class="breadcrumb" my-crumb info="UserList"></ol> -->
+<div id="dataListView" class="span10 sect-pad" ng-controller="userCtrl" ng-init="Datainit('getUserlist', 'all')"> 
+	
+	<div class="span7">   
+		<div class="widget stacked widget-table action-table">
+						
+			<div class="widget-header flavour-1">
+				<i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+				<span>User List</span>
+				<div class="pull-right" style="width:35%;">
+					<form ng-submit='Datainit("errorList","s")'>
+						<div class="input-group" style="top:4px;">
+							<input type="text" class="form-control input-sm" placeholder="Search" name="q" ng-model="searchtxt">
+							<div class="input-group-btn" style="top:-6px;">
+								<button class="btn btn-default input-sm popover-examples" type="submit" ng-click="searchData()" id="advSearch1"><i class="glyphicon glyphicon-search"></i></button>
+								<button class="btn btn-default input-sm" type="button" id="advSearch1" value="All"  ng-click='Datainit("errorList","c")'><i class="glyphicon glyphicon-refresh"></i></button>
+								<!--<button class="btn btn-default input-sm popover-examples" type="button" id="advSearch"><i class="glyphicon glyphicon-list"></i></button>-->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div> <!-- /widget-header -->
+			
+			<div class="widget-content">
+
+				<table ng-table="tableParams" show-filter="false" class="table table-striped">
+					<tr ng-repeat="user in $data"
+						ng-click="user.$selected = !user.$selected;
+										changeSelection(user)"
+						ng-class="{'active': user.$selected}">
+						<td data-title="'First Name'" header-class="text-left" sortable="'firstName'">
+							{{user.firstName}}
+						</td>
+						<td data-title="'Last Name'" header-class="text-left" sortable="'lastName'">
+							{{user.lastName}}
+						</td>
+						<td nowrap data-title="'Email'" header-class="text-left" sortable="'Email'">
+							{{ user.Email}} 
+						</td>
+						<td data-title="'Phone'" header-class="text-left" sortable="'ContactNo'">
+							{{user.Phone}}
+						</td>
+						<td data-title="'country'" header-class="text-left" sortable="'country'">
+							{{user.country}}
+						</td>
+						<td data-title="'Reporting TL'" header-class="text-left" sortable="'reportTL'">
+							{{ user.Appraiser}}
+						</td>
+						<td data-title="'Reporting TM'" header-class="text-left" sortable="'reportTM'">
+							{{ user.Reviewer}}
+						</td>
+						<td data-title="'Language'" header-class="text-left" sortable="'Language'">
+							{{ user.language}}
+						</td>
+						<td data-title="'User Type'" header-class="text-left" sortable="'userType'">
+							{{ user.userType}}
+						</td>
+						<td data-title="'Account Type'" header-class="text-left" sortable="'userType'">
+							{{ user.accountType}}
+						</td>
+						<td data-title="'Role'" header-class="text-left" sortable="'role'">
+							{{ user.role}}
+						</td>
+						<td ng-switch="user.Status" data-title="'Action'" >
+							<a  href="#/admin/editUser/{{user.empID}}" class="glyphicon glyphicon-edit"></a>
+						</td>
+					</tr>
+				</table>
+				<table id="norecords" class="table table-striped">
+					<tr>
+						<td colspan="6" style="text-align:center; font-weight:bold;">
+							No Record Found
+						</td>
+					</tr>
+				</table>
+			</div> <!-- /widget-content -->
+				
+		</div> <!-- /widget -->
+	</div>
+
+</div>
+

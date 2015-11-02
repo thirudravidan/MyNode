@@ -1,0 +1,154 @@
+
+<div id="dataListView" class="span10 sect-pad" ng-controller="calendarCtrl" ng-init="Datainit('loadcalendarSettings', 'all');"> 
+	
+	<div class="span7">   
+		<div class="widget stacked widget-table action-table">
+						
+			<div class="widget-header">
+				<i class="glyphicon glyphicon-th-list"></i>&nbsp;&nbsp;
+				<span>Calendar Rule List</span>
+				<div class="pull-right" style="width:35%;">
+					<form ng-submit='Datainit("errorList","s")'>
+						<div class="input-group" style="top:4px;">
+							<input type="text" class="form-control input-sm" placeholder="Search" name="q" ng-model="searchtxt">
+							<div class="input-group-btn" style="top:-6px;">
+								<button class="btn btn-default input-sm popover-examples" type="submit" ng-click="searchData()" id="advSearch1"><i class="glyphicon glyphicon-search"></i></button>
+								<button class="btn btn-default input-sm" type="button" id="advSearch1" value="All"  ng-click='Datainit("errorList","c")'><i class="glyphicon glyphicon-refresh"></i></button>
+								<!--<button class="btn btn-default input-sm popover-examples" type="button" id="advSearch"><i class="glyphicon glyphicon-list"></i></button>-->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div> <!-- /widget-header -->
+			
+			<div class="widget-content">
+
+				<table ng-table="tableParams" show-filter="false" class="table table-striped">
+					 <tr ng-repeat="user in $data"
+                        ng-click="user.$selected = !user.$selected;
+                                        changeSelection(user)"
+                        ng-class="{'active': user.$selected}">
+                        <td data-title="'Rule Type'" header-class="text-left" sortable="'RuleType'">
+                            {{user.RuleType}}
+                        </td>
+                        <td data-title="'Rule Condition'" header-class="text-left" sortable="'RuleCondition'">
+                            {{user.RuleCondition}}
+                        </td>
+                        <td nowrap data-title="'Schedule'" header-class="text-left" sortable="'Schedule'">
+                            {{ user.Schedule}} 
+                        </td>
+                        <td data-title="'Action'" header-class="text-left" sortable="'Action'">
+                            {{user.Action}}
+                        </td>
+                        <td data-title="'Template'" header-class="text-left" sortable="'Template'">
+                            {{user.Template}}
+                        </td>   
+                        <td ng-switch="user.Status" ng-show = "user.title != ''" data-title="'Action'" header-class="text-left" sortable="'Action'"> 
+                            <a class="fa fa-cog" title="Edit" style="cursor: pointer;" data-toggle="modal" ng-click="editcalendarSettings(user);"></a>
+                            <a class="glyphicon glyphicon-trash" title="Delete" style="cursor: pointer;" data-toggle="modal" ng-click="deletecalendarSettings(user);"></a>
+                        </td>
+ 
+                    </tr>
+				</table>
+				<table id="norecords" class="table table-striped" style="display:none;">
+					<tr>
+						<td colspan="6" style="text-align:center; font-weight:bold;">
+							No Record Found
+						</td>
+					</tr>
+				</table>
+			</div> <!-- /widget-content -->
+				
+		</div> <!-- /widget --> 
+	</div>
+
+	
+
+ <!--For Calendar Settings Modal-->
+    <div class="modal fade" id="calendarSettings" tabindex="-1" role="dialog" aria-labelledby="updateLogLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="width:750px;">
+                <div class="modal-header bg-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <span class="glyphicon glyphicon-user"></span>Update Calendar Settings
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div>
+                            <div class="form-group">
+                                <label for="RuleName" class="col-sm-2 control-label">
+                                    Rule Name
+                                </label>
+                                <div class="col-sm-5">
+                                   <select class="form-control" id="ddlrulename" name="ddlrulename" ng-model="frmData.ddlrulename">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Callback">Callback</option>
+                                                    <option value="Meeting">Meeting</option> 
+                                                 </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="RuleType" class="col-sm-2 control-label">
+                                    Rule Type
+                                </label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="ddlruletype" name="ddlruletype" ng-model="frmData.ddlruletype">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Expired/overdue">Expired/overdue</option>
+                                                    <option value="10 mts before">10 mts before</option> 
+                                                 </select>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="Duration" class="col-sm-2 control-label">
+                                    Duration
+                                </label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="ddlduration" name="ddlduration" ng-model="frmData.ddlduration">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="1 minute">1 minute</option>
+                                                    <option value="2 minutes">2 minutes</option>
+                                                    <option value="15 minutes">15 minutes</option>
+                                                    <option value="30 minutes">30 minutes</option> 
+                                                 </select>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="Alert" class="col-sm-2 control-label">
+                                    Alert
+                                </label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="ddlalert" name="ddlalert" ng-model="frmData.ddlalert">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Popup">Popup</option>
+                                                    <option value="Mail">Mail</option> 
+                                                 </select>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label for="Template" class="col-sm-2 control-label">
+                                    Template
+                                </label>
+                                <div class="col-sm-5">
+                                    <select class="form-control" id="ddltemplate" name="ddltemplate" ng-model="frmData.ddltemplate">
+                                                    <option value="">-- Select --</option>
+                                                    <option value="Email Template">Email Template</option> 
+                                                 </select>
+                                </div>
+                            </div>
+                             
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="updatecalendarSettings();" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+ 
+ 

@@ -1,0 +1,26 @@
+<div class="field row">
+    <div class="span2 form-group">{{field.field_title}}:</div>
+    <div class="span4 form-group">
+		<input type="text" 
+			ng-model="field.field_value" 
+			value="{{field.field_value}}" 
+			ng-required="field.field_required"
+			ng-disabled="field.field_disabled"
+			class="form-control">
+        <span class="required-error" ng-show="field.field_required && !field.field_value">* required</span>
+    </div>
+</div>
+<!-- <div class="row">
+	<div class="col-md-6 form-group">
+		<label class="control-label col-md-5" for="firstName">First Name </label>
+		<div class="col-md-7">
+			<input type="text" id="firstName" name="firstName" ng-model="frmData.firstName" class="form-control chkAlpha" placeholder="First Name" maxlength="20">
+		</div>
+	</div>
+	<div class="col-md-6 form-group">
+		<label class="control-label col-md-5" for="lastName">Last Name </label>
+		<div class="col-md-7">
+			<input type="text" id="lastName" name="lastName" ng-model="frmData.lastName" class="form-control chkAlpha" placeholder="Last Name" maxlength="15">
+		</div>
+	</div>
+</div> -->

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="formBuilder">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Form Builder</title>
+    <% cssFiles.forEach(function(files){ %>
+        <link href=<%= files %> rel="stylesheet">
+    <% }) %>
+    <!--<script src="http://localhost:8092/socket.io/socket.io.js"></script>-->
+    <script> 
+        // var socket = io.connect("http://localhost:8092");
+        var userDt = <%- data.user %>;
+    </script>
+</head>
+<body class="full-width">
+    <section id="container" class="">
+        <!-- Navigation -->
+        
+        <!-- Right Slidebar start -->
+        <div class="sb-slidebar sb-right sb-style-overlay">
+            <h5 class="side-title">Projects</h5>
+            <ul class="quick-chat-list">
+                <li class="online">
+                    <div class="media">
+                        <div class="media-body"><strong>Singpost</strong></div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <div class="media-body"><strong>Netgear</strong></div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <div class="media-body"><strong>Vonage</strong></div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <div class="media-body"><strong>Parallels</strong></div>
+                    </div><!-- media -->
+                </li>
+                <li class="online">
+                    <div class="media">
+                        <div class="media-body"><strong>Roku</strong></div>
+                    </div><!-- media -->
+                </li>
+            </ul>
+            <ul class="p-task tasks-bar">
+                <li class="external"><a href="#">Close</a></li>
+            </ul>
+        </div>
+        <my-header headershow=false></my-header>
+
+        
+        
+        <!-- Page Content -->
+
+        <section id="main-content">
+            <section class="wrapper" ng-view>
+            </section>
+        </section>
+        <!-- <div class="container" id ="container" ng-view>
+            <div class="row">
+                <div class="col-lg-12">
+                <div ng-view></div>
+                    
+                </div>
+            </div>
+        </div> -->
+        <!-- /.container -->
+
+        <!-- Footer Content -->
+        <my-footer></my-footer>
+    </section>
+
+    <% jsFiles.forEach(function(name){ %>
+      <script src=<%= name %>></script>
+    <% }) %>
+</body>
+
+</html>
