@@ -1,0 +1,5 @@
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\bin\Debug\NetGearDBAnalyticsEF.dll.config
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\bin\Debug\NetGearDBAnalyticsEF.dll
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\bin\Debug\NetGearDBAnalyticsEF.pdb
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\obj\Debug\NetGearDBAnalyticsEF.dll
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\obj\Debug\NetGearDBAnalyticsEF.pdb

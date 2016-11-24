@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NGStatusModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="NGStatusModelStoreContainer">
+    <EntitySet Name="CategoryMaster" EntityType="NGStatusModel.Store.CategoryMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CutomerMessageDetails" EntityType="NGStatusModel.Store.CutomerMessageDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MessageDetails" EntityType="NGStatusModel.Store.MessageDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NGDownloadStatus" EntityType="NGStatusModel.Store.NGDownloadStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NGDownloadStatus_History" EntityType="NGStatusModel.Store.NGDownloadStatus_History" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="NGStatusModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="NGStatusModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_MessageDetails_CategoryMaster" Association="NGStatusModel.Store.FK_MessageDetails_CategoryMaster">
+      <End Role="CategoryMaster" EntitySet="CategoryMaster" />
+      <End Role="MessageDetails" EntitySet="MessageDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CutomerMessageDetails">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="CustomerID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MessageID" Type="int" Nullable="false" />
+    <Property Name="ReadDateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessageDetails">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MessageTitle" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ReferenceURLs" Type="nvarchar(max)" />
+    <Property Name="PublishedOn" Type="datetime" Nullable="false" />
+    <Property Name="isImportant" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NGDownloadStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UniqueID" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="LoginID" Type="nvarchar" MaxLength="255" />
+    <Property Name="InitialVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="InstallationDate" Type="datetime" />
+    <Property Name="IsUpdated" Type="bit" />
+    <Property Name="LastVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToolUpdatedDate" Type="datetime" />
+    <Property Name="IsUninstall" Type="bit" />
+    <Property Name="UninstallDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NGDownloadStatus_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UniqueID" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="LoginID" Type="nvarchar" MaxLength="255" />
+    <Property Name="InitialVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="InstallationDate" Type="datetime" />
+    <Property Name="IsUpdated" Type="bit" />
+    <Property Name="LastVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToolUpdatedDate" Type="datetime" />
+    <Property Name="IsUninstall" Type="bit" />
+    <Property Name="UninstallDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_MessageDetails_CategoryMaster">
+    <End Role="CategoryMaster" Type="NGStatusModel.Store.CategoryMaster" Multiplicity="1" />
+    <End Role="MessageDetails" Type="NGStatusModel.Store.MessageDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="MessageDetails">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

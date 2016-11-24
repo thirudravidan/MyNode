@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NGStatusModelStoreContainer" CdmEntityContainer="NGStatusEntities">
+    <EntitySetMapping Name="CategoryMaster">
+      <EntityTypeMapping TypeName="NGStatusModel.CategoryMaster">
+        <MappingFragment StoreEntitySet="CategoryMaster">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerSubscription">
+      <EntityTypeMapping TypeName="NGStatusModel.CustomerSubscription">
+        <MappingFragment StoreEntitySet="CustomerSubscription">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="IsGenerateTask" ColumnName="IsGenerateTask" />
+          <ScalarProperty Name="mailProgram" ColumnName="mailProgram" />
+          <ScalarProperty Name="ContractStatus" ColumnName="ContractStatus" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="SubscriptionPlan" ColumnName="SubscriptionPlan" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTask">
+      <EntityTypeMapping TypeName="NGStatusModel.CustomerTask">
+        <MappingFragment StoreEntitySet="CustomerTask">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="Task" ColumnName="Task" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CusTaskID" ColumnName="CusTaskID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CutomerMessageDetails">
+      <EntityTypeMapping TypeName="NGStatusModel.CutomerMessageDetails">
+        <MappingFragment StoreEntitySet="CutomerMessageDetails">
+          <ScalarProperty Name="ReadDateTime" ColumnName="ReadDateTime" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedBackHistory">
+      <EntityTypeMapping TypeName="NGStatusModel.FeedBackHistory">
+        <MappingFragment StoreEntitySet="FeedBackHistory">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CustomrId" ColumnName="CustomrId" />
+          <ScalarProperty Name="FeedBackId" ColumnName="FeedBackId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageDetails">
+      <EntityTypeMapping TypeName="NGStatusModel.MessageDetails">
+        <MappingFragment StoreEntitySet="MessageDetails">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="isImportant" ColumnName="isImportant" />
+          <ScalarProperty Name="PublishedOn" ColumnName="PublishedOn" />
+          <ScalarProperty Name="ReferenceURLs" ColumnName="ReferenceURLs" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="MessageTitle" ColumnName="MessageTitle" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGDownloadStatus">
+      <EntityTypeMapping TypeName="NGStatusModel.NGDownloadStatus">
+        <MappingFragment StoreEntitySet="NGDownloadStatus">
+          <ScalarProperty Name="UninstallDate" ColumnName="UninstallDate" />
+          <ScalarProperty Name="IsUninstall" ColumnName="IsUninstall" />
+          <ScalarProperty Name="ToolUpdatedDate" ColumnName="ToolUpdatedDate" />
+          <ScalarProperty Name="CurrentVersion" ColumnName="CurrentVersion" />
+          <ScalarProperty Name="LastVersion" ColumnName="LastVersion" />
+          <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+          <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
+          <ScalarProperty Name="InitialVersion" ColumnName="InitialVersion" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGDownloadStatus_History">
+      <EntityTypeMapping TypeName="NGStatusModel.NGDownloadStatus_History">
+        <MappingFragment StoreEntitySet="NGDownloadStatus_History">
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UninstallDate" ColumnName="UninstallDate" />
+          <ScalarProperty Name="IsUninstall" ColumnName="IsUninstall" />
+          <ScalarProperty Name="ToolUpdatedDate" ColumnName="ToolUpdatedDate" />
+          <ScalarProperty Name="CurrentVersion" ColumnName="CurrentVersion" />
+          <ScalarProperty Name="LastVersion" ColumnName="LastVersion" />
+          <ScalarProperty Name="IsUpdated" ColumnName="IsUpdated" />
+          <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
+          <ScalarProperty Name="InitialVersion" ColumnName="InitialVersion" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubscriptionDetails">
+      <EntityTypeMapping TypeName="NGStatusModel.SubscriptionDetails">
+        <MappingFragment StoreEntitySet="SubscriptionDetails">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SubscriptionName" ColumnName="SubscriptionName" />
+          <ScalarProperty Name="NGSubscriptionID" ColumnName="NGSubscriptionID" />
+          <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubscriptionTaskDetails">
+      <EntityTypeMapping TypeName="NGStatusModel.SubscriptionTaskDetails">
+        <MappingFragment StoreEntitySet="SubscriptionTaskDetails">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="Task" ColumnName="Task" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="SubscriptionID" ColumnName="SubscriptionID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NGStatusModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="NGStatusModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

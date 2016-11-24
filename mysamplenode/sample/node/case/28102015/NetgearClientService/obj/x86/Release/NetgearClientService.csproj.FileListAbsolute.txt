@@ -1,0 +1,7 @@
+D:\WORKSPACE.SL051760\CIOG\DOT_NET\Netgear\NetgearTool_2.0\NetgearClientService\bin\x86\Release\NetgearClientService.dll
+D:\WORKSPACE.SL051760\CIOG\DOT_NET\Netgear\NetgearTool_2.0\NetgearClientService\bin\x86\Release\NetgearClientService.pdb
+D:\WORKSPACE.SL051760\CIOG\DOT_NET\Netgear\NetgearTool_2.0\NetgearClientService\bin\x86\Release\NetGearDBAnalyticsEF.dll
+D:\WORKSPACE.SL051760\CIOG\DOT_NET\Netgear\NetgearTool_2.0\NetgearClientService\bin\x86\Release\NetGearDBAnalyticsEF.pdb
+D:\WORKSPACE.SL051760\CIOG\DOT_NET\Netgear\NetgearTool_2.0\NetgearClientService\obj\x86\Release\NetgearClientService.csprojResolveAssemblyReference.cache
+D:\WORKSPACE.SL051760\CIOG\DOT_NET\Netgear\NetgearTool_2.0\NetgearClientService\obj\x86\Release\NetgearClientService.dll
+D:\WORKSPACE.SL051760\CIOG\DOT_NET\Netgear\NetgearTool_2.0\NetgearClientService\obj\x86\Release\NetgearClientService.pdb

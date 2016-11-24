@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NGStatusModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="NGStatusModelStoreContainer">
+    <EntitySet Name="CategoryMaster" EntityType="NGStatusModel.Store.CategoryMaster" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerSubscription" EntityType="NGStatusModel.Store.CustomerSubscription" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerTask" EntityType="NGStatusModel.Store.CustomerTask" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CutomerMessageDetails" EntityType="NGStatusModel.Store.CutomerMessageDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeviceLocation" EntityType="NGStatusModel.Store.DeviceLocation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FeedBackHistory" EntityType="NGStatusModel.Store.FeedBackHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GHMobileRegistrationDetails" EntityType="NGStatusModel.Store.GHMobileRegistrationDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MessageDetails" EntityType="NGStatusModel.Store.MessageDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NetworkMapDetails" EntityType="NGStatusModel.Store.NetworkMapDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NGDownloadStatus" EntityType="NGStatusModel.Store.NGDownloadStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NGDownloadStatus_History" EntityType="NGStatusModel.Store.NGDownloadStatus_History" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ParentalControl" EntityType="NGStatusModel.Store.ParentalControl" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhoneSettings" EntityType="NGStatusModel.Store.PhoneSettings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubscriptionDetails" EntityType="NGStatusModel.Store.SubscriptionDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubscriptionTaskDetails" EntityType="NGStatusModel.Store.SubscriptionTaskDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="NGStatusModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TimeZoneDetails" EntityType="NGStatusModel.Store.TimeZoneDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="NGStatusModel.Store.Users" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="CustomerSubscription">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="255" />
+    <Property Name="CustomerEmail" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContractID" Type="nvarchar" MaxLength="255" />
+    <Property Name="SubscriptionPlan" Type="nvarchar" MaxLength="50" />
+    <Property Name="Product" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ContractStatus" Type="nvarchar" MaxLength="255" />
+    <Property Name="mailProgram" Type="bit" />
+    <Property Name="IsGenerateTask" Type="bit" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="CustomerTask">
+    <Key>
+      <PropertyRef Name="CusTaskID" />
+    </Key>
+    <Property Name="CusTaskID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ContractID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="Task" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="SubscriptionID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CutomerMessageDetails">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="CustomerID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MessageID" Type="int" Nullable="false" />
+    <Property Name="ReadDateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeviceLocation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="Latitude" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Longitude" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="TrackingFromTime" Type="datetime" Nullable="false" />
+    <Property Name="TrackingToTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeedBackHistory">
+    <Key>
+      <PropertyRef Name="FeedBackId" />
+    </Key>
+    <Property Name="FeedBackId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomrId" Type="bigint" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="Rating" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="GHMobileRegistrationDetails">
+    <Key>
+      <PropertyRef Name="RegID" />
+    </Key>
+    <Property Name="RegID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="CustomerEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistrationID" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="osType" Type="int" />
+  </EntityType>
+  <EntityType Name="MessageDetails">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MessageTitle" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ReferenceURLs" Type="nvarchar(max)" />
+    <Property Name="PublishedOn" Type="datetime" Nullable="false" />
+    <Property Name="isImportant" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+    <Property Name="customerId" Type="int" />
+  </EntityType>
+  <EntityType Name="NetworkMapDetails">
+    <Key>
+      <PropertyRef Name="IPAddress" />
+    </Key>
+    <Property Name="IPAddress" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="DeviceDetails" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NGDownloadStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UniqueID" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="LoginID" Type="nvarchar" MaxLength="255" />
+    <Property Name="InitialVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="InstallationDate" Type="datetime" />
+    <Property Name="IsUpdated" Type="bit" />
+    <Property Name="LastVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToolUpdatedDate" Type="datetime" />
+    <Property Name="IsUninstall" Type="bit" />
+    <Property Name="UninstallDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NGDownloadStatus_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UniqueID" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="LoginID" Type="nvarchar" MaxLength="255" />
+    <Property Name="InitialVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="InstallationDate" Type="datetime" />
+    <Property Name="IsUpdated" Type="bit" />
+    <Property Name="LastVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToolUpdatedDate" Type="datetime" />
+    <Property Name="IsUninstall" Type="bit" />
+    <Property Name="UninstallDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ParentalControl">
+    <Key>
+      <PropertyRef Name="Slno" />
+    </Key>
+    <Property Name="Slno" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_ID" Type="bigint" />
+    <Property Name="Blocked" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="BlockedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PhoneSettings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="IsPhoneTrack" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubscriptionDetails">
+    <Key>
+      <PropertyRef Name="SubscriptionID" />
+    </Key>
+    <Property Name="SubscriptionID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="NGSubscriptionID" Type="int" Nullable="false" />
+    <Property Name="SubscriptionName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubscriptionTaskDetails">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SubscriptionID" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Week" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Task" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TimeZoneDetails">
+    <Key>
+      <PropertyRef Name="TimeZoneID" />
+    </Key>
+    <Property Name="TimeZoneID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TimeZone" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Time" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserType" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

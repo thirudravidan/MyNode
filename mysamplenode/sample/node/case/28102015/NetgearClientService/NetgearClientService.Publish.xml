@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\Published Folder\Service_Publish\NetGearClientService_Publish\25102016_AllCases_formobile" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="10/02/2013 12:10:10" />
+    <file relUrl="Global.asax" publishTime="07/29/2014 06:15:52" />
+    <file relUrl="Web.config" publishTime="10/25/2016 19:12:45" />
+    <file relUrl="bin/NetgearClientService.pdb" publishTime="10/25/2016 19:12:34" />
+    <file relUrl="bin/NetgearClientService.dll" publishTime="10/25/2016 19:12:34" />
+    <file relUrl="bin/NetGearDBAnalyticsEF.pdb" publishTime="08/09/2016 17:50:11" />
+    <file relUrl="CSSNetgearService/NetgearClientService.asmx" publishTime="07/29/2014 06:15:52" />
+    <file relUrl="bin/NetGearDBAnalyticsEF.dll" publishTime="08/09/2016 17:50:11" />
+  </publishProfile>
+</publishData>

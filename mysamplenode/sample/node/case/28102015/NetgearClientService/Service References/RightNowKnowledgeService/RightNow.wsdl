@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:rnw_v1="urn:wsdl.ws.rightnow.com/v1" xmlns:rnk_v1_2="urn:knowledge.ws.rightnow.com/v1" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:rnf_v1="urn:faults.ws.rightnow.com/v1" xmlns:rnm_v1="urn:messages.ws.rightnow.com/v1" xmlns:rnb_v1_2="urn:base.ws.rightnow.com/v1" xmlns:rng_v1_2="urn:generic.ws.rightnow.com/v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:rno_v1_2="urn:objects.ws.rightnow.com/v1" xmlns:rnn_v1_2="urn:nullfields.ws.rightnow.com/v1" xmlns="http://schemas.xmlsoap.org/wsdl/" name="RightNow" targetNamespace="urn:wsdl.ws.rightnow.com/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <version>1.0</version>
+    <wsdlRevision>1.0.13.11</wsdlRevision>
+  </wsdl:documentation>
+  <wsp:Policy xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="KnowledgePolicy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding>
+          <wsp:Policy>
+            <wsp:ExactlyOne>
+              <wsp:All>
+                <sp:TransportToken>
+                  <wsp:Policy>
+                    <wsp:ExactlyOne>
+                      <sp:HttpsToken />
+                    </wsp:ExactlyOne>
+                  </wsp:Policy>
+                </sp:TransportToken>
+                <sp:AlgorithmSuite>
+                  <wsp:Policy>
+                    <sp:Basic256 />
+                  </wsp:Policy>
+                </sp:AlgorithmSuite>
+                <sp:Layout>
+                  <wsp:Policy>
+                    <wsp:ExactlyOne>
+                      <sp:Lax />
+                    </wsp:ExactlyOne>
+                  </wsp:Policy>
+                </sp:Layout>
+              </wsp:All>
+            </wsp:ExactlyOne>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsp:ExactlyOne>
+          <!-- Begin SignedSupportingTokens -->
+          <sp:SignedSupportingTokens>
+            <wsp:Policy>
+              <wsp:ExactlyOne>
+                <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <wsp:ExactlyOne>
+                      <sp:WssUsernameToken10 />
+                    </wsp:ExactlyOne>
+                  </wsp:Policy>
+                </sp:UsernameToken>
+              </wsp:ExactlyOne>
+            </wsp:Policy>
+          </sp:SignedSupportingTokens>
+          <!-- End SignedSupportingTokens -->
+          <!-- Begin SupportingTokens -->
+          <sp:SupportingTokens>
+            <wsp:Policy>
+              <wsp:ExactlyOne>
+                <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <wsp:ExactlyOne>
+                      <sp:WssUsernameToken10 />
+                    </wsp:ExactlyOne>
+                  </wsp:Policy>
+                </sp:UsernameToken>
+              </wsp:ExactlyOne>
+            </wsp:Policy>
+          </sp:SupportingTokens>
+          <!-- End SupportingTokens -->
+        </wsp:ExactlyOne>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema xmlns="urn:base.ws.rightnow.com/v1" elementFormDefault="qualified" targetNamespace="urn:base.ws.rightnow.com/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:simpleType name="ActionEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="none" />
+          <xs:enumeration value="add" />
+          <xs:enumeration value="remove" />
+          <xs:enumeration value="update" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="ID" type="rnb_v1_2:ID" />
+      <xs:complexType name="ID">
+        <xs:attribute name="id" type="xs:long" use="optional" />
+      </xs:complexType>
+      <xs:element name="NamedID" type="rnb_v1_2:NamedID" />
+      <xs:complexType name="NamedID">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ID" type="rnb_v1_2:ID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NamedIDDelta" type="rnb_v1_2:NamedIDDelta" />
+      <xs:complexType name="NamedIDDelta">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:NamedID">
+            <xs:attribute name="action" type="rnb_v1_2:ActionEnum" use="optional" />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="NamedIDDeltaList" type="rnb_v1_2:NamedIDDeltaList" />
+      <xs:complexType name="NamedIDDeltaList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDDeltaList" type="rnb_v1_2:NamedIDDelta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NamedIDHierarchy" type="rnb_v1_2:NamedIDHierarchy" />
+      <xs:complexType name="NamedIDHierarchy">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ID" type="rnb_v1_2:ID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="12" name="Parents" type="rnb_v1_2:NamedReadOnlyID" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NamedIDHierarchyList" type="rnb_v1_2:NamedIDHierarchyList" />
+      <xs:complexType name="NamedIDHierarchyList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDHierarchyList" type="rnb_v1_2:NamedIDHierarchy" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NamedReadOnlyID" type="rnb_v1_2:NamedReadOnlyID" />
+      <xs:complexType name="NamedReadOnlyID">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:NamedID" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="RNObject" type="rnb_v1_2:RNObject" />
+      <xs:complexType name="RNObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ID" type="rnb_v1_2:ID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LookupName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CreatedTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UpdatedTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns="urn:generic.ws.rightnow.com/v1" elementFormDefault="qualified" targetNamespace="urn:generic.ws.rightnow.com/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:base.ws.rightnow.com/v1" />
+      <xs:simpleType name="DataTypeEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="BASE64_BINARY" />
+          <xs:enumeration value="BOOLEAN" />
+          <xs:enumeration value="BOOLEAN_LIST" />
+          <xs:enumeration value="DATE" />
+          <xs:enumeration value="DATE_LIST" />
+          <xs:enumeration value="DATETIME" />
+          <xs:enumeration value="DATETIME_LIST" />
+          <xs:enumeration value="DECIMAL" />
+          <xs:enumeration value="DECIMAL_LIST" />
+          <xs:enumeration value="ID" />
+          <xs:enumeration value="ID_LIST" />
+          <xs:enumeration value="INTEGER" />
+          <xs:enumeration value="INTEGER_LIST" />
+          <xs:enumeration value="LONG" />
+          <xs:enumeration value="LONG_LIST" />
+          <xs:enumeration value="NAMED_ID" />
+          <xs:enumeration value="NAMED_ID_DELTA_LIST" />
+          <xs:enumeration value="NAMED_ID_LIST" />
+          <xs:enumeration value="NAMED_ID_HIERARCHY" />
+          <xs:enumeration value="NAMED_ID_HIERARCHY_LIST" />
+          <xs:enumeration value="OBJECT" />
+          <xs:enumeration value="OBJECT_LIST" />
+          <xs:enumeration value="STRING" />
+          <xs:enumeration value="STRING_LIST" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="DataValue" type="rng_v1_2:DataValue" />
+      <xs:complexType name="DataValue">
+        <xs:choice minOccurs="1" maxOccurs="1">
+          <xs:element minOccurs="1" maxOccurs="1" name="Base64BinaryValue" type="xs:base64Binary" />
+          <xs:element minOccurs="1" maxOccurs="1" name="BooleanValue" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BooleanValueList" type="xs:boolean" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DateTimeValue" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DateTimeValueList" type="xs:dateTime" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DateValue" type="xs:date" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DateValueList" type="xs:date" />
+          <xs:element minOccurs="1" maxOccurs="1" name="DecimalValue" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DecimalValueList" type="xs:double" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IDValue" type="rnb_v1_2:ID" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="IDValueList" type="rnb_v1_2:ID" />
+          <xs:element minOccurs="1" maxOccurs="1" name="IntegerValue" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="IntegerValueList" type="xs:int" />
+          <xs:element minOccurs="1" maxOccurs="1" name="LongValue" type="xs:long" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="LongValueList" type="xs:long" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDDeltaValueList" type="rnb_v1_2:NamedIDDelta" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NamedIDHierarchyValue" type="rnb_v1_2:NamedIDHierarchy" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDHierarchyValueList" type="rnb_v1_2:NamedIDHierarchy" />
+          <xs:element minOccurs="1" maxOccurs="1" name="NamedIDValue" type="rnb_v1_2:NamedID" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="NamedIDValueList" type="rnb_v1_2:NamedID" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ObjectValue" type="rng_v1_2:GenericObject" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ObjectValueList" type="rng_v1_2:GenericObject" />
+          <xs:element minOccurs="1" maxOccurs="1" name="StringValue" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="StringValueList" type="xs:string" />
+        </xs:choice>
+      </xs:complexType>
+      <xs:element name="GenericField" type="rng_v1_2:GenericField" />
+      <xs:complexType name="GenericField">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="DataValue" nillable="true" type="rng_v1_2:DataValue" />
+        </xs:sequence>
+        <xs:attribute name="dataType" type="rng_v1_2:DataTypeEnum" use="optional" />
+        <xs:attribute name="name" type="xs:string" use="required" />
+      </xs:complexType>
+      <xs:element name="GenericObject" type="rng_v1_2:GenericObject" />
+      <xs:complexType name="GenericObject">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:RNObject">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="ObjectType" type="rng_v1_2:RNObjectType" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="GenericFields" type="rng_v1_2:GenericField" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="RNObjectType" type="rng_v1_2:RNObjectType" />
+      <xs:complexType name="RNObjectType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Namespace" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="TypeName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns="urn:knowledge.ws.rightnow.com/v1" elementFormDefault="qualified" targetNamespace="urn:knowledge.ws.rightnow.com/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:base.ws.rightnow.com/v1" />
+      <xs:import namespace="urn:objects.ws.rightnow.com/v1" />
+      <xs:import namespace="urn:generic.ws.rightnow.com/v1" />
+      <xs:import namespace="urn:nullfields.ws.rightnow.com/v1" />
+      <xs:element name="AnswerContent" type="rnk_v1_2:AnswerContent" />
+      <xs:complexType name="AnswerContent">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:Content">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="AccessLevels" nillable="true" type="rnb_v1_2:NamedIDDeltaList" />
+              <xs:element minOccurs="0" maxOccurs="1" name="AnswerType" type="rnb_v1_2:NamedID" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Categories" nillable="true" type="rnb_v1_2:NamedIDHierarchyList" />
+              <xs:element minOccurs="0" maxOccurs="1" name="CommonAttachments" nillable="true" type="rno_v1_2:FileAttachmentSharedList" />
+              <xs:element minOccurs="0" maxOccurs="1" name="CustomFields" type="rng_v1_2:GenericObject" />
+              <xs:element minOccurs="0" maxOccurs="1" name="ExpiresDate" type="xs:date" />
+              <xs:element minOccurs="0" maxOccurs="1" name="FileAttachments" nillable="true" type="rno_v1_2:FileAttachmentAnswerList" />
+              <xs:element minOccurs="0" maxOccurs="1" name="GuidedAssistance" nillable="true" type="rnb_v1_2:NamedID" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Keywords" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Language" type="rnb_v1_2:NamedID" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Products" nillable="true" type="rnb_v1_2:NamedIDHierarchyList" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Question" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Solution" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="StatusWithType" type="rno_v1_2:StatusWithType" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Summary" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="URL" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="ValidNullFields" nillable="true" type="rnn_v1_2:AnswerContentNullFields" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="AnswerSummaryContent" type="rnk_v1_2:AnswerSummaryContent" />
+      <xs:complexType name="AnswerSummaryContent">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:SummaryContent">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="ContentOrigin" type="rnb_v1_2:NamedID" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="Content" type="rnk_v1_2:Content" />
+      <xs:complexType name="Content">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:RNObject">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="SecurityOptions" type="rnk_v1_2:ContentSecurityOptions" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ContentFilter" type="rnk_v1_2:ContentFilter" />
+      <xs:complexType name="ContentFilter">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="PlaceholderDoNotUse" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentFilterList" type="rnk_v1_2:ContentFilterList" />
+      <xs:complexType name="ContentFilterList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ContentFilterList" type="rnk_v1_2:ContentFilter" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentList" type="rnk_v1_2:ContentList" />
+      <xs:complexType name="ContentList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ContentList" type="rnk_v1_2:Content" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentListResponse" type="rnk_v1_2:ContentListResponse" />
+      <xs:complexType name="ContentListResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Status" type="rnk_v1_2:ContentRequestStatus" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SummaryContents" nillable="true" type="rnk_v1_2:SummaryContentList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ValidNullFields" nillable="true" type="rnn_v1_2:ContentListResponseNullFields" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentRate" type="rnk_v1_2:ContentRate" />
+      <xs:complexType name="ContentRate">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:NamedID" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ContentRequestStatus" type="rnk_v1_2:ContentRequestStatus" />
+      <xs:complexType name="ContentRequestStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ElapsedTimeInMilliSeconds" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Status" type="rnb_v1_2:NamedID" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentSearch" type="rnk_v1_2:ContentSearch" />
+      <xs:complexType name="ContentSearch">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Filters" nillable="true" type="rnk_v1_2:ContentFilterList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SecurityOptions" type="rnk_v1_2:ContentSecurityOptions" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ValidNullFields" nillable="true" type="rnn_v1_2:ContentSearchNullFields" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentSearchOrigin" type="rnk_v1_2:ContentSearchOrigin" />
+      <xs:complexType name="ContentSearchOrigin">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:NamedID" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ContentSecurityOptions" type="rnk_v1_2:ContentSecurityOptions" />
+      <xs:complexType name="ContentSecurityOptions">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Contact" type="rnb_v1_2:NamedID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Organization" type="rnb_v1_2:NamedID" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentSortOptions" type="rnk_v1_2:ContentSortOptions" />
+      <xs:complexType name="ContentSortOptions">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="SortField" type="rnb_v1_2:NamedID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SortOrder" type="rnb_v1_2:NamedID" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ContentViewOrigin" type="rnk_v1_2:ContentViewOrigin" />
+      <xs:complexType name="ContentViewOrigin">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:NamedID" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="IncidentContent" type="rnk_v1_2:IncidentContent" />
+      <xs:complexType name="IncidentContent">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:Content">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="ReferenceNumber" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="KeyValueItem" type="rnk_v1_2:KeyValueItem" />
+      <xs:complexType name="KeyValueItem">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Key" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Value" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KeyValueItemList" type="rnk_v1_2:KeyValueItemList" />
+      <xs:complexType name="KeyValueItemList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueItemList" type="rnk_v1_2:KeyValueItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KnowledgeStandardContentContentValue" type="rnk_v1_2:KnowledgeStandardContentContentValue" />
+      <xs:complexType name="KnowledgeStandardContentContentValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ContentType" type="rnb_v1_2:NamedID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Value" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ValidNullFields" nillable="true" type="rnn_v1_2:KnowledgeStandardContentContentValueNullFields" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KnowledgeStandardContentContentValueList" type="rnk_v1_2:KnowledgeStandardContentContentValueList" />
+      <xs:complexType name="KnowledgeStandardContentContentValueList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KnowledgeStandardContentContentValueList" type="rnk_v1_2:KnowledgeStandardContentContentValue" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SearchResponse" type="rnk_v1_2:SearchResponse" />
+      <xs:complexType name="SearchResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:ContentListResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="SimilarSearches" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="SpellingSuggestions" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="TotalResults" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ServiceCategoryContentFilter" type="rnk_v1_2:ServiceCategoryContentFilter" />
+      <xs:complexType name="ServiceCategoryContentFilter">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:ContentFilter">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="ServiceCategory" type="rnb_v1_2:NamedIDHierarchy" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ServiceProductContentFilter" type="rnk_v1_2:ServiceProductContentFilter" />
+      <xs:complexType name="ServiceProductContentFilter">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:ContentFilter">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="ServiceProduct" type="rnb_v1_2:NamedIDHierarchy" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SmartAssistantContentSearch" type="rnk_v1_2:SmartAssistantContentSearch" />
+      <xs:complexType name="SmartAssistantContentSearch">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:ContentSearch">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="DetailedDescription" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Summary" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SmartAssistantResolution" type="rnk_v1_2:SmartAssistantResolution" />
+      <xs:complexType name="SmartAssistantResolution">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnb_v1_2:NamedID" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SmartAssistantSuggestionsResponse" type="rnk_v1_2:SmartAssistantSuggestionsResponse" />
+      <xs:complexType name="SmartAssistantSuggestionsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Status" type="rnk_v1_2:ContentRequestStatus" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CanEscalate" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="RulesMatched" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Suggestions" nillable="true" type="rnk_v1_2:ContentList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Token" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ValidNullFields" nillable="true" type="rnn_v1_2:SmartAssistantSuggestionsResponseNullFields" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="StandardContentContent" type="rnk_v1_2:StandardContentContent" />
+      <xs:complexType name="StandardContentContent">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:Content">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="ContentValues" nillable="true" type="rnk_v1_2:KnowledgeStandardContentContentValueList" />
+              <xs:element minOccurs="0" maxOccurs="1" name="ValidNullFields" nillable="true" type="rnn_v1_2:StandardContentContentNullFields" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SummaryContent" type="rnk_v1_2:SummaryContent" />
+      <xs:complexType name="SummaryContent">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnk_v1_2:Content">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="Excerpt" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="URL" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="SummaryContentList" type="rnk_v1_2:SummaryContentList" />
+      <xs:complexType name="SummaryContentList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SummaryContentList" type="rnk_v1_2:SummaryContent" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns="urn:nullfields.ws.rightnow.com/v1" elementFormDefault="qualified" targetNamespace="urn:nullfields.ws.rightnow.com/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="AnswerContentNullFields" type="rnn_v1_2:AnswerContentNullFields" />
+      <xs:complexType name="AnswerContentNullFields">
+        <xs:attribute default="false" name="Categories" type="xs:boolean" use="optional" />
+        <xs:attribute default="false" name="CommonAttachments" type="xs:boolean" use="optional" />
+        <xs:attribute default="false" name="FileAttachments" type="xs:boolean" use="optional" />
+        <xs:attribute default="false" name="Keywords" type="xs:boolean" use="optional" />
+        <xs:attribute default="false" name="Products" type="xs:boolean" use="optional" />
+        <xs:attribute default="false" name="Question" type="xs:boolean" use="optional" />
+        <xs:attribute default="false" name="Solution" type="xs:boolean" use="optional" />
+        <xs:attribute default="false" name="URL" type="xs:boolean" use="optional" />
+      </xs:complexType>
+      <xs:element name="ContentListResponseNullFields" type="rnn_v1_2:ContentListResponseNullFields" />
+      <xs:complexType name="ContentListResponseNullFields">
+        <xs:attribute default="false" name="SummaryContents" type="xs:boolean" use="optional" />
+      </xs:complexType>
+      <xs:element name="ContentSearchNullFields" type="rnn_v1_2:ContentSearchNullFields" />
+      <xs:complexType name="ContentSearchNullFields">
+        <xs:attribute default="false" name="Filters" type="xs:boolean" use="optional" />
+      </xs:complexType>
+      <xs:element name="KnowledgeStandardContentContentValueNullFields" type="rnn_v1_2:KnowledgeStandardContentContentValueNullFields" />
+      <xs:complexType name="KnowledgeStandardContentContentValueNullFields">
+        <xs:attribute default="false" name="Value" type="xs:boolean" use="optional" />
+      </xs:complexType>
+      <xs:element name="SmartAssistantSuggestionsResponseNullFields" type="rnn_v1_2:SmartAssistantSuggestionsResponseNullFields" />
+      <xs:complexType name="SmartAssistantSuggestionsResponseNullFields">
+        <xs:attribute default="false" name="Suggestions" type="xs:boolean" use="optional" />
+      </xs:complexType>
+      <xs:element name="StandardContentContentNullFields" type="rnn_v1_2:StandardContentContentNullFields" />
+      <xs:complexType name="StandardContentContentNullFields">
+        <xs:attribute default="false" name="ContentValues" type="xs:boolean" use="optional" />
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns="urn:faults.ws.rightnow.com/v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:faults.ws.rightnow.com/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="RNFault">
+        <xs:sequence>
+          <xs:element name="exceptionCode" type="rnf_v1:ExceptionCode" />
+          <xs:element name="exceptionMessage" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RequestErrorFaultType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnf_v1:RNFault" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="RequestErrorFault" type="rnf_v1:RequestErrorFaultType" />
+      <xs:complexType name="ServerErrorFaultType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnf_v1:RNFault" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="ServerErrorFault" type="rnf_v1:ServerErrorFaultType" />
+      <xs:complexType name="UnexpectedErrorFaultType">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rnf_v1:RNFault" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="UnexpectedErrorFault" type="rnf_v1:UnexpectedErrorFaultType" />
+      <xs:simpleType name="ExceptionCode">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ACCESS_DENIED" />
+          <xs:enumeration value="INVALID_FIELD" />
+          <xs:enumeration value="INVALID_LOGIN" />
+          <xs:enumeration value="BAD_ID" />
+          <xs:enumeration value="MISSING_ARGUMENT" />
+          <xs:enumeration value="QUERY_TIMEOUT" />
+          <xs:enumeration value="UNKNOWN_EXCEPTION" />
+          <xs:enumeration value="INVALID_REQUEST" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+    <xs:schema xmlns="urn:messages.ws.rightnow.com/v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:messages.ws.rightnow.com/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:base.ws.rightnow.com/v1" />
+      <xs:import namespace="urn:knowledge.ws.rightnow.com/v1" />
+      <xs:import namespace="urn:faults.ws.rightnow.com/v1" />
+      <xs:element name="ClientInfoHeader">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AppID" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="StartInteraction" type="rnm_v1:StartInteractionMsg" />
+      <xs:complexType name="StartInteractionMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="AppIdentifier" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="UserIPAddress" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReferrerURL" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UserAgent" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="StartInteractionResponse" type="rnm_v1:StartInteractionResponseMsg" />
+      <xs:complexType name="StartInteractionResponseMsg">
+        <xs:sequence>
+          <xs:element name="SessionToken" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetPopularContent" type="rnm_v1:GetPopularContentMsg" />
+      <xs:complexType name="GetPopularContentMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ContentSearch" type="rnk_v1_2:ContentSearch" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Limit" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SortOptions" type="rnk_v1_2:ContentSortOptions" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetPopularContentResponse" type="rnm_v1:GetPopularContentResponseMsg" />
+      <xs:complexType name="GetPopularContentResponseMsg">
+        <xs:sequence>
+          <xs:element name="ContentListResponse" type="rnk_v1_2:ContentListResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSmartAssistantSearch" type="rnm_v1:GetSmartAssistantSearchMsg" />
+      <xs:complexType name="GetSmartAssistantSearchMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Body" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Subject" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ContentSearch" type="rnk_v1_2:ContentSearch" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Limit" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSmartAssistantSearchResponse" type="rnm_v1:GetSmartAssistantSearchResponseMsg" />
+      <xs:complexType name="GetSmartAssistantSearchResponseMsg">
+        <xs:sequence>
+          <xs:element name="ContentListResponse" type="rnk_v1_2:ContentListResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetRecommendedContent" type="rnm_v1:GetRecommendedContentMsg" />
+      <xs:complexType name="GetRecommendedContentMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Content" type="rnk_v1_2:Content" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Limit" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetRecommendedContentResponse" type="rnm_v1:GetRecommendedContentResponseMsg" />
+      <xs:complexType name="GetRecommendedContentResponseMsg">
+        <xs:sequence>
+          <xs:element name="ContentListResponse" type="rnk_v1_2:ContentListResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SearchContent" type="rnm_v1:SearchContentMsg" />
+      <xs:complexType name="SearchContentMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SearchTerms" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Filters" nillable="true" type="rnk_v1_2:ContentFilterList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IncludeRelatedSearches" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IncludeSpellingSuggestions" type="xs:boolean" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Limit" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Origin" type="rnk_v1_2:ContentSearchOrigin" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SecurityOptions" type="rnk_v1_2:ContentSecurityOptions" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SortOptions" type="rnk_v1_2:ContentSortOptions" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Start" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SearchContentResponse" type="rnm_v1:SearchContentResponseMsg" />
+      <xs:complexType name="SearchContentResponseMsg">
+        <xs:sequence>
+          <xs:element name="SearchResponse" type="rnk_v1_2:SearchResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetContent" type="rnm_v1:GetContentMsg" />
+      <xs:complexType name="GetContentMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ContentTemplate" type="rnk_v1_2:Content" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SecurityOptions" type="rnk_v1_2:ContentSecurityOptions" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ViewOrigin" type="rnk_v1_2:ContentViewOrigin" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetContentResponse" type="rnm_v1:GetContentResponseMsg" />
+      <xs:complexType name="GetContentResponseMsg">
+        <xs:sequence>
+          <xs:element name="Content" type="rnk_v1_2:Content" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MarkContentAsViewed" type="rnm_v1:MarkContentAsViewedMsg" />
+      <xs:complexType name="MarkContentAsViewedMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Content" type="rnk_v1_2:Content" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ViewOrigin" type="rnk_v1_2:ContentViewOrigin" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="MarkContentAsViewedResponse" type="rnm_v1:MarkContentAsViewedResponseMsg" />
+      <xs:complexType name="MarkContentAsViewedResponseMsg">
+        <xs:sequence>
+          <xs:element name="ContentRequestStatus" type="rnk_v1_2:ContentRequestStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RateContent" type="rnm_v1:RateContentMsg" />
+      <xs:complexType name="RateContentMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Content" type="rnk_v1_2:Content" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Rate" type="rnk_v1_2:ContentRate" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Scale" type="rnk_v1_2:ContentRate" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RateContentResponse" type="rnm_v1:RateContentResponseMsg" />
+      <xs:complexType name="RateContentResponseMsg">
+        <xs:sequence>
+          <xs:element name="ContentRequestStatus" type="rnk_v1_2:ContentRequestStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetValuesForNamedID" type="rnm_v1:GetValuesForNamedIDMsg" />
+      <xs:complexType name="GetValuesForNamedIDMsg">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="PackageName" type="xs:string" />
+          <xs:element name="FieldName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetValuesForNamedIDResponse" type="rnm_v1:GetValuesForNamedIDResponseMsg" />
+      <xs:complexType name="GetValuesForNamedIDResponseMsg">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Entry" type="rnb_v1_2:NamedID" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSmartAssistantSuggestions" type="rnm_v1:GetSmartAssistantSuggestionsMsg" />
+      <xs:complexType name="GetSmartAssistantSuggestionsMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="ContentSearch" type="rnk_v1_2:ContentSearch" />
+          <xs:element minOccurs="0" maxOccurs="1" name="KeyValueItems" type="rnk_v1_2:KeyValueItemList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Limit" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetSmartAssistantSuggestionsResponse" type="rnm_v1:GetSmartAssistantSuggestionsResponseMsg" />
+      <xs:complexType name="GetSmartAssistantSuggestionsResponseMsg">
+        <xs:sequence>
+          <xs:element name="SmartAssistantSuggestionsResponse" type="rnk_v1_2:SmartAssistantSuggestionsResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RegisterSmartAssistantResolution" type="rnm_v1:RegisterSmartAssistantResolutionMsg" />
+      <xs:complexType name="RegisterSmartAssistantResolutionMsg">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="SessionToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="SmartAssistantToken" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Resolution" type="rnk_v1_2:SmartAssistantResolution" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EscalationObject" type="rnb_v1_2:RNObject" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="RegisterSmartAssistantResolutionResponse" type="rnm_v1:RegisterSmartAssistantResolutionResponseMsg" />
+      <xs:complexType name="RegisterSmartAssistantResolutionResponseMsg">
+        <xs:sequence>
+          <xs:element name="ContentRequestStatus" type="rnk_v1_2:ContentRequestStatus" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns="urn:objects.ws.rightnow.com/v1" elementFormDefault="qualified" targetNamespace="urn:objects.ws.rightnow.com/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="urn:base.ws.rightnow.com/v1" />
+      <xs:element name="FileAttachment" type="rno_v1_2:FileAttachment" />
+      <xs:complexType name="FileAttachment">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ContentType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CreatedTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Data" type="xs:base64Binary" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FileName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ID" type="rnb_v1_2:ID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Size" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UpdatedTime" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+        <xs:attribute name="action" type="rnb_v1_2:ActionEnum" use="optional" />
+      </xs:complexType>
+      <xs:element name="FileAttachmentAnswer" type="rno_v1_2:FileAttachmentAnswer" />
+      <xs:complexType name="FileAttachmentAnswer">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rno_v1_2:FileAttachmentCommon">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="Disabled" type="xs:boolean" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Indexed" type="xs:boolean" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Private" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="FileAttachmentAnswerList" type="rno_v1_2:FileAttachmentAnswerList" />
+      <xs:complexType name="FileAttachmentAnswerList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="FileAttachmentList" type="rno_v1_2:FileAttachmentAnswer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FileAttachmentCommon" type="rno_v1_2:FileAttachmentCommon" />
+      <xs:complexType name="FileAttachmentCommon">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rno_v1_2:FileAttachment">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="FileAttachmentShared" type="rno_v1_2:FileAttachmentShared" />
+      <xs:complexType name="FileAttachmentShared">
+        <xs:complexContent mixed="false">
+          <xs:extension base="rno_v1_2:FileAttachment">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="Disabled" type="xs:boolean" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Names" type="rno_v1_2:LabelRequiredList" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Private" type="xs:boolean" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="FileAttachmentSharedList" type="rno_v1_2:FileAttachmentSharedList" />
+      <xs:complexType name="FileAttachmentSharedList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="FileAttachmentList" type="rno_v1_2:FileAttachmentShared" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="LabelRequired" type="rno_v1_2:LabelRequired" />
+      <xs:complexType name="LabelRequired">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="LabelText" type="xs:string" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Language" type="rnb_v1_2:NamedID" />
+        </xs:sequence>
+        <xs:attribute name="action" type="rnb_v1_2:ActionEnum" use="optional" />
+      </xs:complexType>
+      <xs:element name="LabelRequiredList" type="rno_v1_2:LabelRequiredList" />
+      <xs:complexType name="LabelRequiredList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="LabelList" type="rno_v1_2:LabelRequired" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="StatusWithType" type="rno_v1_2:StatusWithType" />
+      <xs:complexType name="StatusWithType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Status" type="rnb_v1_2:NamedID" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StatusType" type="rnb_v1_2:NamedID" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="RNFault">
+    <wsdl:part name="fault" type="rnf_v1:RNFault" />
+  </wsdl:message>
+  <wsdl:message name="RequestErrorFault">
+    <wsdl:part name="fault" element="rnf_v1:RequestErrorFault" />
+  </wsdl:message>
+  <wsdl:message name="ServerErrorFault">
+    <wsdl:part name="fault" element="rnf_v1:ServerErrorFault" />
+  </wsdl:message>
+  <wsdl:message name="UnexpectedErrorFault">
+    <wsdl:part name="fault" element="rnf_v1:UnexpectedErrorFault" />
+  </wsdl:message>
+  <wsdl:message name="ClientInfoHeader">
+    <wsdl:part name="request_header" element="rnm_v1:ClientInfoHeader" />
+  </wsdl:message>
+  <wsdl:message name="StartInteractionRequest">
+    <wsdl:part name="parameters" element="rnm_v1:StartInteraction" />
+  </wsdl:message>
+  <wsdl:message name="StartInteractionResponse">
+    <wsdl:part name="parameters" element="rnm_v1:StartInteractionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPopularContentRequest">
+    <wsdl:part name="parameters" element="rnm_v1:GetPopularContent" />
+  </wsdl:message>
+  <wsdl:message name="GetPopularContentResponse">
+    <wsdl:part name="parameters" element="rnm_v1:GetPopularContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSmartAssistantSearchRequest">
+    <wsdl:part name="parameters" element="rnm_v1:GetSmartAssistantSearch" />
+  </wsdl:message>
+  <wsdl:message name="GetSmartAssistantSearchResponse">
+    <wsdl:part name="parameters" element="rnm_v1:GetSmartAssistantSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecommendedContentRequest">
+    <wsdl:part name="parameters" element="rnm_v1:GetRecommendedContent" />
+  </wsdl:message>
+  <wsdl:message name="GetRecommendedContentResponse">
+    <wsdl:part name="parameters" element="rnm_v1:GetRecommendedContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchContentRequest">
+    <wsdl:part name="parameters" element="rnm_v1:SearchContent" />
+  </wsdl:message>
+  <wsdl:message name="SearchContentResponse">
+    <wsdl:part name="parameters" element="rnm_v1:SearchContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContentRequest">
+    <wsdl:part name="parameters" element="rnm_v1:GetContent" />
+  </wsdl:message>
+  <wsdl:message name="GetContentResponse">
+    <wsdl:part name="parameters" element="rnm_v1:GetContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarkContentAsViewedRequest">
+    <wsdl:part name="parameters" element="rnm_v1:MarkContentAsViewed" />
+  </wsdl:message>
+  <wsdl:message name="MarkContentAsViewedResponse">
+    <wsdl:part name="parameters" element="rnm_v1:MarkContentAsViewedResponse" />
+  </wsdl:message>
+  <wsdl:message name="RateContentRequest">
+    <wsdl:part name="parameters" element="rnm_v1:RateContent" />
+  </wsdl:message>
+  <wsdl:message name="RateContentResponse">
+    <wsdl:part name="parameters" element="rnm_v1:RateContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetValuesForNamedIDRequest">
+    <wsdl:part name="parameters" element="rnm_v1:GetValuesForNamedID" />
+  </wsdl:message>
+  <wsdl:message name="GetValuesForNamedIDResponse">
+    <wsdl:part name="parameters" element="rnm_v1:GetValuesForNamedIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSmartAssistantSuggestionsRequest">
+    <wsdl:part name="parameters" element="rnm_v1:GetSmartAssistantSuggestions" />
+  </wsdl:message>
+  <wsdl:message name="GetSmartAssistantSuggestionsResponse">
+    <wsdl:part name="parameters" element="rnm_v1:GetSmartAssistantSuggestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSmartAssistantResolutionRequest">
+    <wsdl:part name="parameters" element="rnm_v1:RegisterSmartAssistantResolution" />
+  </wsdl:message>
+  <wsdl:message name="RegisterSmartAssistantResolutionResponse">
+    <wsdl:part name="parameters" element="rnm_v1:RegisterSmartAssistantResolutionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RightNowKnowledgePort">
+    <wsdl:operation name="StartInteraction">
+      <wsdl:input message="rnw_v1:StartInteractionRequest" />
+      <wsdl:output message="rnw_v1:StartInteractionResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPopularContent">
+      <wsdl:input message="rnw_v1:GetPopularContentRequest" />
+      <wsdl:output message="rnw_v1:GetPopularContentResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmartAssistantSearch">
+      <wsdl:input message="rnw_v1:GetSmartAssistantSearchRequest" />
+      <wsdl:output message="rnw_v1:GetSmartAssistantSearchResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedContent">
+      <wsdl:input message="rnw_v1:GetRecommendedContentRequest" />
+      <wsdl:output message="rnw_v1:GetRecommendedContentResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchContent">
+      <wsdl:input message="rnw_v1:SearchContentRequest" />
+      <wsdl:output message="rnw_v1:SearchContentResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContent">
+      <wsdl:input message="rnw_v1:GetContentRequest" />
+      <wsdl:output message="rnw_v1:GetContentResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="MarkContentAsViewed">
+      <wsdl:input message="rnw_v1:MarkContentAsViewedRequest" />
+      <wsdl:output message="rnw_v1:MarkContentAsViewedResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="RateContent">
+      <wsdl:input message="rnw_v1:RateContentRequest" />
+      <wsdl:output message="rnw_v1:RateContentResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValuesForNamedID">
+      <wsdl:input message="rnw_v1:GetValuesForNamedIDRequest" />
+      <wsdl:output message="rnw_v1:GetValuesForNamedIDResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSmartAssistantSuggestions">
+      <wsdl:input message="rnw_v1:GetSmartAssistantSuggestionsRequest" />
+      <wsdl:output message="rnw_v1:GetSmartAssistantSuggestionsResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterSmartAssistantResolution">
+      <wsdl:input message="rnw_v1:RegisterSmartAssistantResolutionRequest" />
+      <wsdl:output message="rnw_v1:RegisterSmartAssistantResolutionResponse" />
+      <wsdl:fault name="RequestErrorFault" message="rnw_v1:RequestErrorFault" />
+      <wsdl:fault name="ServerErrorFault" message="rnw_v1:ServerErrorFault" />
+      <wsdl:fault name="UnexpectedErrorFault" message="rnw_v1:UnexpectedErrorFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RightNowKnowledgeBinding" type="rnw_v1:RightNowKnowledgePort">
+    <wsp:PolicyReference URI="#KnowledgePolicy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartInteraction">
+      <soap:operation soapAction="StartInteraction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPopularContent">
+      <soap:operation soapAction="GetPopularContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmartAssistantSearch">
+      <soap:operation soapAction="GetSmartAssistantSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedContent">
+      <soap:operation soapAction="GetRecommendedContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchContent">
+      <soap:operation soapAction="SearchContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetContent">
+      <soap:operation soapAction="GetContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MarkContentAsViewed">
+      <soap:operation soapAction="MarkContentAsViewed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RateContent">
+      <soap:operation soapAction="RateContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetValuesForNamedID">
+      <soap:operation soapAction="GetValuesForNamedID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSmartAssistantSuggestions">
+      <soap:operation soapAction="GetSmartAssistantSuggestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterSmartAssistantResolution">
+      <soap:operation soapAction="RegisterSmartAssistantResolution" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" parts="parameters" />
+        <soap:header message="rnw_v1:ClientInfoHeader" part="request_header" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RequestErrorFault">
+        <soap:fault use="literal" name="RequestErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServerErrorFault">
+        <soap:fault use="literal" name="ServerErrorFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault use="literal" name="UnexpectedErrorFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RightNowKnowledgeService">
+    <wsdl:port name="RightNowKnowledgePort" binding="rnw_v1:RightNowKnowledgeBinding">
+      <soap:address location="https://kb.netgear.com/cgi-bin/netgear_us.cfg/services/kf_soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

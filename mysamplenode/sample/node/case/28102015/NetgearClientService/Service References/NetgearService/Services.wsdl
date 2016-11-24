@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Services" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IServices_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" />
+      <xsd:import schemaLocation="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServices_CustomerCreate_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerCreate" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerCreate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerSearch" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerLookupByxCloudId_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerLookupByxCloudId" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerLookupByxCloudId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerLookupByxCloudIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetCases_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetCases" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetCases_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetCasesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetRMAs_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetRMAs" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetRMAs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetRMAsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerSearchByPhoneNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerSearchByPhoneNumber" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerSearchByPhoneNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerSearchByPhoneNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerForgotPassword_Recovery_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerForgotPassword_Recovery" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerForgotPassword_Recovery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerForgotPassword_RecoveryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerUpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerUpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerUpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerUpdatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_YapperFeedAddMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:YapperFeedAddMessage" />
+  </wsdl:message>
+  <wsdl:message name="IServices_YapperFeedAddMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:YapperFeedAddMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_GetLatestTermsAndConditions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestTermsAndConditions" />
+  </wsdl:message>
+  <wsdl:message name="IServices_GetLatestTermsAndConditions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestTermsAndConditionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_TermsConditionsUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TermsConditionsUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IServices_TermsConditionsUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TermsConditionsUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_QueryTermsConditionsStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryTermsConditionsStatus" />
+  </wsdl:message>
+  <wsdl:message name="IServices_QueryTermsConditionsStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryTermsConditionsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerLogin" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetContracts_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetContracts" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerGetContracts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerGetContractsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_xcRecoverToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:xcRecoverToken" />
+  </wsdl:message>
+  <wsdl:message name="IServices_xcRecoverToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:xcRecoverTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_ConfirmEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServices_ConfirmEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RequestConfirmationEmailCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestConfirmationEmailCode" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RequestConfirmationEmailCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestConfirmationEmailCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_SendConfirmationEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendConfirmationEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServices_SendConfirmationEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendConfirmationEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_EcoLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:EcoLogin" />
+  </wsdl:message>
+  <wsdl:message name="IServices_EcoLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EcoLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_EcoLogin_SessionValidateWithHash_InputMessage">
+    <wsdl:part name="parameters" element="tns:EcoLogin_SessionValidateWithHash" />
+  </wsdl:message>
+  <wsdl:message name="IServices_EcoLogin_SessionValidateWithHash_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EcoLogin_SessionValidateWithHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_EcoLogout_InputMessage">
+    <wsdl:part name="parameters" element="tns:EcoLogout" />
+  </wsdl:message>
+  <wsdl:message name="IServices_EcoLogout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EcoLogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationCreate_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationCreate" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationCreate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationCreateSMDV_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationCreateSMDV" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationCreateSMDV_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationCreateSMDVResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationSearch" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationSearchBySerialNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationSearchBySerialNumber" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationSearchBySerialNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationSearchBySerialNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationGetSupportEntitlement_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationGetSupportEntitlement" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationGetSupportEntitlement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationGetSupportEntitlementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_DevicePing_InputMessage">
+    <wsdl:part name="parameters" element="tns:DevicePing" />
+  </wsdl:message>
+  <wsdl:message name="IServices_DevicePing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DevicePingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationDeactivate_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationDeactivate" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegistrationDeactivate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationDeactivateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_DetectSerialPrefix_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetectSerialPrefix" />
+  </wsdl:message>
+  <wsdl:message name="IServices_DetectSerialPrefix_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetectSerialPrefixResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegisteredCheckEmailSerial_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredCheckEmailSerial" />
+  </wsdl:message>
+  <wsdl:message name="IServices_RegisteredCheckEmailSerial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisteredCheckEmailSerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerProductRegister_InputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerProductRegister" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CustomerProductRegister_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CustomerProductRegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseCreate_InputMessage">
+    <wsdl:part name="parameters" element="tns:CaseCreate" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseCreate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CaseCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseSearchByCaseID_InputMessage">
+    <wsdl:part name="parameters" element="tns:CaseSearchByCaseID" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseSearchByCaseID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CaseSearchByCaseIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseSearchByCustomerID_InputMessage">
+    <wsdl:part name="parameters" element="tns:CaseSearchByCustomerID" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseSearchByCustomerID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CaseSearchByCustomerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseSearchBySerialNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:CaseSearchBySerialNumber" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseSearchBySerialNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CaseSearchBySerialNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseCreateTemporarySupport_InputMessage">
+    <wsdl:part name="parameters" element="tns:CaseCreateTemporarySupport" />
+  </wsdl:message>
+  <wsdl:message name="IServices_CaseCreateTemporarySupport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CaseCreateTemporarySupportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchAccountByCompanyNameAndISOCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchAccountByCompanyNameAndISOCountry" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchAccountByCompanyNameAndISOCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchAccountByCompanyNameAndISOCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchAccountByPhoneAndISOCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchAccountByPhoneAndISOCountry" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchAccountByPhoneAndISOCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchAccountByPhoneAndISOCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchContactByPhoneAndISOCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchContactByPhoneAndISOCountry" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchContactByPhoneAndISOCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchContactByPhoneAndISOCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchContactByEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchContactByEmail" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchContactByEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchContactByEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchContactByAccountID_InputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchContactByAccountID" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerSearchContactByAccountID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerSearchContactByAccountIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerGetAccountInfoByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerGetAccountInfoByID" />
+  </wsdl:message>
+  <wsdl:message name="IServices_PartnerGetAccountInfoByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PartnerGetAccountInfoByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRIsPaymentProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:IVRIsPaymentProcess" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRIsPaymentProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IVRIsPaymentProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRGetPaymentDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:IVRGetPaymentDetails" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRGetPaymentDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IVRGetPaymentDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRProcessPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:IVRProcessPayment" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRProcessPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IVRProcessPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRTransactionCreate_InputMessage">
+    <wsdl:part name="parameters" element="tns:IVRTransactionCreate" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRTransactionCreate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IVRTransactionCreateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRGetTransactionDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:IVRGetTransactionDetails" />
+  </wsdl:message>
+  <wsdl:message name="IServices_IVRGetTransactionDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IVRGetTransactionDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoteFileInfo">
+    <wsdl:part name="FileByteStream" element="tns:FileByteStream" />
+  </wsdl:message>
+  <wsdl:message name="RemoteFileInfo_Headers">
+    <wsdl:part name="ContentType" element="tns:ContentType" />
+    <wsdl:part name="Description" element="tns:Description" />
+    <wsdl:part name="FileSize" element="tns:FileSize" />
+    <wsdl:part name="Filename" element="tns:Filename" />
+    <wsdl:part name="Filetype" element="tns:Filetype" />
+    <wsdl:part name="apikey" element="tns:apikey" />
+    <wsdl:part name="caseID" element="tns:caseID" />
+    <wsdl:part name="registrationID" element="tns:registrationID" />
+    <wsdl:part name="serialNo" element="tns:serialNo" />
+  </wsdl:message>
+  <wsdl:message name="StatusCode">
+    <wsdl:part name="resultCode" element="tns:resultCode" />
+  </wsdl:message>
+  <wsdl:portType name="IServices">
+    <wsdl:operation name="CustomerCreate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerCreate" message="tns:IServices_CustomerCreate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerCreateResponse" message="tns:IServices_CustomerCreate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerUpdate" message="tns:IServices_CustomerUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerUpdateResponse" message="tns:IServices_CustomerUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerSearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerSearch" message="tns:IServices_CustomerSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerSearchResponse" message="tns:IServices_CustomerSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerLookupByxCloudId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerLookupByxCloudId" message="tns:IServices_CustomerLookupByxCloudId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerLookupByxCloudIdResponse" message="tns:IServices_CustomerLookupByxCloudId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerGetProducts" message="tns:IServices_CustomerGetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerGetProductsResponse" message="tns:IServices_CustomerGetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetCases">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerGetCases" message="tns:IServices_CustomerGetCases_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerGetCasesResponse" message="tns:IServices_CustomerGetCases_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetRMAs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerGetRMAs" message="tns:IServices_CustomerGetRMAs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerGetRMAsResponse" message="tns:IServices_CustomerGetRMAs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerSearchByPhoneNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerSearchByPhoneNumber" message="tns:IServices_CustomerSearchByPhoneNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerSearchByPhoneNumberResponse" message="tns:IServices_CustomerSearchByPhoneNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerForgotPassword_Recovery">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerForgotPassword_Recovery" message="tns:IServices_CustomerForgotPassword_Recovery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerForgotPassword_RecoveryResponse" message="tns:IServices_CustomerForgotPassword_Recovery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerChangePassword" message="tns:IServices_CustomerChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerChangePasswordResponse" message="tns:IServices_CustomerChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerUpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerUpdatePassword" message="tns:IServices_CustomerUpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerUpdatePasswordResponse" message="tns:IServices_CustomerUpdatePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="YapperFeedAddMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/YapperFeedAddMessage" message="tns:IServices_YapperFeedAddMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/YapperFeedAddMessageResponse" message="tns:IServices_YapperFeedAddMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestTermsAndConditions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/GetLatestTermsAndConditions" message="tns:IServices_GetLatestTermsAndConditions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/GetLatestTermsAndConditionsResponse" message="tns:IServices_GetLatestTermsAndConditions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TermsConditionsUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/TermsConditionsUpdate" message="tns:IServices_TermsConditionsUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/TermsConditionsUpdateResponse" message="tns:IServices_TermsConditionsUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryTermsConditionsStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/QueryTermsConditionsStatus" message="tns:IServices_QueryTermsConditionsStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/QueryTermsConditionsStatusResponse" message="tns:IServices_QueryTermsConditionsStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerLogin" message="tns:IServices_CustomerLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerLoginResponse" message="tns:IServices_CustomerLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetContracts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerGetContracts" message="tns:IServices_CustomerGetContracts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerGetContractsResponse" message="tns:IServices_CustomerGetContracts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="xcRecoverToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/xcRecoverToken" message="tns:IServices_xcRecoverToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/xcRecoverTokenResponse" message="tns:IServices_xcRecoverToken_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/ConfirmEmail" message="tns:IServices_ConfirmEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/ConfirmEmailResponse" message="tns:IServices_ConfirmEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestConfirmationEmailCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RequestConfirmationEmailCode" message="tns:IServices_RequestConfirmationEmailCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RequestConfirmationEmailCodeResponse" message="tns:IServices_RequestConfirmationEmailCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmationEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/SendConfirmationEmail" message="tns:IServices_SendConfirmationEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/SendConfirmationEmailResponse" message="tns:IServices_SendConfirmationEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EcoLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/EcoLogin" message="tns:IServices_EcoLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/EcoLoginResponse" message="tns:IServices_EcoLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EcoLogin_SessionValidateWithHash">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/EcoLogin_SessionValidateWithHash" message="tns:IServices_EcoLogin_SessionValidateWithHash_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/EcoLogin_SessionValidateWithHashResponse" message="tns:IServices_EcoLogin_SessionValidateWithHash_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EcoLogout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/EcoLogout" message="tns:IServices_EcoLogout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/EcoLogoutResponse" message="tns:IServices_EcoLogout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationCreate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RegistrationCreate" message="tns:IServices_RegistrationCreate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RegistrationCreateResponse" message="tns:IServices_RegistrationCreate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationCreateSMDV">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RegistrationCreateSMDV" message="tns:IServices_RegistrationCreateSMDV_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RegistrationCreateSMDVResponse" message="tns:IServices_RegistrationCreateSMDV_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationSearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RegistrationSearch" message="tns:IServices_RegistrationSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RegistrationSearchResponse" message="tns:IServices_RegistrationSearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationSearchBySerialNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RegistrationSearchBySerialNumber" message="tns:IServices_RegistrationSearchBySerialNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RegistrationSearchBySerialNumberResponse" message="tns:IServices_RegistrationSearchBySerialNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationGetSupportEntitlement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RegistrationGetSupportEntitlement" message="tns:IServices_RegistrationGetSupportEntitlement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RegistrationGetSupportEntitlementResponse" message="tns:IServices_RegistrationGetSupportEntitlement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DevicePing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/DevicePing" message="tns:IServices_DevicePing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/DevicePingResponse" message="tns:IServices_DevicePing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationDeactivate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RegistrationDeactivate" message="tns:IServices_RegistrationDeactivate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RegistrationDeactivateResponse" message="tns:IServices_RegistrationDeactivate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetectSerialPrefix">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/DetectSerialPrefix" message="tns:IServices_DetectSerialPrefix_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/DetectSerialPrefixResponse" message="tns:IServices_DetectSerialPrefix_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisteredCheckEmailSerial">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/RegisteredCheckEmailSerial" message="tns:IServices_RegisteredCheckEmailSerial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/RegisteredCheckEmailSerialResponse" message="tns:IServices_RegisteredCheckEmailSerial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CustomerProductRegister">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CustomerProductRegister" message="tns:IServices_CustomerProductRegister_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CustomerProductRegisterResponse" message="tns:IServices_CustomerProductRegister_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CaseCreate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CaseCreate" message="tns:IServices_CaseCreate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CaseCreateResponse" message="tns:IServices_CaseCreate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchByCaseID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CaseSearchByCaseID" message="tns:IServices_CaseSearchByCaseID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CaseSearchByCaseIDResponse" message="tns:IServices_CaseSearchByCaseID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchByCustomerID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CaseSearchByCustomerID" message="tns:IServices_CaseSearchByCustomerID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CaseSearchByCustomerIDResponse" message="tns:IServices_CaseSearchByCustomerID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchBySerialNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CaseSearchBySerialNumber" message="tns:IServices_CaseSearchBySerialNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CaseSearchBySerialNumberResponse" message="tns:IServices_CaseSearchBySerialNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CaseCreateTemporarySupport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/CaseCreateTemporarySupport" message="tns:IServices_CaseCreateTemporarySupport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/CaseCreateTemporarySupportResponse" message="tns:IServices_CaseCreateTemporarySupport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchAccountByCompanyNameAndISOCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/PartnerSearchAccountByCompanyNameAndISOCountry" message="tns:IServices_PartnerSearchAccountByCompanyNameAndISOCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/PartnerSearchAccountByCompanyNameAndISOCountryResponse" message="tns:IServices_PartnerSearchAccountByCompanyNameAndISOCountry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchAccountByPhoneAndISOCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/PartnerSearchAccountByPhoneAndISOCountry" message="tns:IServices_PartnerSearchAccountByPhoneAndISOCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/PartnerSearchAccountByPhoneAndISOCountryResponse" message="tns:IServices_PartnerSearchAccountByPhoneAndISOCountry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchContactByPhoneAndISOCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/PartnerSearchContactByPhoneAndISOCountry" message="tns:IServices_PartnerSearchContactByPhoneAndISOCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/PartnerSearchContactByPhoneAndISOCountryResponse" message="tns:IServices_PartnerSearchContactByPhoneAndISOCountry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchContactByEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/PartnerSearchContactByEmail" message="tns:IServices_PartnerSearchContactByEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/PartnerSearchContactByEmailResponse" message="tns:IServices_PartnerSearchContactByEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchContactByAccountID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/PartnerSearchContactByAccountID" message="tns:IServices_PartnerSearchContactByAccountID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/PartnerSearchContactByAccountIDResponse" message="tns:IServices_PartnerSearchContactByAccountID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PartnerGetAccountInfoByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/PartnerGetAccountInfoByID" message="tns:IServices_PartnerGetAccountInfoByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/PartnerGetAccountInfoByIDResponse" message="tns:IServices_PartnerGetAccountInfoByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IVRIsPaymentProcess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/IVRIsPaymentProcess" message="tns:IServices_IVRIsPaymentProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/IVRIsPaymentProcessResponse" message="tns:IServices_IVRIsPaymentProcess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IVRGetPaymentDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/IVRGetPaymentDetails" message="tns:IServices_IVRGetPaymentDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/IVRGetPaymentDetailsResponse" message="tns:IServices_IVRGetPaymentDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IVRProcessPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/IVRProcessPayment" message="tns:IServices_IVRProcessPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/IVRProcessPaymentResponse" message="tns:IServices_IVRProcessPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IVRTransactionCreate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/IVRTransactionCreate" message="tns:IServices_IVRTransactionCreate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/IVRTransactionCreateResponse" message="tns:IServices_IVRTransactionCreate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IVRGetTransactionDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/IVRGetTransactionDetails" message="tns:IServices_IVRGetTransactionDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/IVRGetTransactionDetailsResponse" message="tns:IServices_IVRGetTransactionDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileCase">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServices/UploadFileCase" name="RemoteFileInfo" message="tns:RemoteFileInfo" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServices/UploadFileCaseResponse" name="StatusCode" message="tns:StatusCode" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServices" type="tns:IServices">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IServices_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CustomerCreate">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerUpdate">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerSearch">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerLookupByxCloudId">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerLookupByxCloudId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetProducts">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerGetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetCases">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerGetCases" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetRMAs">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerGetRMAs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerSearchByPhoneNumber">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerSearchByPhoneNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerForgotPassword_Recovery">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerForgotPassword_Recovery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerChangePassword">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerUpdatePassword">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerUpdatePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="YapperFeedAddMessage">
+      <soap:operation soapAction="http://tempuri.org/IServices/YapperFeedAddMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestTermsAndConditions">
+      <soap:operation soapAction="http://tempuri.org/IServices/GetLatestTermsAndConditions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TermsConditionsUpdate">
+      <soap:operation soapAction="http://tempuri.org/IServices/TermsConditionsUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryTermsConditionsStatus">
+      <soap:operation soapAction="http://tempuri.org/IServices/QueryTermsConditionsStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerLogin">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerGetContracts">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerGetContracts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="xcRecoverToken">
+      <soap:operation soapAction="http://tempuri.org/IServices/xcRecoverToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmEmail">
+      <soap:operation soapAction="http://tempuri.org/IServices/ConfirmEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestConfirmationEmailCode">
+      <soap:operation soapAction="http://tempuri.org/IServices/RequestConfirmationEmailCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendConfirmationEmail">
+      <soap:operation soapAction="http://tempuri.org/IServices/SendConfirmationEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EcoLogin">
+      <soap:operation soapAction="http://tempuri.org/IServices/EcoLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EcoLogin_SessionValidateWithHash">
+      <soap:operation soapAction="http://tempuri.org/IServices/EcoLogin_SessionValidateWithHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EcoLogout">
+      <soap:operation soapAction="http://tempuri.org/IServices/EcoLogout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationCreate">
+      <soap:operation soapAction="http://tempuri.org/IServices/RegistrationCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationCreateSMDV">
+      <soap:operation soapAction="http://tempuri.org/IServices/RegistrationCreateSMDV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationSearch">
+      <soap:operation soapAction="http://tempuri.org/IServices/RegistrationSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationSearchBySerialNumber">
+      <soap:operation soapAction="http://tempuri.org/IServices/RegistrationSearchBySerialNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationGetSupportEntitlement">
+      <soap:operation soapAction="http://tempuri.org/IServices/RegistrationGetSupportEntitlement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevicePing">
+      <soap:operation soapAction="http://tempuri.org/IServices/DevicePing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationDeactivate">
+      <soap:operation soapAction="http://tempuri.org/IServices/RegistrationDeactivate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetectSerialPrefix">
+      <soap:operation soapAction="http://tempuri.org/IServices/DetectSerialPrefix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisteredCheckEmailSerial">
+      <soap:operation soapAction="http://tempuri.org/IServices/RegisteredCheckEmailSerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CustomerProductRegister">
+      <soap:operation soapAction="http://tempuri.org/IServices/CustomerProductRegister" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CaseCreate">
+      <soap:operation soapAction="http://tempuri.org/IServices/CaseCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchByCaseID">
+      <soap:operation soapAction="http://tempuri.org/IServices/CaseSearchByCaseID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchByCustomerID">
+      <soap:operation soapAction="http://tempuri.org/IServices/CaseSearchByCustomerID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CaseSearchBySerialNumber">
+      <soap:operation soapAction="http://tempuri.org/IServices/CaseSearchBySerialNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CaseCreateTemporarySupport">
+      <soap:operation soapAction="http://tempuri.org/IServices/CaseCreateTemporarySupport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchAccountByCompanyNameAndISOCountry">
+      <soap:operation soapAction="http://tempuri.org/IServices/PartnerSearchAccountByCompanyNameAndISOCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchAccountByPhoneAndISOCountry">
+      <soap:operation soapAction="http://tempuri.org/IServices/PartnerSearchAccountByPhoneAndISOCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchContactByPhoneAndISOCountry">
+      <soap:operation soapAction="http://tempuri.org/IServices/PartnerSearchContactByPhoneAndISOCountry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchContactByEmail">
+      <soap:operation soapAction="http://tempuri.org/IServices/PartnerSearchContactByEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PartnerSearchContactByAccountID">
+      <soap:operation soapAction="http://tempuri.org/IServices/PartnerSearchContactByAccountID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PartnerGetAccountInfoByID">
+      <soap:operation soapAction="http://tempuri.org/IServices/PartnerGetAccountInfoByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IVRIsPaymentProcess">
+      <soap:operation soapAction="http://tempuri.org/IServices/IVRIsPaymentProcess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IVRGetPaymentDetails">
+      <soap:operation soapAction="http://tempuri.org/IServices/IVRGetPaymentDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IVRProcessPayment">
+      <soap:operation soapAction="http://tempuri.org/IServices/IVRProcessPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IVRTransactionCreate">
+      <soap:operation soapAction="http://tempuri.org/IServices/IVRTransactionCreate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IVRGetTransactionDetails">
+      <soap:operation soapAction="http://tempuri.org/IServices/IVRGetTransactionDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileCase">
+      <soap:operation soapAction="http://tempuri.org/IServices/UploadFileCase" style="document" />
+      <wsdl:input name="RemoteFileInfo">
+        <soap:header message="tns:RemoteFileInfo_Headers" part="ContentType" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="Description" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="FileSize" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="Filename" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="Filetype" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="apikey" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="caseID" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="registrationID" use="literal" />
+        <soap:header message="tns:RemoteFileInfo_Headers" part="serialNo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StatusCode">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Services">
+    <wsdl:port name="BasicHttpBinding_IServices" binding="tns:BasicHttpBinding_IServices">
+      <soap:address location="https://my-stg1.netgear.com/NetgearAPI/Services.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

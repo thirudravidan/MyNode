@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" />
+  <xs:import schemaLocation="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+  <xs:element name="CustomerCreate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="partner_level" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="last_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="postcode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mailprogram" type="xs:boolean" />
+        <xs:element minOccurs="0" name="mailpassword" type="xs:boolean" />
+        <xs:element minOccurs="0" name="userpassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="betaprogram" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerCreateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerCreateResult" nillable="true" type="q1:CustomerCreateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="customer_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="partner_level" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="last_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="postcode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mailprogram" type="xs:boolean" />
+        <xs:element minOccurs="0" name="resetpassword" type="xs:boolean" />
+        <xs:element minOccurs="0" name="userpassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="betaprogram" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerUpdateResult" nillable="true" type="q2:CustomerUpdateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cutomer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="company_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="exact_phone" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerSearchResult" nillable="true" type="q3:CustomerSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerLookupByxCloudId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xCloudId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerLookupByxCloudIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerLookupByxCloudIdResult" nillable="true" type="q4:CustomerSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cutomer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="exact_phone" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerGetProductsResult" nillable="true" type="q5:CustomerGetProductType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetCases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cutomer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="exact_phone" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetCasesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerGetCasesResult" nillable="true" type="q6:CustomerGetCaseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetRMAs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cutomer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="exact_phone" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetRMAsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerGetRMAsResult" nillable="true" type="q7:CustomerGetRMAType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerSearchByPhoneNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="exact_phone" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerSearchByPhoneNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerSearchByPhoneNumberResult" nillable="true" type="q8:CustomerSearchWithProductByPhoneNumberType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerForgotPassword_Recovery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerForgotPassword_RecoveryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerForgotPassword_RecoveryResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerChangePassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="new_password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerChangePasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerChangePasswordResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerUpdatePassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="old_password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="new_password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerUpdatePasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerUpdatePasswordResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="YapperFeedAddMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FeedID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Link" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PubDate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Creator" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ChannelTitle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="YapperFeedAddMessageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="YapperFeedAddMessageResult" nillable="true" type="q9:YapperInsertType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLatestTermsAndConditions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="app_name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLatestTermsAndConditionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="GetLatestTermsAndConditionsResult" nillable="true" type="q10:GetLatestTermsAndConditionsType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TermsConditionsUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_ID" type="xs:int" />
+        <xs:element minOccurs="0" name="terms_ID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TermsConditionsUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="TermsConditionsUpdateResult" nillable="true" type="q11:TermsConditionsUpdateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryTermsConditionsStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_ID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryTermsConditionsStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="QueryTermsConditionsStatusResult" nillable="true" type="q12:QueryTermsConditionsStatusType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerLoginResult" nillable="true" type="q13:CustomerLoginType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetContracts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerGetContractsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerGetContractsResult" nillable="true" type="q14:ContractsSearchByCustomerID" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="xcRecoverToken">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accessToken" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="xcRecoverTokenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="xcRecoverTokenResult" nillable="true" type="q15:xcRecoverTokenResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="confirmCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="ConfirmEmailResult" nillable="true" type="q16:ConfirmEmailResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestConfirmationEmailCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accessToken" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestConfirmationEmailCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="RequestConfirmationEmailCodeResult" nillable="true" type="q17:ConfirmEmailCodeResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendConfirmationEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendConfirmationEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="SendConfirmationEmailResult" nillable="true" type="q18:SendConfirmEmailResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EcoLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EcoLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="EcoLoginResult" nillable="true" type="q19:EcoLoginType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EcoLogin_SessionValidateWithHash">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="session_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="session_hash" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EcoLogin_SessionValidateWithHashResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EcoLogin_SessionValidateWithHashResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EcoLogout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="session_id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EcoLogoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EcoLogoutResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationCreate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="purchase_date" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="country_purchased" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="source" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ip_address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="purchaseFrom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationCreateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="RegistrationCreateResult" nillable="true" type="q20:RegistrationCreateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationCreateSMDV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="purchase_date" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="country_purchased" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="source" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ip_address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="purchaseFrom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationCreateSMDVResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="RegistrationCreateSMDVResult" nillable="true" type="q21:RegistrationCreateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="registration_id" type="xs:int" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="RegistrationSearchResult" nillable="true" type="q22:RegistrationSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationSearchBySerialNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationSearchBySerialNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="RegistrationSearchBySerialNumberResult" nillable="true" type="q23:RegistrationSearchBySerialNumberType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationGetSupportEntitlement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationGetSupportEntitlementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="RegistrationGetSupportEntitlementResult" nillable="true" type="q24:RegistrationGetSupportEntitlementType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevicePing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DevicePingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="DevicePingResult" nillable="true" type="q25:RegistrationDevicePingType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationDeactivate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationDeactivateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrationDeactivateResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetectSerialPrefix">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_prefix" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DetectSerialPrefixResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="DetectSerialPrefixResult" nillable="true" type="q26:SearchSerialPrefixType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisteredCheckEmailSerial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisteredCheckEmailSerialResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="RegisteredCheckEmailSerialResult" nillable="true" type="q27:RegisteredCheckEmailSerial" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerProductRegister">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="first_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="last_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="company_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="postcode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="purchase_date" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="firmware_version" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="source" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="do_password_recovery" type="xs:boolean" />
+        <xs:element minOccurs="0" name="email_opt_in" type="xs:boolean" />
+        <xs:element minOccurs="0" name="suppress_email" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CustomerProductRegisterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CustomerProductRegisterResult" nillable="true" type="q28:CustomerProductRegisterResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseCreate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="registration_id" type="xs:int" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="summary" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="problem" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cause" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="notes" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="source" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="assignTo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="queue_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseCreateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CaseCreateResult" nillable="true" type="q29:CaseCreateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseSearchByCaseID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="case_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseSearchByCaseIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CaseSearchByCaseIDResult" nillable="true" type="q30:CaseSearchByCaseIDType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseSearchByCustomerID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseSearchByCustomerIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CaseSearchByCustomerIDResult" nillable="true" type="q31:CaseSearchByCustomerIDType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseSearchBySerialNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseSearchBySerialNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CaseSearchBySerialNumberResult" nillable="true" type="q32:CaseSearchBySerialNumberType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseCreateTemporarySupport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serial_number" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CaseCreateTemporarySupportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="CaseCreateTemporarySupportResult" nillable="true" type="q33:CaseCreateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchAccountByCompanyNameAndISOCountry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="company_name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CTSUpdate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchAccountByCompanyNameAndISOCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="PartnerSearchAccountByCompanyNameAndISOCountryResult" nillable="true" type="q34:CustomerSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchAccountByPhoneAndISOCountry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CTSUpdate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchAccountByPhoneAndISOCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="PartnerSearchAccountByPhoneAndISOCountryResult" nillable="true" type="q35:CustomerSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchContactByPhoneAndISOCountry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="iso_country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CTSUpdate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchContactByPhoneAndISOCountryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="PartnerSearchContactByPhoneAndISOCountryResult" nillable="true" type="q36:CustomerSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchContactByEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CTSUpdate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchContactByEmailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="PartnerSearchContactByEmailResult" nillable="true" type="q37:CustomerSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchContactByAccountID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CTSUpdate" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerSearchContactByAccountIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="PartnerSearchContactByAccountIDResult" nillable="true" type="q38:CustomerSearchType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerGetAccountInfoByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="accountID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PartnerGetAccountInfoByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="PartnerGetAccountInfoByIDResult" nillable="true" type="q39:SalesForceAccountInfoType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRIsPaymentProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sites" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRIsPaymentProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IVRIsPaymentProcessResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRGetPaymentDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="transaction_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRGetPaymentDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="IVRGetPaymentDetailsResult" nillable="true" type="q40:IVRGetPaymentDetailsType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRProcessPayment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="transaction_id" type="xs:int" />
+        <xs:element minOccurs="0" name="card_number" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="card_cvv" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="card_expiry" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="charge_type" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRProcessPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IVRProcessPaymentResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRTransactionCreate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="transaction_type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+        <xs:element minOccurs="0" name="case_id" type="xs:int" />
+        <xs:element minOccurs="0" name="registration_id" type="xs:int" />
+        <xs:element minOccurs="0" name="contract_parent" type="xs:int" />
+        <xs:element minOccurs="0" name="chargeStatus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="charge_required" type="xs:boolean" />
+        <xs:element minOccurs="0" name="currency" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="amount_paid" type="xs:decimal" />
+        <xs:element minOccurs="0" name="vat" type="xs:decimal" />
+        <xs:element minOccurs="0" name="vat_percentage" type="xs:decimal" />
+        <xs:element minOccurs="0" name="vat_regno" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="vat_validator" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ccname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address01" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address02" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="county" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="postcode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="vdn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="InvoiceTemplate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="insertby" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRTransactionCreateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="IVRTransactionCreateResult" nillable="true" type="q41:IVRTransactionCreateType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRGetTransactionDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="apikey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="transaction_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IVRGetTransactionDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" minOccurs="0" name="IVRGetTransactionDetailsResult" nillable="true" type="q42:IVRGetTransactionDetailsType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:q43="http://schemas.microsoft.com/Message" name="FileByteStream" type="q43:StreamBody" />
+  <xs:element name="ContentType" nillable="true" type="xs:string" />
+  <xs:element name="Description" nillable="true" type="xs:string" />
+  <xs:element name="FileSize" type="xs:long" />
+  <xs:element name="Filename" nillable="true" type="xs:string" />
+  <xs:element name="Filetype" nillable="true" type="xs:string" />
+  <xs:element name="apikey" nillable="true" type="xs:string" />
+  <xs:element name="caseID" nillable="true" type="xs:string" />
+  <xs:element name="registrationID" nillable="true" type="xs:string" />
+  <xs:element name="serialNo" nillable="true" type="xs:string" />
+  <xs:element name="resultCode" type="xs:int" />
+</xs:schema>

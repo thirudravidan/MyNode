@@ -1,0 +1,6 @@
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\bin\Release\NetGearDBAnalyticsEF.dll.config
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\bin\Release\NetGearDBAnalyticsEF.dll
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\bin\Release\NetGearDBAnalyticsEF.pdb
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\obj\Release\NetGearDBAnalyticsEF.dll
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\obj\Release\NetGearDBAnalyticsEF.pdb
+D:\CVSWorkingSource\CIOG\DOT_NET\Netgear\NetgearTool_2.1\NetGearDBAnalyticsEF\obj\Release\NetGearDBAnalyticsEF.csprojResolveAssemblyReference.cache

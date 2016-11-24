@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e8e22381-cf3c-490c-aabf-2246633b4a34" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://ghstaging.csscorp.com/MessageCenterServiceSSL/MessageCenter.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MessageCenter.xsd" MetadataType="Schema" ID="6c00b7fc-b20d-45f2-bdb2-e252fb29ea5a" SourceId="1" SourceUrl="http://ghstaging.csscorp.com/MessageCenterServiceSSL/MessageCenter.svc?xsd=xsd0" />
+    <MetadataFile FileName="MessageCenter1.xsd" MetadataType="Schema" ID="546dbb1d-29af-4b11-bc70-91cfffc7d123" SourceId="1" SourceUrl="http://ghstaging.csscorp.com/MessageCenterServiceSSL/MessageCenter.svc?xsd=xsd1" />
+    <MetadataFile FileName="MessageCenter.disco" MetadataType="Disco" ID="58c445e6-85f0-47e6-ae10-1bb56930ec2b" SourceId="1" SourceUrl="http://ghstaging.csscorp.com/MessageCenterServiceSSL/MessageCenter.svc?disco" />
+    <MetadataFile FileName="MessageCenter2.xsd" MetadataType="Schema" ID="024bf331-ca8b-4369-a9fd-d5cab2123096" SourceId="1" SourceUrl="http://ghstaging.csscorp.com/MessageCenterServiceSSL/MessageCenter.svc?xsd=xsd2" />
+    <MetadataFile FileName="MessageCenter.wsdl" MetadataType="Wsdl" ID="12e6658a-67b9-4bd0-882f-e04a8201bc4e" SourceId="1" SourceUrl="http://ghstaging.csscorp.com/MessageCenterServiceSSL/MessageCenter.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NETGEAR.CTSAPIDAL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CustomerCreateType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Customer_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmailConfirmed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="xcloud_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="xcloud_token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerCreateType" nillable="true" type="tns:CustomerCreateType" />
+  <xs:complexType name="CustomerUpdateType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Customer_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerUpdateType" nillable="true" type="tns:CustomerUpdateType" />
+  <xs:complexType name="CustomerSearchType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerInfo" nillable="true" type="tns:ArrayOfCustomer" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerSearchType" nillable="true" type="tns:CustomerSearchType" />
+  <xs:complexType name="ArrayOfCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomer" nillable="true" type="tns:ArrayOfCustomer" />
+  <xs:complexType name="Customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountSFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Account_TypeID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactSFID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Customer_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Customer_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExtNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="First_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Insert_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Last_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MailProgram" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PartnerLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Postcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PowershiftPartner" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RecordTypeID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Update_Date" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Customer" nillable="true" type="tns:Customer" />
+  <xs:complexType name="CustomerGetProductType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RegistrationCount" type="xs:int" />
+      <xs:element minOccurs="0" name="RegistrationLists" nillable="true" type="tns:ArrayOfRegistrationSearch" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerGetProductType" nillable="true" type="tns:CustomerGetProductType" />
+  <xs:complexType name="ArrayOfRegistrationSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegistrationSearch" nillable="true" type="tns:RegistrationSearch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegistrationSearch" nillable="true" type="tns:ArrayOfRegistrationSearch" />
+  <xs:complexType name="RegistrationSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Country_Purchased" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HwExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IP_Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IVRRoutingCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PsExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Purchase_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Registration_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SWChatExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SWOTSExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SWPhoneExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Serial_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupportChatAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupportOTSAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupportPhoneAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SwExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Warranty" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationSearch" nillable="true" type="tns:RegistrationSearch" />
+  <xs:complexType name="CustomerGetCaseType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CaseCount" type="xs:int" />
+      <xs:element minOccurs="0" name="CaseLists" nillable="true" type="tns:ArrayOfCustomerGetCase" />
+      <xs:element minOccurs="0" name="OpenCaseCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerGetCaseType" nillable="true" type="tns:CustomerGetCaseType" />
+  <xs:complexType name="ArrayOfCustomerGetCase">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerGetCase" nillable="true" type="tns:CustomerGetCase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomerGetCase" nillable="true" type="tns:ArrayOfCustomerGetCase" />
+  <xs:complexType name="CustomerGetCase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Case_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Registration_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Serial_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Summary" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerGetCase" nillable="true" type="tns:CustomerGetCase" />
+  <xs:complexType name="CustomerGetRMAType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RMACount" type="xs:int" />
+      <xs:element minOccurs="0" name="RMALists" nillable="true" type="tns:ArrayOfRma" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerGetRMAType" nillable="true" type="tns:CustomerGetRMAType" />
+  <xs:complexType name="ArrayOfRma">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rma" nillable="true" type="tns:Rma" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRma" nillable="true" type="tns:ArrayOfRma" />
+  <xs:complexType name="Rma">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Created_On" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Exported_Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Exported_On" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Exported_Warehouse" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RMAItem1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RMAItem2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RMAType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RMA_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Registration_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Returned_On" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Returned_Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Returned_Serial_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Serial_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shipped_Courier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shipped_Courier_Tracking_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shipped_On" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Shipped_Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Shipped_Serial_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Updated_On" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rma" nillable="true" type="tns:Rma" />
+  <xs:complexType name="CustomerSearchWithProductByPhoneNumberType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerCount" type="xs:int" />
+      <xs:element minOccurs="0" name="CustomerInfo" nillable="true" type="tns:ArrayOfCustomerWithProducts" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerSearchWithProductByPhoneNumberType" nillable="true" type="tns:CustomerSearchWithProductByPhoneNumberType" />
+  <xs:complexType name="ArrayOfCustomerWithProducts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerWithProducts" nillable="true" type="tns:CustomerWithProducts" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomerWithProducts" nillable="true" type="tns:ArrayOfCustomerWithProducts" />
+  <xs:complexType name="CustomerWithProducts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Customer_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Customer_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="First_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Last_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Products" nillable="true" type="tns:ArrayOfRegistration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerWithProducts" nillable="true" type="tns:CustomerWithProducts" />
+  <xs:complexType name="ArrayOfRegistration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Registration" nillable="true" type="tns:Registration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegistration" nillable="true" type="tns:ArrayOfRegistration" />
+  <xs:complexType name="Registration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AcExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Purchased" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeBusiness" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HwExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IP_Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IVRRoutingCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PsExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Purchase_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Registration_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Serial_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SwExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Warranty" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Registration" nillable="true" type="tns:Registration" />
+  <xs:complexType name="YapperInsertType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="YapperInsertType" nillable="true" type="tns:YapperInsertType" />
+  <xs:complexType name="GetLatestTermsAndConditionsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppInfo" nillable="true" type="tns:ArrayOfAppWithTermsAndConditions" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetLatestTermsAndConditionsType" nillable="true" type="tns:GetLatestTermsAndConditionsType" />
+  <xs:complexType name="ArrayOfAppWithTermsAndConditions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppWithTermsAndConditions" nillable="true" type="tns:AppWithTermsAndConditions" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppWithTermsAndConditions" nillable="true" type="tns:ArrayOfAppWithTermsAndConditions" />
+  <xs:complexType name="AppWithTermsAndConditions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="App_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="App_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Terms_ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Terms_Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppWithTermsAndConditions" nillable="true" type="tns:AppWithTermsAndConditions" />
+  <xs:complexType name="TermsConditionsUpdateType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TermsConditionsUpdateType" nillable="true" type="tns:TermsConditionsUpdateType" />
+  <xs:complexType name="QueryTermsConditionsStatusType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppInfo" nillable="true" type="tns:ArrayOfAppWithTermsConditionsAgreement" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryTermsConditionsStatusType" nillable="true" type="tns:QueryTermsConditionsStatusType" />
+  <xs:complexType name="ArrayOfAppWithTermsConditionsAgreement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AppWithTermsConditionsAgreement" nillable="true" type="tns:AppWithTermsConditionsAgreement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppWithTermsConditionsAgreement" nillable="true" type="tns:ArrayOfAppWithTermsConditionsAgreement" />
+  <xs:complexType name="AppWithTermsConditionsAgreement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="App_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="date_Accepted" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="latest" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AppWithTermsConditionsAgreement" nillable="true" type="tns:AppWithTermsConditionsAgreement" />
+  <xs:complexType name="CustomerLoginType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppInfo" nillable="true" type="tns:ArrayOfAppWithTermsConditionsAgreement" />
+      <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmailConfirmed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PortalID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="xcloud_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="xcloud_token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerLoginType" nillable="true" type="tns:CustomerLoginType" />
+  <xs:complexType name="ContractsSearchByCustomerID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contracts" nillable="true" type="tns:ArrayOfContractsSearchWithCustomer" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContractsSearchByCustomerID" nillable="true" type="tns:ContractsSearchByCustomerID" />
+  <xs:complexType name="ArrayOfContractsSearchWithCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContractsSearchWithCustomer" nillable="true" type="tns:ContractsSearchWithCustomer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContractsSearchWithCustomer" nillable="true" type="tns:ArrayOfContractsSearchWithCustomer" />
+  <xs:complexType name="ContractsSearchWithCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Available" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contract_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Contract_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpriyDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InsertBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PurchaseDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Registration_ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContractsSearchWithCustomer" nillable="true" type="tns:ContractsSearchWithCustomer" />
+  <xs:complexType name="xcRecoverTokenResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailConfirmed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="xcRecoverTokenResult" nillable="true" type="tns:xcRecoverTokenResult" />
+  <xs:complexType name="ConfirmEmailResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfirmEmailResult" nillable="true" type="tns:ConfirmEmailResult" />
+  <xs:complexType name="ConfirmEmailCodeResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConfirmCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfirmEmailCodeResult" nillable="true" type="tns:ConfirmEmailCodeResult" />
+  <xs:complexType name="SendConfirmEmailResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendConfirmEmailResult" nillable="true" type="tns:SendConfirmEmailResult" />
+  <xs:complexType name="EcoLoginType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GUID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="Role" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SessionID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EcoLoginType" nillable="true" type="tns:EcoLoginType" />
+  <xs:complexType name="RegistrationCreateType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RegistrationInfo" nillable="true" type="tns:RegistrationSearch" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationCreateType" nillable="true" type="tns:RegistrationCreateType" />
+  <xs:complexType name="RegistrationSearchType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RegistrationInfo" nillable="true" type="tns:RegistrationSearch" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationSearchType" nillable="true" type="tns:RegistrationSearchType" />
+  <xs:complexType name="RegistrationSearchBySerialNumberType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CaseCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Cases" nillable="true" type="tns:ArrayOfCaseSearch" />
+      <xs:element minOccurs="0" name="CustomerInfo" nillable="true" type="tns:ProductSearchCustomer" />
+      <xs:element minOccurs="0" name="HWExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IVRRoutingCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="SWChatExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SWExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SWOTSExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SWPhoneExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SupportChatAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupportOTSAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupportPhoneAvailable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationSearchBySerialNumberType" nillable="true" type="tns:RegistrationSearchBySerialNumberType" />
+  <xs:complexType name="ArrayOfCaseSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseSearch" nillable="true" type="tns:CaseSearch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseSearch" nillable="true" type="tns:ArrayOfCaseSearch" />
+  <xs:complexType name="CaseSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Case_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="EscLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastHandleSite" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseSearch" nillable="true" type="tns:CaseSearch" />
+  <xs:complexType name="ProductSearchCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Customer_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Customer_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="First_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Last_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductSearchCustomer" nillable="true" type="tns:ProductSearchCustomer" />
+  <xs:complexType name="RegistrationGetSupportEntitlementType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HasGearheadContract" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasSupportContract" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IVRRoutingCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="SWChatExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SWOTSExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SWPhoneExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SupportChatAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupportOTSAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupportPhoneAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnderHWWarranty" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UnderSWWarranty" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationGetSupportEntitlementType" nillable="true" type="tns:RegistrationGetSupportEntitlementType" />
+  <xs:complexType name="RegistrationDevicePingType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CBURegFlag" type="xs:int" />
+      <xs:element minOccurs="0" name="First_PingTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Last_PingTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NTimes" type="xs:int" />
+      <xs:element minOccurs="0" name="Registered" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationDevicePingType" nillable="true" type="tns:RegistrationDevicePingType" />
+  <xs:complexType name="SearchSerialPrefixType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RegistrationInfo" nillable="true" type="tns:SearchSerialPrefix" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchSerialPrefixType" nillable="true" type="tns:SearchSerialPrefixType" />
+  <xs:complexType name="SearchSerialPrefix">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeBusiness" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IVRRoutingCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchSerialPrefix" nillable="true" type="tns:SearchSerialPrefix" />
+  <xs:complexType name="RegisteredCheckEmailSerial">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="email_registered" type="xs:boolean" />
+      <xs:element minOccurs="0" name="serial_registered" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegisteredCheckEmailSerial" nillable="true" type="tns:RegisteredCheckEmailSerial" />
+  <xs:complexType name="CustomerProductRegisterResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="customer_id" type="xs:int" />
+      <xs:element minOccurs="0" name="emailConfirmed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="hw_expiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="password_reset_sent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="registration_id" type="xs:int" />
+      <xs:element minOccurs="0" name="sw_expiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="warranty_description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="xcloud_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="xcloud_token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerProductRegisterResult" nillable="true" type="tns:CustomerProductRegisterResult" />
+  <xs:complexType name="CaseCreateType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Case_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseCreateType" nillable="true" type="tns:CaseCreateType" />
+  <xs:complexType name="CaseSearchByCaseIDType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cases" nillable="true" type="tns:CaseSearchWithProduct" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:CaseSearchCustomer" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseSearchByCaseIDType" nillable="true" type="tns:CaseSearchByCaseIDType" />
+  <xs:complexType name="CaseSearchWithProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Case_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="EscLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastHandleSite" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriorityRouting" type="xs:int" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="tns:CaseSearchRegistration" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseSearchWithProduct" nillable="true" type="tns:CaseSearchWithProduct" />
+  <xs:complexType name="CaseSearchRegistration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeBusiness" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HwExpiry" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IVRRoutingCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Purchase_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Serial_Number" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SwExpiry" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseSearchRegistration" nillable="true" type="tns:CaseSearchRegistration" />
+  <xs:complexType name="CaseSearchCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Customer_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Customer_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="First_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Last_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseSearchCustomer" nillable="true" type="tns:CaseSearchCustomer" />
+  <xs:complexType name="CaseSearchByCustomerIDType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CaseCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Cases" nillable="true" type="tns:ArrayOfCaseSearchWithProduct" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:CaseSearchCustomer" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseSearchByCustomerIDType" nillable="true" type="tns:CaseSearchByCustomerIDType" />
+  <xs:complexType name="ArrayOfCaseSearchWithProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaseSearchWithProduct" nillable="true" type="tns:CaseSearchWithProduct" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaseSearchWithProduct" nillable="true" type="tns:ArrayOfCaseSearchWithProduct" />
+  <xs:complexType name="CaseSearchBySerialNumberType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CaseCount" type="xs:int" />
+      <xs:element minOccurs="0" name="Cases" nillable="true" type="tns:ArrayOfCaseSearch" />
+      <xs:element minOccurs="0" name="IVRRoutingCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Registration" nillable="true" type="tns:RegistrationWithCustomer" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaseSearchBySerialNumberType" nillable="true" type="tns:CaseSearchBySerialNumberType" />
+  <xs:complexType name="RegistrationWithCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessUnit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Customer_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Customer_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="First_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomeBusiness" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Last_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Purchase_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Registration_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Serial_Number" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationWithCustomer" nillable="true" type="tns:RegistrationWithCustomer" />
+  <xs:complexType name="SalesForceAccountInfoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountInfo" nillable="true" type="tns:AccountInfoSF" />
+      <xs:element minOccurs="0" name="Owner" nillable="true" type="tns:UserSF" />
+      <xs:element minOccurs="0" name="RecordType" nillable="true" type="tns:RecordTypeSF" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SalesForceAccountInfoType" nillable="true" type="tns:SalesForceAccountInfoType" />
+  <xs:complexType name="AccountInfoSF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Account_Type__c" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnnualRevenue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillingCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillingCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillingPostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillingState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillingStreet" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_ISO_Code__c" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Industry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfEmployees" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Partner_Level__c" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingCity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingPostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShippingStreet" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountInfoSF" nillable="true" type="tns:AccountInfoSF" />
+  <xs:complexType name="UserSF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserSF" nillable="true" type="tns:UserSF" />
+  <xs:complexType name="RecordTypeSF">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecordTypeSF" nillable="true" type="tns:RecordTypeSF" />
+  <xs:complexType name="IVRGetPaymentDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChargeAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ChargeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IVRGetPaymentDetailsType" nillable="true" type="tns:IVRGetPaymentDetailsType" />
+  <xs:complexType name="IVRTransactionCreateType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="Transaction_ID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IVRTransactionCreateType" nillable="true" type="tns:IVRTransactionCreateType" />
+  <xs:complexType name="IVRGetTransactionDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultCode" type="xs:int" />
+      <xs:element minOccurs="0" name="Transaction_info" nillable="true" type="tns:IVR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IVRGetTransactionDetailsType" nillable="true" type="tns:IVRGetTransactionDetailsType" />
+  <xs:complexType name="IVR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount_Paid" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Case_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ChargeRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contract_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Contract_Parent" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Customer_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InvoiceTemplate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Postcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Registration_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Transaction_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Transaction_Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Transaction_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VAT" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VATRegNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VAT_Percent" type="xs:decimal" />
+      <xs:element minOccurs="0" name="VAT_Validator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VDN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ccName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="chargeStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="insertBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="insertDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IVR" nillable="true" type="tns:IVR" />
+</xs:schema>

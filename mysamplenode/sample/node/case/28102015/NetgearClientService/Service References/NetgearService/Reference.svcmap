@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8b63e21d-3579-43ce-aed1-9fb977cb7eb5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://my-stg1.netgear.com/NetgearAPI/Services.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Services.xsd" MetadataType="Schema" ID="f251c23d-5d5c-4b84-88d6-5edf5d427ef7" SourceId="1" SourceUrl="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd1" />
+    <MetadataFile FileName="Services.wsdl" MetadataType="Wsdl" ID="a8e02b45-946c-47e5-9e79-d9ce5feb44a8" SourceId="1" SourceUrl="https://my-stg1.netgear.com/NetgearAPI/Services.svc?wsdl" />
+    <MetadataFile FileName="Services1.xsd" MetadataType="Schema" ID="56806d91-8465-43e5-9b19-ec20fcd5616d" SourceId="1" SourceUrl="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd2" />
+    <MetadataFile FileName="Services2.xsd" MetadataType="Schema" ID="ccd074fa-bd45-4508-924e-72a75d249e27" SourceId="1" SourceUrl="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd0" />
+    <MetadataFile FileName="Services.disco" MetadataType="Disco" ID="2b060ee2-4e95-49c4-9ef2-159a23e45baa" SourceId="1" SourceUrl="https://my-stg1.netgear.com/NetgearAPI/Services.svc?disco" />
+    <MetadataFile FileName="Services3.xsd" MetadataType="Schema" ID="967af993-451b-46a3-b9b4-1d7db6f52990" SourceId="1" SourceUrl="https://my-stg1.netgear.com/NetgearAPI/Services.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
