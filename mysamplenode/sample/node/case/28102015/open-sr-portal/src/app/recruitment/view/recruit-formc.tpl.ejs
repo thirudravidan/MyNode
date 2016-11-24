@@ -1,0 +1,44 @@
+<section class="content-header">
+    <h1>Recruitment  Form C</h1>          
+</section>
+<section class="content">
+    <div id="locationPage" class="box box-default boxdefault" ng-init="Datainit('getRecuritementFormb','i')">           
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+<!--                     <h4> Location </h4> -->
+                    <div class="box box-primary">           
+                        <div class="box-body client-overflow">
+                            <table ng-table="tableParams" show-filter="false" class="table table-bordered table-striped">
+                                <tr ng-repeat="userDet in $data track by $index">
+                                    <td data-title="'Employee ID'" header-class="text-left" sortable="'emp_id'">
+                                        {{userDet.emp_id}}
+                                    </td>
+                                    <td data-title="'Email'" header-class="text-left" sortable="'work_email_id'">
+                                        {{userDet.work_email_id}}
+                                    </td>
+                                    <td data-title="'First Name'" header-class="text-left" sortable="'fname'">
+                                        {{userDet.fname}}
+                                    </td>
+                                    <td data-title="'Last Name'" header-class="text-left" sortable="'lname'">
+                                        {{userDet.lname}}
+                                    </td>
+                                    <td data-title="'Contact'" header-class="text-left" sortable="'ph1'">
+                                        {{userDet.ph1}}
+                                    </td>
+                                    <td data-title="'Project'" header-class="text-left" sortable="'project_name'">
+                                        {{userDet.project_name}}
+                                    </td>
+                                    <td data-title="'Designation'" header-class="text-left" sortable="'designation'">
+                                        {{userDet.designation}}
+                                    </td> 
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- /.box -->
+    </div>
+</section>

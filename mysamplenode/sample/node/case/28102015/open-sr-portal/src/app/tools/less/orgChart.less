@@ -1,0 +1,158 @@
+#orgtree{
+    height:120vh;
+    margin-left:5%;
+}
+.tree_org{
+    width:2000px;
+    margin-left: 30%;
+}
+.edit_org:hover{
+    color:#ff0000;
+}
+.prof_org:hover{
+    color:#ff0000;
+}
+.mail_org:hover{
+    color:#ff0000;
+}
+.name_desig{
+    width:107px;
+}
+.close_org{
+    color: #c75050;
+    font-size: 12px;
+    padding: 1px;
+    border: 0;
+    background: none;
+    top: 0;
+    right: 0;
+    float: right;
+    margin-top:0px;   
+} 
+
+.mail_to a{
+  color:#000;
+  font-size:15px;
+}
+.prof_img{
+    background: #000;
+    border-radius: 50%;
+    height: 40px;
+    margin-left: 30px;
+    margin-right: 33px;
+    width: 40px;
+}
+.tree {
+        width:auto;
+        margin-left: auto;
+        margin-right: auto;
+}
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+.tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 40px 0 0px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+/*We will use ::before and ::after to draw the connectors*/
+.tree li::before, .tree li::after {
+    content:'';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+.tree li:after {
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+}
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+    display: none;
+}
+/*Remove space from the top of single children*/
+.tree li:only-child {
+    padding-top: 0;
+}
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after {
+    border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before {
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after {
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+/*Time to add downward connectors from parents*/
+.tree ul ul::before {
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+    margin-left: -1px;
+}
+.tree li span {
+    background: #CCC none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    border-radius: 5px;
+    color: #000;
+    display: inline-block;
+    font-family: arial,verdana,tahoma;
+    font-size: 11px;
+    padding: 5px;
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+    width:132px;
+}
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li span:hover, .tree li span:hover+ul li span {
+    background: #37bee6 none repeat scroll 0 0;
+    color: #000;
+    border: 1px solid #94a0b4;
+}
+/*Connector styles on hover*/
+.tree li span:hover+ul li::after, .tree li span:hover+ul li::before, .tree li span:hover+ul::before, .tree li span:hover+ul ul::before {
+    border-color: #94a0b4;
+}
+li span.just-line {
+    display: none;
+}
+span.just-line + ul {
+    padding-top: 74px;
+}
+span.just-line + ul:before {
+    height: 74px;
+}
+.edit-org {
+    float:right;
+    width:120px !important;
+}
+.edit-org:hover {
+    color:red;
+}

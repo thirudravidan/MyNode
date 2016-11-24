@@ -1,0 +1,105 @@
+<section class="content-header">
+	<h1>Man Hours Calculation</h1>          
+</section>
+<section class="content">
+	<div id="manHoursPage" class="box box-default boxdefault" ng-init="Datainit('getManhours','i')">
+		<div class="box-body">
+			<div class="row">
+				<div class="col-md-12 mar_bottom">
+					<h4>Overall Calculation</h4>
+					<div class="box box-primary">           
+						<div class="box-body">
+							<table class="table table-bordered table-hover table-condensed">
+							    <tr style="font-weight: bold">
+									<td>Cost of Per Hour Effort ($)</td>
+									<td>Total Man Hours</td>
+									<td>Cost of Overall Effort</td>
+							    </tr>
+							    <tr>
+									<td>
+										<input type="number" class="form-control" placeholder="Cost of Per Hour Effort ($)" id="costperhour" name="costperhour" ng-model="costperhour" required  ng-blur='setval(costperhour);'>
+									</td>
+									<td>{{ mhOverall.mhours || 0 }}</td>
+									<td>{{ mhOverall.tcost || 0 }}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-11"> <h4>Man Hours Calculation List</h4> </div>
+					<div class="col-md-1"><button ng-disabled="isAddButtonEnabled" class="btn btn-default" ng-click="addRowList(pCommat.comm_matrix_id_pk)"><span class="glyphicon glyphicon-plus-sign"></span> Add</button></div>
+					<div style="clear:both;"></div>
+					<div class="box box-primary">           
+						<div class="box-body formd-overflow">
+							<table class="table table-bordered table-hover table-condensed">
+							    <tr style="font-weight: bold">
+									<td width="30%">Name</td>
+									<td>Recurrence</td>
+									<td>Minutes</td>
+									<td>OverallMinutes</td>
+									<td>ManHours</td>
+									<td>CostofEffort</td>
+									<td>Action</td>
+							    </tr>
+							    <tr ng-repeat="rowDet in headList.subList">
+									<td>
+										<span onbeforesave="checkValid($data)" editable-text="rowDet.name" e-name="name" e-form="rowform" e-required>
+							          		{{ rowDet.name }}
+							        	</span>
+									</td>
+									<td>
+										<span onbeforesave="checkValid($data)" editable-number="rowDet.recurrence" e-name="recurrence" e-form="rowform" e-required>
+							          		{{ rowDet.recurrence }}
+							        	</span>
+									</td>
+									<td>
+										<span onbeforesave="checkValid($data)" editable-number="rowDet.minutes" e-name="minutes" e-form="rowform" e-required >
+							          		{{ rowDet.minutes }}
+							        	</span>
+									</td>
+									<td>
+										<span ng-show="rowform.$visible" ng-model="rowform.$data.overall_minutes" e-name="overall_minutes" e-form="rowform">
+				                            {{ calculateData('tmin',rowform.$data) }}
+				                        </span>
+				                        <span ng-show="!rowform.$visible">
+				                            {{ rowDet.overall_minutes }}
+				                        </span>
+									</td>
+									<td>
+										<span ng-show="rowform.$visible" ng-model="rowform.$data.manhours" e-name="manhours" e-form="rowform">
+				                            {{ calculateData('mhour',rowform.$data) }}
+				                        </span>
+				                        <span ng-show="!rowform.$visible">
+				                            {{ rowDet.manhours }}
+				                        </span>
+									</td>
+									<td>
+										<span ng-show="rowform.$visible" ng-model="rowform.$data.effort_cost" e-name="effort_cost" e-form="rowform">
+				                            {{ calculateData('tcost',rowform.$data) }}
+				                        </span>
+				                        <span ng-show="!rowform.$visible">
+				                            {{ rowDet.effort_cost }}
+				                        </span>
+									</td>
+									<td nowrap>
+										<!-- form -->
+								        <form editable-form name="rowform" onbeforesave="saveManHours($data,headList.man_hours_calc_id_pk, rowDet.man_hours_calc_trans_id_pk,$index)" oncancel="cancelNewRow(rowDet.man_hours_calc_trans_id_pk,$index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rowDet">
+								          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary fa fa-floppy-o"></button>
+								          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btn-default fa fa-times"></button>
+								        </form>
+								        <div class="buttons" ng-show="!rowform.$visible">
+								          <button ng-disabled="isEditButtonEnabled" class="btn btn-primary fa fa-pencil-square-o" ng-click="rowform.$show()"></button>
+								        </div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- /.box -->
+    </div>
+</section>

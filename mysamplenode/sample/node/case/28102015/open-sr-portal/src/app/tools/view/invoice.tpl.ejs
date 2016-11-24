@@ -1,0 +1,279 @@
+<section class="content-header">
+          <h1>
+              Invoice
+          </h1>          
+</section>
+<section class="content">
+<div class="box box-default boxdefault"  ng-init="Datainit('getinvoiceUnit'); loadBilling();">           
+            <div class="box-body" id="accordion">
+              <div class="panel">
+              <div class="row collapse asses-overflow" id="createUser">
+               <div class="col-md-12">
+               <div class="row">
+                  <div class="col-xs-12">
+                    <h4 class="box-header with-border"> Project </h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." disabled="" id="invoiceprojectname" name="invoiceprojectname" ng-model="frmData.invoiceprojectname">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Sales Incharge</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoicesalesincharge" name="invoicesalesincharge" ng-model="frmData.invoicesalesincharge">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Project Description</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." disabled=""  id="invoiceprojectdescription" name="invoiceprojectdescription" ng-model="frmData.invoiceprojectdescription">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>SBU Incharge</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoicesbuincharge" name="invoicesbuincharge" ng-model="frmData.invoicesbuincharge">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                               
+                </div>
+
+                <div class="col-md-12">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>DU</label>                    
+                    <select name="invoicedu"  id="invoicedu" class="form-control" ng-model="frmData.invoicedu"  required>
+                      <option value="">Select</option>
+                      </select>
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col --> 
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Account Incharge</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoiceaccountincharge" name="invoiceaccountincharge" ng-model="frmData.invoiceaccountincharge">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Region</label>                    
+                    <select class="form-control" id="invoiceregion" name="invoiceregion" ng-model="frmData.invoiceregion"   required>
+                      <option value="">Select</option>
+                      </select>
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Billing Location</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoicebillinglocation" name="invoicebillinglocation" ng-model="frmData.invoicebillinglocation">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->                
+                </div>
+
+                <div class="col-md-12">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h4 class="box-header with-border"> Address </h4>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Delivery Location</label>                    
+                    <select class="form-control" id="invoicedeliverylocation" name="invoicedeliverylocation" ng-model="frmData.invoicedeliverylocation"   required>
+                      <option value="">Select</option>
+                      </select>
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Client Name</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoiceclientname" name="invoiceclientname" ng-model="frmData.invoiceclientname">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Delivery Head</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoicedeliveryhead" name="invoicedeliveryhead" ng-model="frmData.invoicedeliveryhead">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Address</label>                    
+                    <textarea placeholder="Enter ..." rows="3" class="form-control" id="invoiceaddress" name="invoiceaddress" ng-model="frmData.invoiceaddress"></textarea>
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->                
+                </div>
+
+                <div class="col-md-12">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Delivery Incharge</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoicedeliveryincharge" name="invoicedeliveryincharge" ng-model="frmData.invoicedeliveryincharge">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoicecontactperson" name="invoicecontactperson" ng-model="frmData.invoicecontactperson">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>PO No. if any</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoicepono" name="invoicepono" ng-model="frmData.invoicepono">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                 <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Billing Cycle</label>                  
+
+                      <select name="projectClient" ng-model="frmData.invoicebillingcycle" id="invoicebillingcycle" class="form-control" ng-options="billDet.cycle_id_pk as billDet.cycle_name for billDet in billingDetails" required>
+                      <option value="">Select</option>
+                      </select>
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->                 
+                </div>
+
+                <div class="col-md-12">
+                 <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Invoice Date</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right dtpicker" data-mask=""  id="invoicedate" name="invoicedate" ng-model="frmData.invoicedate">
+                    </div><!-- /.input group -->
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Date of MSA / SOW signed</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right dtpicker" data-mask="" type="text" data-mask="" data-inputmask="'alias': 'dd/mm/yyyy'"  id="invoicedatemsa" name="invoicedatemsa" ng-model="frmData.invoicedatemsa">
+                    </div><!-- /.input group -->
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Instructions</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoiceinstructions" name="invoiceinstructions" ng-model="frmData.invoiceinstructions">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>Email Distribution</label>
+                    <input type="text" class="form-control" placeholder="Enter ..."  id="invoiceemaildistribution" name="invoiceemaildistribution" ng-model="frmData.invoiceemaildistribution">
+                  </div><!-- /.form-group -->                  
+                </div><!-- /.col -->
+                </div>
+
+               
+
+                
+                
+          
+      
+             <div class="box-footer">                          
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-block btn-default save_but" type="submit" data-target="#createInvoice" ng-click="createInvoice(frmData)">
+                             <i class="fa fa-check position_left"></i> Save
+                        </button>
+                   
+                      </div>
+                        <div class="btn-group">                            
+                       <button class="btn btn-block btn-default cancel_but" type="submit" ng-click="clearfrm()" data-toggle="collapse" data-target="#userList" data-parent="#accordion">
+                       <i class="fa fa-times position_left"></i> Cancel</button>
+                      </div><!-- /.box-footer -->                      
+           
+          </div><!-- /.box -->
+          </div>
+          </div>
+         <div class="panel">
+            <div class="row collapse in" id="userList">
+              <div id="header" class="col-sm-12 col-md-12 col-lg-12">
+                <div class="col-md-6">
+                  <h4> Invoice List </h4>
+                </div>
+                <div class="col-md-6">
+                  <label class="btn btn-success pull-right" data-toggle="collapse" data-target="#createUser" data-parent="#accordion"> Edit </label>
+                </div>
+              </div>
+                    
+      
+                <div class="col-md-12 test3" ng-slimscroll horizontal-scroll="true">
+                <div class="col-md-12 asses-overflow">
+                  <table ng-table="tableParams" show-filter="false" class="table table-bordered table-striped box box-success">
+                    <tr ng-repeat="invoiceDet in $data track by $index">
+                       <td data-title="'Sales in Charge'" header-class="text-left" sortable="'sla'">
+                        {{invoiceDet.sales_incharge}}
+                      </td>
+                       <td data-title="'SBU in Charge'" header-class="text-left" sortable="'sbu_incharge'">
+                        {{invoiceDet.sbu_incharge}}
+                      </td>
+                       <td data-title="'DU'" header-class="text-left" sortable="'du'">
+                        {{invoiceDet.du}}
+                      </td>
+                       <td data-title="'Account in Charge'" header-class="text-left" sortable="'account_incharge'">
+                        {{invoiceDet.account_incharge}}
+                      </td>
+                       <td data-title="'Region'" header-class="text-left" sortable="'region'">
+                        {{invoiceDet.region}}
+                      </td>
+                       <td data-title="'Billing Location'" header-class="text-left" sortable="'billing_location'">
+                        {{invoiceDet.billing_location}}
+                      </td>
+                      <td data-title="'Delivery Location'" header-class="text-left" sortable="'delivery_location'">
+                        {{invoiceDet.delivery_location}}
+                      </td>
+                       <td data-title="'Client Name'" header-class="text-left" sortable="'clien_name'">
+                        {{invoiceDet.clien_name}}
+                      </td>
+                       <td data-title="'Delivery Head'" header-class="text-left" sortable="'delivery_head'">
+                        {{invoiceDet.delivery_head}}
+                      </td>
+                       <td data-title="'Address'" header-class="text-left" sortable="'address'">
+                        {{invoiceDet.address}}
+                      </td>
+                       <td data-title="'Delivery in Charge'" header-class="text-left" sortable="'delivery_incharge'">
+                        {{invoiceDet.delivery_incharge}}
+                      </td>
+                       <td data-title="'Contact Person'" header-class="text-left" sortable="'contact_person'">
+                        {{invoiceDet.contact_person}}
+                      </td>
+                       <td data-title="'Billing Cycle'" header-class="text-left" sortable="''">
+                        {{invoiceDet.cycle_name}}
+                      </td>
+                       <td data-title="'PO No'" header-class="text-left" sortable="'po_no'">
+                        {{invoiceDet.po_no}}
+                      </td>
+                       <td data-title="'Date of Invoice'" header-class="text-left" sortable="'invoice_date'">
+                        {{invoiceDet.invoice_date}}
+                      </td>
+                       <td data-title="'Date of MSA'" header-class="text-left" sortable="'date_of_msa_sow'">
+                        {{invoiceDet.date_of_msa_sow}}
+                      </td>
+                       <td data-title="'Instructions'" header-class="text-left" sortable="'instructions'">
+                        {{invoiceDet.instructions}}
+                      </td>
+                       <td data-title="'Email Distribution'" header-class="text-left" sortable="'email_distribution'">
+                        {{invoiceDet.email_distribution}}
+                      </td>
+                      <td data-title="'Action'">
+                    <a href="javascript://" ng-click="editUnit(invoiceDet)" class="fa fa-pencil-square-o" data-toggle="collapse" data-target="#createUser" data-parent="#accordion"></a>
+                    </td>
+                    </tr>
+                  </table>
+                  </div>
+                </div>     
+              
+                </div>
+               </div>
+              </div>
+              </div>
+</section>

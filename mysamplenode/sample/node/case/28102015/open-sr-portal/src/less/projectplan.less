@@ -1,0 +1,1227 @@
+#workSpace textarea{
+  resize:none;
+}
+.modalpopup{
+  height:100px !important;
+}
+.font-cloud{
+  font-size:18px;
+}
+.remove{
+  color: #f00;
+  cursor: pointer;
+}
+.scroll-cloud{
+  width:100% !important;
+}
+.mh{
+  background:#3c8dbc;
+}
+.mh h4{
+  color:#fff;
+}
+.mh button{
+  color:#fff;
+  opacity: 1;
+}
+#proj_plan .resEdit {
+    padding: 15px;
+  }
+
+  #proj_plan .resLine {
+    width: 95%;
+    padding: 3px;
+    margin: 5px;
+    border: 1px solid #d0d0d0;
+  }
+
+ 
+
+  #proj_plan .ganttButtonBar h1{
+    color: #000000;
+    font-weight: bold;
+    font-size: 28px;
+    margin-left: 10px;
+  }
+  #proj_plan .progress{
+  margin-bottom: 0;
+}
+ .content-prodoc
+    {
+        padding: 15px 15px 15px 15px;
+    }
+    #proj_plan .download
+    {
+        cursor: pointer;
+    }
+    #proj_plan .remove
+    {
+        cursor: pointer;
+        padding-top: 3px;
+        margin-left: 5px;
+    }
+    
+    #proj_plan .tablecontent tbody tr:hover
+    {
+        background-color: #e6f2fb;
+    }
+    
+   .fixedhdr
+    {
+        width: 100%;
+        background-color: #ebebeb;
+        border: 1px solid #ccc;
+    }
+     .fixedhdr thead td
+    {
+        /*background-color: #fff;*/
+        color: #000;
+        font-size: 8pt;
+        font-weight: bold;
+        line-height: 20px;
+        text-align: center;
+    }
+    #proj_plan .scroll
+    {
+        max-height: 300px;
+        height: 300px;
+        overflow: auto;
+    }
+    
+    .content-prodoc table
+    {
+        border: 1px solid Lightgray;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .content-prodoc table tr
+    {
+        border: 1px solid Lightgray;
+    }
+   .content-prodoc table tr td
+    {
+        border: 1px solid Lightgray;
+        text-align: center;
+        font-size: 10pt;
+    }
+    .content-prodoc table tr th
+    {
+        border: 1px solid Lightgray;
+        text-align: center;
+    }
+   .content-prodoc table tr td:nth-child(2)
+    {
+        text-align: left;
+        padding-left: 5px;
+        word-wrap: break-word;
+        max-width: 400px;
+    }
+    #proj_plan .dropzone.dz-clickable
+    {
+        cursor: pointer;
+    }
+    #proj_plan .dropzone
+    {
+        border: 1px solid rgba(0,0,0,0.03);
+        height: 60px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        background: rgba(0,0,0,0.03);
+        padding: 23px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    #proj_plan .dropzone .dz-default.dz-message
+    {
+        opacity: 1;
+        -ms-filter: none;
+        filter: none;
+        -webkit-transition: opacity 0.3s ease-in-out;
+        -moz-transition: opacity 0.3s ease-in-out;
+        -o-transition: opacity 0.3s ease-in-out;
+        -ms-transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+    #proj_plan .dz-preview
+    {
+        display: none;
+    }
+    
+     .content-prodoc table tr td:nth-child(4)
+    {
+        width: 100px;
+    }
+     .content-prodoc table tr td:nth-child(5)
+    {
+        width: 50px;
+    }
+    .content-prodoc table tr td:nth-child(1)
+    {
+        width: 40px;
+    }
+     .content-prodoc table tr td:nth-child(3)
+    {
+        width: 150px;
+    }
+    @font-face {
+    font-family: 'TeamworkRegular';
+    src: url('fonts/teamwork-regular-webfont.eot');
+    src: url('fonts/teamwork-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/teamwork-regular-webfont.woff') format('woff'),
+         url('fonts/teamwork-regular-webfont.ttf') format('truetype'),
+         url('fonts/teamwork-regular-webfont.otf') format('opentype'),
+         url('fonts/teamwork-regular-webfont.svg#TeamworkRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+#proj_plan a {
+  text-decoration: none;
+}
+
+#proj_plan a:hover, a.aHover {
+  color: #0C85AD;
+  text-decoration: underline;
+}
+
+#proj_plan #savingMessage{
+  background-color:#E3EDED;
+  display:none;
+  color:#617777;
+  font-weight:bolder;
+  position:fixed;
+  top:0;
+  left:50%;
+  width:200px;
+  text-align:center;
+  margin-left:-100px;
+  padding:5px 0;
+  z-index:1000000;
+  box-shadow:0 3px 2px rgba(0,0,0,0.4);
+  -moz-box-shadow:0 3px 2px rgba(0,0,0,0.4);
+  -webkit-box-shadow:0 3px 2px rgba(0,0,0,0.4);
+  -o-box-shadow:0 3px 2px rgba(0,0,0,0.4);
+}
+
+#proj_plan .waiting{
+  cursor:progress;
+}
+
+/*
+  -------------------------------------------------------
+  teamwork icon
+  -------------------------------------------------------
+  */
+
+
+#proj_plan .teamworkIcon {
+  font-family: 'TeamworkRegular', arial, sans-serif;
+  color:#617777;
+  font-weight:normal;
+  font-size:120%
+}
+
+#proj_plan .teamworkIcon.withLabel {
+  padding-right:5px;
+}
+
+
+#proj_plan .button:hover .teamworkIcon {
+  opacity: 0.8
+}
+
+#proj_plan .teamworkIcon.alert {
+  color:#B61E2D;
+}
+
+#proj_plan .cvcColorSquare{
+  display:inline-block;
+  text-align:left;
+  border:#fff 0px solid;
+  box-shadow:0px 0px 5px #999;
+  -moz-box-shadow:2px 2px 2px #999;
+  -webkit-box-shadow:0px 0px 5px #999;
+  -o-box-shadow:0px 0px 5px #999;
+  text-indent:10px;
+  border-radius:5px;
+  cursor: pointer;
+}
+
+ #proj_plan .cvcColorSquare:hover{
+  opacity:.7;
+}
+
+
+
+#proj_plan .unselectable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+#proj_plan .ui-resizable { position: relative;}
+#proj_plan .ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block; }
+#proj_plan .ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+#proj_plan .ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+#proj_plan .ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+#proj_plan .ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+#proj_plan .ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+#proj_plan .ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+#proj_plan .ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+#proj_plan .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+#proj_plan .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
+
+
+  /*
+  -------------------------------------------------------
+  table styles
+  -------------------------------------------------------
+  */
+
+#proj_plan .table {
+  width: 100%;
+}
+
+#proj_plan TH, .tableHeader {
+  font-weight: normal;
+  color: #FFFFFF;
+  border: none;
+  background-color: #91B4B7;
+  padding:2px;
+}
+
+#proj_plan TH a {
+  color: #FFFFFF;
+}
+
+
+
+  /*
+  -------------------------------------------------------
+  Buttons
+  -------------------------------------------------------
+  */
+
+#proj_plan .button {
+  display:inline-block;
+  font-family:Arial, sans-serif;
+  color:#fff;
+  cursor:pointer;
+  background-color:#373737;
+   -moz-box-shadow:2px 2px 2px #999;
+   -webkit-box-shadow:2px 2px 2px #999;
+   -o-box-shadow:2px 2px 2px #999;
+   box-shadow:2px 2px 2px #999;
+   -moz-border-radius:5px;
+   -webkit-border-radius:5px;
+   -o-border-radius:5px;
+   border-radius:5px;
+   border:none;
+   padding:0px 10px;
+   margin-right:10px;
+  text-align: center
+}
+
+
+#proj_plan .button.first {
+    background-color:#FEA730;
+    font-weight: bold;
+}
+#proj_plan .button.first:hover {
+    background-color:#D98E2A;
+}
+
+
+
+#proj_plan .button[disabled] {
+  cursor: default;
+  opacity:0.4
+}
+
+
+#proj_plan .button:hover[disabled] {
+  background-color:#BABABA
+}
+
+#proj_plan .button.textual, .button.buttonImg {
+  border: none;
+  background-color: transparent;
+  color:#68979B;
+  -moz-box-shadow:0 0 0 #999;
+   -webkit-box-shadow:0 0 0 #999;
+   -o-box-shadow:0 0 0 #999;
+   box-shadow:0 0 0 #999;
+  -moz-border-radius:0;
+   -webkit-border-radius:0;
+   -o-border-radius:0;
+   border-radius:0;
+  padding:0;
+  margin:0;
+  text-align: left
+}
+
+
+
+#proj_plan .button.edit {
+  color:#009E94;
+  padding:0;
+  margin:0
+}
+
+#proj_plan .button.delete {
+  color:#B61E2D;
+  padding:0;
+  margin:0
+}
+
+#proj_plan .button:hover {
+  background-color: #4C4C4C;
+}
+#proj_plan .button.textual:hover, .button.buttonImg:hover {
+  background-color: transparent;
+}
+
+#proj_plan span.separator {
+  display: inline-block;
+}
+
+#proj_plan .button.add {
+  color:#009E94;
+}
+
+#proj_plan .button.add .teamworkIcon {
+  color:#009E94;
+}
+
+
+#proj_plan form {
+  margin: 0;
+  padding: 0;
+}
+
+#proj_plan select {
+  border:1px solid #91B4B7;
+  padding: 3px;
+  font-size: 11px;
+  font-family: Arial, Helvetica, sans-serif;
+   width: 100%;
+}
+
+#proj_plan .formElements {
+  background-color: white;
+  padding: 4px;
+  font-size: 16px;
+  border:1px solid #91B4B7;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  -o-border-radius:3px;
+  border-radius:3px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#proj_plan .formElementsError {
+  border: 1px solid #ff0000;
+}
+
+#proj_plan .formElementExclamation {
+  width: 15px;
+  height: 25px;
+  mmmargin-left: -20px;
+  mmmposition: absolute;
+  background: url("res/alert.gif") no-repeat;
+}
+
+
+#proj_plan span#FLD_LOGIN_NAMEerror, span#FLD_PWDerror {
+  margin-left: -23px;
+  margin-top: 2px;
+}
+
+
+input {
+    background-color: white;
+    padding: 4px;
+    font-size: 16px;
+    border:1px solid #91B4B7;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    -o-border-radius:3px;
+    border-radius:3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* -------------------------------------- GRIDIFY -----------------------------------*/
+#proj_plan .gdfTable {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+#proj_plan .gdfTable td, .gdfTable th {
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  font-size: 12px;
+  text-align:center;
+}
+
+#proj_plan .gdfCell {
+  overflow: hidden;
+  padding:0px 2px
+}
+
+#proj_plan .gdfCell.noClip{
+  overflow: visible;
+}
+
+#proj_plan .gdfColHeader {
+  min-width: 5px;
+  height: 30px;
+}
+
+#proj_plan .gdfCell, .gdfColHeader {
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #b0b0b0;
+}
+
+
+#proj_plan .gdfCellInput {
+  border: 0 none;
+  font-size: 12px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #d4fbe8;
+}
+
+#proj_plan .gdfCellWrap {
+  border: 0 none;
+  font-size: 12px;
+  height: 17px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+
+  background-color: #ffcccc;
+}
+
+#proj_plan .gdfHResizing {
+  cursor: w-resize;
+}
+
+
+/* -------------------------------------- SPLITTER -----------------------------------*/
+#proj_plan .splitterContainer {
+  width: 100%;
+  height: 100%;
+}
+
+#proj_plan .splitBox1{
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+#proj_plan .splitBox2{
+  overflow-x: scroll;
+  overflow-y: auto;
+}
+
+
+#proj_plan .splitElement {
+  outline-style: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#proj_plan .vSplitBar {
+  width: 5px;
+  background-color: #aaa;
+  cursor: w-resize;
+  text-align: center;
+  color: white;
+}
+
+#proj_plan .fixHead{
+  position: absolute;
+
+  top:0;
+  z-index: 1;
+}
+
+/* -------------------------------------- GANTT -----------------------------------*/
+
+
+#proj_plan .ganttTable{
+  table-layout:fixed;
+}
+
+#proj_plan .ganttTable td,.ganttTable th{
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+#proj_plan .ganttHead1,.ganttHead2{
+  height:20px;
+}
+
+#proj_plan .ganttHead1 th, .ganttHead2 th{
+  border-left:1px solid #b0b0b0;
+  padding: 0;
+  margin: 0;
+}
+
+#proj_plan .ganttToday{
+  position:absolute;
+  top:0;
+  width:1px;
+  height:100%;
+  border-left:2px dotted #13AFA5;
+}
+
+#proj_plan .ganttHighLight{
+  position:absolute;
+  width:100%;
+  height:28px;
+  background-color:yellow;
+  opacity:.4;
+}
+
+#proj_plan .ganttButtonBar{
+  position:relative;
+  padding:0;
+}
+
+#proj_plan .ganttButtonBar .buttons, .ganttButtonBar h1 {
+  display:inline-block;
+  margin:0px 0 0 10px;
+  float: left;
+  font-size: 13px;
+}
+
+#proj_plan .button span.teamworkIcon {
+  text-indent: -10px;
+}
+
+
+#proj_plan .button.textual span.teamworkIcon {
+  font-size: 140%
+}
+
+#proj_plan .ganttButtonBar .button.textual span.teamworkIcon{
+  font-size: 15px;
+}
+
+#proj_plan .ganttButtonSeparator{
+  border-left:1px solid gray;
+  padding-right:5px;
+  margin-left:5px;
+  font-size: 130%
+}
+
+
+#proj_plan .ganttLines{
+  position:absolute;
+  width:100%;
+  height:1px;
+  border-top:1px solid #eee;
+  z-index:1;
+}
+
+#proj_plan .ganttLinks{
+  z-index:10;
+}
+
+
+#proj_plan .end{
+  border-right:1px dotted #666
+}
+
+#proj_plan .holyH{
+  background-color: #f3dfd5;
+}
+#proj_plan .holy{
+  background-color: #FFF5E6;
+}
+
+
+/* -------------------------------------- TASK -----------------------------------*/
+
+#proj_plan .taskBoxDiv{
+  position:absolute;
+  height:25px;
+  margin-top:3px;
+  z-index:100;
+}
+
+#proj_plan .taskBoxDiv .layout {
+  height:100%;
+  color:#DB2727;
+  border-radius:2px;
+  background: #eee; /* Old browsers */
+  border:1px solid #bbb;
+}
+
+#proj_plan .taskBoxDiv .taskStatus {
+    left:5px;
+    top:10px;
+    position:absolute;
+    width:10px;
+    height:10px;
+}
+
+#proj_plan .taskBoxDiv .layout .milestone{
+  top:0;
+  position:absolute;
+  width:18px;
+  background: url(img/gantt/milestone.png) no-repeat;
+  height:18px;
+  display:none;
+}
+#proj_plan .taskBoxDiv .layout .milestone.end{
+  right:0;
+}
+#proj_plan .taskBoxDiv .layout .milestone.active{
+  display:block;
+}
+
+#proj_plan .taskBoxDiv.hasChild .layout{
+  border-top:2px solid black;
+}
+
+#proj_plan .taskBoxDiv .taskProgress{
+  height:5px;
+  position:absolute;
+}
+
+#proj_plan .taskBoxDiv .layout.extDep{
+  background-image:url(img/gantt/hasExternalDeps.png);
+}
+
+
+#proj_plan .taskLabel{
+  position:absolute;
+  height:28px;
+  color:black;
+  text-align:right;
+  padding-right:5px;
+  overflow:hidden;
+  left:-200px;
+  width:195px;
+  white-space:nowrap;
+}
+
+
+#proj_plan .taskDepLine {
+  border: 1px solid #9999ff;
+  overflow: hidden;
+  position: absolute;
+}
+
+
+#proj_plan .taskEditRow,.emptyRow {
+  height:30px;
+}
+
+#proj_plan .taskEditRow input{
+  border: 0 none;
+  font-size: 11px;
+  margin: 0;
+  padding:0;
+  outline: 0;
+  width: 100%;
+  border-radius: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#proj_plan .taskEditRow input:focus{
+  font-weight: bold;
+}
+
+#proj_plan .taskEditRow.rowSelected td,.taskEditRow.rowSelected input{
+  background-color:#FFFF99;  
+}
+
+#proj_plan input[readonly]{
+  color: #c0c0c0;
+}
+
+#proj_plan .taskStatusBox{
+  position:absolute;
+  /*width:100px;*/
+  height:26px;
+  border:1px solid #a0a0a0;
+  background-color:#fff;
+  margin-top:-21px;
+  margin-left:-2px;
+  padding: 4px;
+  z-index: 100;
+}
+#proj_plan .taskStatus{
+  width:15px;
+  height:15px;
+  display:inline-block;
+  text-indent: 0;
+  position:relative;
+  box-shadow: none;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.20)
+
+}
+
+#proj_plan .taskStatus[status=STATUS_ACTIVE]{
+ background-color: #3BBF67;
+}
+#proj_plan .taskStatus[status=STATUS_DONE]{
+ background-color: #0099FF;
+}
+#proj_plan .taskStatus[status=STATUS_FAILED]{
+ background-color: #660066;
+}
+#proj_plan .taskStatus[status=STATUS_SUSPENDED]{
+ background-color: #fbb11e;
+}
+#proj_plan .taskStatus[status=STATUS_UNDEFINED]{
+ background-color: #ffffff;
+}
+#proj_plan .taskStatus.selected{
+  border:#666 2px solid;
+}
+
+#proj_plan .unselectable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+#proj_plan .exp-controller{
+  display:inline-block;
+  width:16px;
+  height:16px;
+  position: relative;
+  top: 2px;
+  margin-left: -18px;
+}
+
+#proj_plan .expcoll{
+  cursor: pointer;
+  background-image: url(img/gantt/toggle-expand.png);
+}
+
+#proj_plan .expcoll.exp{
+  background-image: url(img/gantt/toggle_collapse.png);
+}
+
+#proj_plan .ui-resizable-helper { border: 1px dotted #00F;  }
+#proj_plan .ui-resizable-e, .ui-resizable-w {width: 5px;}
+#proj_plan .ui-draggable{
+  cursor:move;
+}
+
+
+/*--------------------------------------------------- SVG --------------------------------------------------*/
+#proj_plan .ganttSVGBox{
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  background-color: transparent;
+  width: 100%;
+}
+
+#proj_plan .taskBoxSVG{
+    overflow: visible !important;
+}
+
+#proj_plan .taskBoxSVG .taskLayout{
+  stroke-width:0;
+  stroke:#999;
+  /*fill:url('#taskGrad'); do not work on firefox*/
+}
+
+#proj_plan .taskLinkPathSVG{
+  stroke:#9999ff;
+  stroke-width:3px;
+  fill:none;
+  cursor:pointer;
+}
+
+#proj_plan .ganttLinesSVG{
+  stroke:#eee;
+  stroke-width:1;
+}
+
+#proj_plan .ganttTodaySVG{
+  stroke-width:2px;
+  stroke:#13AFA5;
+  stroke-linecap:"round";
+  stroke-dasharray:2,2;
+}
+
+/*
+#proj_plan .taskStatusSVG[status=STATUS_ACTIVE]{
+  fill: #3BBF67;
+}
+#proj_plan .taskStatusSVG[status=STATUS_DONE]{
+  fill: #0099FF;
+}
+#proj_plan .taskStatusSVG[status=STATUS_FAILED]{
+  fill: #660066;
+}
+#proj_plan .taskStatusSVG[status=STATUS_SUSPENDED]{
+  fill: #fbb11e;
+}
+#proj_plan .taskStatusSVG[status=STATUS_UNDEFINED]{
+  
+}
+#proj_plan .taskStatusSVG[status=STATUS_UNDEFINED] .taskLayout{
+  stroke: #ccc;
+  stroke-width:1;
+}
+
+#proj_plan .taskStatusSVG[status=STATUS_DONE] .textPerc,
+.taskStatusSVG[status=STATUS_ACTIVE] .textPerc,
+.taskStatusSVG[status=STATUS_FAILED] .textPerc{
+  fill: #fff;
+}
+*/
+
+#proj_plan .taskStatusSVG[status=STATUS_ACTIVE]{
+  fill: #3BBF67;
+}
+#proj_plan .taskStatusSVG[status=STATUS_DONE]{
+  fill: #0099FF;
+}
+#proj_plan .taskStatusSVG[status=STATUS_FAILED]{
+  fill: #660066;
+}
+#proj_plan .taskStatusSVG[status=STATUS_SUSPENDED]{
+  fill: #fbb11e;
+}
+#proj_plan .taskStatusSVG[status=STATUS_UNDEFINED]{
+  /*fill: #f0f0f0;*/
+}
+#proj_plan .taskStatusSVG[status=STATUS_UNDEFINED] .taskLayout{
+  stroke: #ccc;
+  stroke-width:1;
+}
+
+#proj_plan .taskStatusSVG[status=STATUS_DONE] .textPerc,
+.taskStatusSVG[status=STATUS_ACTIVE] .textPerc,
+.taskStatusSVG[status=STATUS_FAILED] .textPerc{
+  fill: #fff;
+}
+
+
+#proj_plan .deSVG.deSVGdrag {
+  cursor: move;
+}
+#proj_plan .deSVG.deSVGhand {
+  cursor: ew-resize;
+}
+
+
+#proj_plan .linkHandleSVG{
+  display:none;
+  stroke:#888;
+  stroke-width:2px;
+  fill:#eee;
+  cursor: pointer;
+}
+
+#proj_plan .linkLineSVG{
+  stroke-width:5px;
+  stroke: #9999ff;
+  stroke-linecap:"round";
+  opacity: .5;
+    /*stroke-dasharray:5,5;*/
+}
+
+#proj_plan .linkOnProgress .deSVG.taskBoxSVG  {
+  cursor:cell;
+}
+
+#proj_plan .taskBoxSVG.linkOver .taskLayout{
+  stroke-width:1px;
+  stroke:#9999ff;
+  opacity: 1;
+}
+
+#proj_plan .taskLabelSVG {
+  stroke: none;
+  fill:#999;
+  font-size: 12px;
+}
+
+#proj_plan .critical .taskLinkPathSVG{
+  stroke:red;
+}
+
+#proj_plan .taskBoxSVG.critical .taskLayout{
+  stroke:red;
+}
+
+#proj_plan .focused .taskLinkPathSVG{
+  stroke-width:5px;
+  stroke: #4286ff;
+}
+
+#proj_plan .taskBoxSVG.focused .taskLayout{
+  stroke-width:3px;
+  stroke: #4286ff;
+}
+
+#proj_plan .userProfile {
+  font-size: 16px;
+  vertical-align: middle;
+  text-align: right;
+  margin: 0 5px 0 0;
+  padding: 5px;
+  float: right;
+  position: relative;
+  z-index: 50;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+#proj_plan .userLine {
+  max-width: 150px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;padding: 0;
+  vertical-align: middle;
+}
+
+#proj_plan .avatar {
+  vertical-align: middle;
+  padding: 1px;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #dedede
+}
+
+
+/*--------------------------------------------------- Media queries  --------------------------------------------------*/
+
+/* Large screens */
+
+@media only screen and (max-width : 1440px) and (min-width : 1260px) {
+
+  #proj_plan .ganttButtonBar .button.textual span.teamworkIcon {
+    font-size: 130%;
+  }
+
+  #proj_plan .userLine {
+    display: none;
+}
+
+}
+
+@media only screen and (max-width: 1259px) and (min-width : 1150px) {
+
+  #proj_plan .ganttButtonBar .button.textual span.teamworkIcon {
+    font-size: 120%;
+  }
+
+  #proj_plan .button.textual span.teamworkIcon {
+    font-size: 120%;
+  }
+
+  #proj_plan .button {
+    font-size: 110%;
+    padding: 3px 9px 6px;
+    margin-right: 5px;
+    margin-bottom: 5px
+  }
+
+  #proj_plan .userLine {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 1149px) and (min-width : 989px) {
+
+  #proj_plan .button.textual span.teamworkIcon {
+    font-size: 110%;
+  }
+
+  #proj_plan .ganttButtonBar .button.textual span.teamworkIcon {
+    font-size: 110%;
+  }
+
+  #proj_plan .button {
+    font-size: 110%;
+    padding: 3px 9px 6px;
+    margin-right: 5px;
+    margin-bottom: 5px
+  }
+
+  #proj_plan .button em {
+    display: none;
+  }
+
+  #proj_plan .userLine {
+    display: none;
+  }
+
+}
+
+/* Ipad */
+
+@media only screen and (max-width: 989px) and (min-width: 768px){
+  #proj_plan .ganttButtonSeparator {
+    margin-left: 2px;
+    padding-right: 6px;
+    font-size: 100%;
+  }
+  #proj_plan .ganttButtonBar .button.textual span.teamworkIcon {
+    font-size: 100%;
+  }
+  #proj_plan .button em {
+    display: none;
+  }
+  #proj_plan .userLine {
+    display: none;
+  }
+}
+
+/* Mobile TODO */
+
+@media only screen and (max-width: 767px) {
+  #proj_plan .button.textual {
+    font-size: 50%;
+  }
+
+  #proj_plan .button em {
+    display: none;
+  }
+
+}
+#proj_plan .gant_wdth{
+  width: 99% !important;
+  height: 94% !important;
+}
+#proj_plan .phasemnu{
+ position: absolute;
+  }
+
+#proj_plan .showhidecol
+{
+    position: absolute;
+    display: none;
+    z-index: 2;
+    width: 145px;
+    background: #fff;
+    padding: 6px;
+    left: -31px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+#proj_plan .optionsmnu, .phasemnu, .highlevelplanmnu
+    {
+  
+        z-index: 2;
+        background-color: White;
+        border: 1px LightGray solid;
+        display: none; 
+        font-weight: normal;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        position: absolute;
+    }
+   
+
+
+    #proj_plan .optionsmnu ul li, .phasemnu ul li, .highlevelplanmnu ul li
+    {
+        line-height: 30px;
+        padding: 0 5px 0 5px;
+        list-style: none;
+    }
+    #proj_plan .optionsmnu ul li a, .phasemnu ul li a, .highlevelplanmnu ul li a
+    {
+        text-decoration: none;
+    }
+    #proj_plan .optionsmnu ul li:hover, .highlevelplanmnu ul li:hover
+    {
+        background-color: #f5f5f5;
+    }
+   #proj_plan .optionsmnu ul li.active, .highlevelplanmnu ul li.active
+    {
+        background-color: #428bca;
+    }
+    #proj_plan .optionsmnu ul li:hover, .highlevelplanmnu ul li:hover
+    {
+        cursor: pointer;
+    }
+    #proj_plan .optionsmnu ul li.active a, .highlevelplanmnu ul li.active a
+    {
+        color: White;
+    }
+    #proj_plan .phasemnu ul li
+    {
+        background-color: lightgray;
+    }
+    #proj_plan .phasemnu ul li.ct
+    {
+        background-color: #428bca;
+    }
+    #proj_plan .phasemnu ul li a
+    {
+        color: White;
+    }
+    #proj_plan .phasemnu ul li.active
+    {
+        background-color: White;
+    }
+    #proj_plan .phasemnu ul li.active a.active
+    {
+        color: #3071a9;
+    }
+    #proj_plan .phasemnu ul li.active:hover
+    {
+        background-color: #f5f5f5;
+        cursor: pointer;
+    }
+    #proj_plan .phasemnu ul li.active:hover a.active
+    {
+        color: #3071a9;
+    }
+.paper-clip{
+    color: #898989;
+    font-size: 14px;
+    margin-left: 3px;
+}
+.high-light i{
+  color:#ff0000;
+}
+#txtComments{
+    height: 100px;
+    resize: none;
+}
+.tablecontent td {
+    width: 20% !important;
+}
+.content-prodoc table tr td:nth-child(1) {
+    width: 50%;
+}

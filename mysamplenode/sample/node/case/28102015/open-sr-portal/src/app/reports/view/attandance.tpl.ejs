@@ -1,0 +1,98 @@
+<style type="text/css">
+.red {
+    color: red; 
+}
+
+.black {
+    color: black;
+}
+</style>
+<section class="content-header">
+	<h1> Attendance </h1>          
+</section>
+<section class="content">
+	<div id="assessmentPage" class="box box-default boxdefault" ng-init="dataAttandance('getAttandance');"> 
+		<div class="box-body">
+			<div class="row"> 
+				<div class="col-md-12 mar_bottom">
+					<h4> Search </h4>
+					<div class="box box-primary">           
+						<div class="box-body">
+							<div class="col-md-12">
+               					<div class="row">
+									<div class="col-md-3">
+										<div class="form-group">
+											<label>Month </label>
+											<select class="form-control" ng-model="srchData.month" ng-options="key as value for (key,value) in months"></select>{{month}}
+										</div><!-- /.form-group -->                  
+									</div><!-- /.col -->
+									<div class="col-md-3">
+										<div class="form-group">
+											<label>Year </label>
+											<input type="text" class="form-control" placeholder="YYYY"  id="year" name="year" ng-model="srchData.year">
+										</div><!-- /.form-group -->                  
+									</div><!-- /.col -->
+									<div class="col-md-3">
+										<div class="btn-group">
+											<label>&nbsp;</label>
+											<button data-toggle="dropdown" class="btn btn-block btn-default save_but" type="button" ng-click="dataAttandance('getAttandance')"> <i class="fa fa-search position_left"></i> Search </button>
+										</div><!-- /.form-group -->                  
+									</div><!-- /.col -->
+								</div><!-- /.row -->                  
+							</div><!-- /.col -->  
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 mar_bottom">
+					<h4> Attandance List </h4>
+					<div class="box box-success">           
+						<div class="box-body attendance-overflow">
+							<div class="col-md-12">
+               				<table ng-table="tableParams" class="table table-bordered">
+							  <thead>
+							  	<tr>
+					                <th nowrap class="sortable" ng-class="{
+					                    'sort-asc': tableParams.isSortBy('name', 'asc'),
+					                    'sort-desc': tableParams.isSortBy('name', 'desc')
+					                  }"
+					                    ng-click="tableParams.sorting({'name' : tableParams.isSortBy('name', 'asc') ? 'desc' : 'asc'})">
+					                     First Name
+					                </th>
+					                <!-- <th nowrap class="sortable" ng-class="{
+					                    'sort-asc': tableParams.isSortBy('name', 'asc'),
+					                    'sort-desc': tableParams.isSortBy('name', 'desc')
+					                  }"
+					                    ng-click="tableParams.sorting({'name' : tableParams.isSortBy('name', 'asc') ? 'desc' : 'asc'})">
+					                     Emp Id
+					                </th> -->
+					                <th ng-repeat="cols in dateRange" class="text-center">{{cols.day}}</th>
+					            </tr>
+							  </thead>
+							  <tbody>
+							  	<tr ng-repeat="cRow in $data">
+							  		<td>{{cRow.t2.resource_first_name}}</td>
+							  		<!-- <td>{{cRow.emp_id}}</td> -->
+							  		<td ng-if="cRow.t3" ng-repeat="scols in dateRange" ng-switch="scols.day | markattendance:cRow.t3">
+							  			<span ng-switch-when="1">
+											<i class="fa fa-check" style="color:green"></i>
+										</span>
+										<span ng-switch-when="2">
+											<i class="fa fa-times" style="color:red"></i>
+										</span>
+							  		</td>
+							  		<td ng-if="!cRow.t3" ng-repeat="scols in dateRange"><i class="fa fa-times" style="color:red"></i></td>
+							  	</tr>
+							  </tbody>
+							</table>	               
+							</div><!-- /.col -->	
+						</div>
+					</div>
+				</div>
+
+			</div><!-- /.row -->
+
+		</div><!-- /.box -->   
+	</div>
+</section>

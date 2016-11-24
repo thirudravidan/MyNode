@@ -1,0 +1,375 @@
+<style type="text/css">
+.pagination {
+  margin: 0px;
+}
+.datepicker tr:hover {
+    background-color: #808080;
+}
+.maxfull.fullscreen{
+     height: 93%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    top: 50px
+ }
+ .maxfull2.fullscreen2{
+     height: 93%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    top: 50px
+ }
+ .maxfull3.fullscreen3{
+     height: 93%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    top: 50px
+ }
+ .maxfull4.fullscreen4{
+     height: 93%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    top: 50px
+ }
+ .maxfull5.fullscreen5{
+     height: 93%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    top: 50px
+ }
+ .maxfull6.fullscreen6{
+     height: 93%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    top: 50px
+ }
+
+#myDiv{background:#cc0000; width:500px; height:400px;}
+</style>
+<section class="content-header">
+<div style="height:50px;">
+
+    <h1 class="pull-left" style="margin-top:17px;"> <i class="fa fa-tachometer"></i> Dashboard </h1> 
+              
+     <div class="pull-right">
+         <div class="clock-builder-output"></div>
+     </div>
+     <div class="pull-right" style="font-size: 20px;margin-top: 19px;">
+        <i class="fa fa-calendar"></i> Go Live On 
+        <a href="javascript://" ng-hide="isEditButtonEnabled" e-datepicker-popup="dd-MMM-yyyy" editable-bsdate="liveDate" onbeforesave="checkDate($data)">
+          {{liveDate | date:'dd-MMM-yyyy'}}
+        </a>
+        <span ng-show="isEditButtonEnabled">{{liveDate | date:'dd-MMM-yyyy'}}</span>
+     </div>  
+</div>
+
+</section>
+<section class="content">
+  <div ng-init="showDashboardACL();getNotificationDetails();showGoliveDate();changeWeek(); statusBarMap(); Datainit('upcomingProjectplan','upcomingLst'); Datainit('highlevelProjectplan','highlevelLst'); burnDownChart(); statusBarChart();">
+    <div class="box box-default dash-overflow">
+      <div class="box-body">
+    <div class="mar_bottom"></div>
+      <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 mar_bottom" ng-show="isShowStatusBarMap">
+      <div class="box box-solid box-default dahbox_hgt maxfull">
+        <div class="box-header">
+          <h3 class="box-title pull-left">Status Bar Map</h3>
+          <div class="box-tools pull-right">
+                    <button class="btn btn-default btn-sm" ng-click="statusBarMap();"><i class="fa fa-refresh"></i></button>
+                    <button ng-show="isBackShow" class="btn btn-default btn-sm flipdash" ng-click="isBackShow=false;"><i class="fa fa-chevron-circle-left"></i></button>
+                    <button class="btn btn-default btn-sm fullscreen"><i class="fa fa-arrows-alt"></i></button>
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+        <div class="col-md-12">
+          <!-- <canvas id="doughnut" class="chart chart-doughnut"
+            chart-data="cdata" chart-labels="labels" chart-colours="colors" chart-click="onClick">
+          </canvas>  -->
+          <nvd3 options="pieOptions" data="pieData"></nvd3>
+        </div>
+            <!-- <div class="col-md-12 dash_tablefont">
+                      <ul class="chart-legend clearfix">
+                        <li><i class="fa fa-circle-o text-red"></i>   Open</li>
+                        <li><i class="fa fa-circle-o text-green"></i>   Pending</li>
+                        <li><i class="fa fa-circle-o text-yellow"></i>   Inprogress</li>
+                        <li><i class="fa fa-circle-o text-aqua"></i>   Closed</li>
+                        <li><i class="fa fa-circle-o text-light-blue"></i>   OverDue</li>
+                      </ul>
+                    </div> --> <!-- /.col -->
+                    <div class="col-md-12 no-padding paneldash">
+                    <table ng-table="statusLst" class="table table-bordered table-striped dash_tablefont">
+                    <tr ng-repeat="rowDet in $data track by $index">
+                      <td data-title="'Task Name'">{{rowDet.task_name}}</td>
+                      <td data-title="'Duration'">{{rowDet.task_name}}</td>
+                      <td data-title="'Start Date'">{{rowDet.start_date | date: 'MM-dd-yyyy'}}</td>
+                      <td data-title="'End Date'">{{rowDet.end_date | date: 'MM-dd-yyyy'}}</td>
+                      <td data-title="'Status'">{{chartData[rowDet.status].status}}</td>
+                    </tr>
+                  </table>
+                  </div>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+    <div class="col-md-6 mar_bottom no-padding" ng-show="isShowUpcomingActionItems">
+      <div class="box box-solid box-primary dahbox_hgt maxfull2">
+        <div class="box-header">
+          <h3 class="box-title">Upcoming Action Items</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-default btn-sm" ng-click="Datainit('upcomingProjectplan','upcomingLst');"><i class="fa fa-refresh"></i></button>
+            <button class="btn btn-default btn-sm fullscreen2"><i class="fa fa-arrows-alt"></i></button>
+            
+          </div>
+          <script id="calendar.html" type="text/ng-template">
+            <div>
+              <input week-calendar type='text' class="form-control" id='weeklyDatePicker1' name="weeklyDatePicker1" ng-model='weeklyDatePicker1' placeholder="Select Week" />{{weeklyDatePicker}}
+            </div>
+          </script>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <div class="col-md-12 no-padding">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" ng-click="changeWeek('prev');"><i class="fa fa-chevron-circle-left"></i></button>
+                      </span>
+                      <input week-calendar type='text' class="form-control" id='weeklyDatePicker' name="weeklyDatePicker" ng-model='weeklyDatePicker' placeholder="Select Week" readonly style="text-align:center;" />
+                      <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" ng-click="changeWeek('next');"><i class="fa fa-chevron-circle-right"></i></button>
+                      </span>
+                      <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" ng-click="Datainit('upcomingProjectplan','upcomingLst');">GO</button>
+                      </span>
+                    </div>
+                    <table ng-table="upcomingLst" class="table table-bordered table-striped dash_tablefont">
+                    <tr ng-repeat="rowDet in $data track by $index" ng-show="$data.length > 0">
+                      <td data-title="'Task Name'">{{rowDet.task_name}}</td>
+                      <!-- <td data-title="'Duration'">{{rowDet.task_name}}</td> -->
+                      <td data-title="'Start Date'">{{rowDet.start_date | date: 'MM-dd-yyyy'}}</td>
+                      <td data-title="'End Date'">{{rowDet.end_date | date: 'MM-dd-yyyy'}}</td>
+                      <!-- <td data-title="'Status'">{{chartData[rowDet.status].status}}</td> -->
+                    </tr>
+                    <tr>
+                      <td ng-hide="$data.length > 0" colspan="5">No Records</td>
+                    </tr>
+                  </table>
+                  </div>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+  
+    <div class="col-md-6 mar_bottom" ng-show="isShowHighLevelImplementation">
+      <div class="box box-solid box-info dahbox_hgt maxfull3">
+        <div class="box-header">
+          <h3 class="box-title">High Level Implementation</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-default btn-sm fullscreen3"><i class="fa fa-arrows-alt"></i></button>            
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body high_level">
+          <div class="col-md-12 no-padding">
+                    <table ng-table="highlevelLst" class="table table-bordered table-striped dash_tablefont">
+                    <tr ng-repeat="rowDet in $data track by $index" ng-show="$data.length > 0">
+                      <td data-title="'Task Name'">{{rowDet.task_name}}</td>
+                      <!-- <td data-title="'Duration'">{{rowDet.task_name}}</td> -->
+                      <td data-title="'Start Date'">{{rowDet.start_date | date: 'MM-dd-yyyy'}}</td>
+                      <td data-title="'End Date'">{{rowDet.end_date | date: 'MM-dd-yyyy'}}</td>
+                      <td data-title="'Status'">{{chartData[rowDet.status].status}}</td>
+                    </tr>
+                    <tr>
+                      <td ng-hide="$data.length > 0" colspan="5">No Records</td>
+                    </tr>
+                  </table>
+                  </div>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+    <div class="col-md-6 no-padding mar_bottom" ng-show="isShowBurnDownChart">
+      <div class="box box-solid box-warning dahbox_hgt maxfull4">
+        <div class="box-header">
+          <h3 class="box-title">Burn Down Chart</h3>
+          <div class="box-tools pull-right">            
+            <!-- <button ng-click="chgSize('mbar')" class="btn btn-default btn-sm fullscreen4"><i class="fa fa-arrows-alt"></i></button> -->            
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <div class="chart">
+            <nvd3 options="barOptions" data="barData"></nvd3>
+          </div>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+      <div class="col-md-6 mar_bottom" ng-show="isShowStatusReportChart">
+      <div class="box box-solid box-success dahbox_hgt maxfull5">
+        <div class="box-header">
+          <h3 class="box-title">Status Report Chart</h3>
+          <div class="box-tools pull-right">            
+            <!-- <button ng-click="chgSize('sbar')" class="btn btn-default btn-sm fullscreen5"><i class="fa fa-arrows-alt"></i></button> -->            
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <div class="chart">
+            <nvd3 options="moptions" data="sbarData" api="api" config="{refreshDataOnly: true}"></nvd3>
+          </div>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+    <!--<div class="col-md-6 no-padding">
+      <div class="box box-solid box-danger dahbox_hgt maxfull6">
+        <div class="box-header">
+          <h3 class="box-title"> Road Map</h3>
+          <div class="box-tools pull-right">            
+            <button class="btn btn-default btn-sm fullscreen6"><i class="fa fa-arrows-alt"></i></button>            
+            </div>
+        </div>
+        <div class="box-body">
+          <div class="chart">
+                    <canvas id="barChart" style="height:230px"></canvas>
+                  </div>
+        </div>
+      </div>
+    </div>-->
+      </div>
+    </div>
+    <div class="flipchtm"><i class="fa fa-clock-o"></i> Clock </div>
+      <div class="panelchtm">
+       <div class="col-md-12 no-padding">
+            <!--clock-->
+                                        <!-- 
+<div id="clock_hou" class="clock_container">
+    <div class="lbl">
+        USA</div>
+    <div class="date">
+        <span class="day"></span><span class="month"></span><span class="year"></span>
+    </div>
+    <div class="clockHolder">
+        <div class="rotatingWrapper">
+            <img class="hour" src="assets/img/clock/clock_hour.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="min" src="assets/img/clock/clock_min.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="sec" src="assets/img/clock/clock_sec.png" /></div>
+        <img class="clock" src="assets/img/clock/clock_face.png" />
+    </div>
+    <div class="digital">
+        <span class="hr"></span><span class="minute"></span><span class="period"></span>
+    </div>
+</div>
+<div id="clock_dc" class="clock_container">
+    <div class="lbl">
+        UK</div>
+    <div class="date">
+        <span class="day"></span><span class="month"></span><span class="year"></span>
+    </div>
+    <div class="clockHolder">
+        <div class="rotatingWrapper">
+            <img class="hour" src="assets/img/clock/clock_hour.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="min" src="assets/img/clock/clock_min.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="sec" src="assets/img/clock/clock_sec.png" /></div>
+        <img class="clock" src="assets/img/clock/clock_face.png" />
+    </div>
+    <div class="digital">
+        <span class="hr"></span><span class="minute"></span><span class="period"></span>
+    </div>
+</div> -->
+<div style="text-align:center;width:100px;padding:0em 0;"> <h6><a style="text-decoration:none;" href="javascript://">{{projLocation}}</a></h6> <iframe id="projLoc" style="-webkit-transform:scale(0.4);-moz-transform:scale(0.4);width: 316px;position: absolute; left: -88px;top: -10px;" src="" width="100%" height="130" frameborder="0" seamless></iframe></div>
+<br>
+<div style="text-align: center;width: 100px;padding: 0em 0;margin-top: -51px;float: left;
+    margin-left: 155px;"> <h6><a style="text-decoration:none;" href="javascript://">{{goLiveLocation}}</a></h6> <iframe id="goliveLoc" style="-webkit-transform:scale(0.4);-moz-transform:scale(0.4);width: 316px;position: absolute; left: 66px;top: -10px;"  width="100%" height="130" frameborder="0" seamless></iframe> </div> 
+
+<!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+  
+   src="http://www.zeitverschiebung.net/clock-widget-iframe?language=en&timezone=America%2FLos_Angeles"
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+        <div id="clock_india" class="clock_container">
+    <div class="lbl">
+        Chennai, India</div>
+    
+    <div class="clockHolder">
+        <div class="rotatingWrapper">
+            <img class="hour" src="assets/img/clock/clock_hour.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="min" src="assets/img/clock/clock_min.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="sec" src="assets/img/clock/clock_sec.png" /></div>
+        <img class="clock" src="assets/img/clock/clock_face.png" />
+    </div>
+   
+</div>
+     
+    </div>
+    <div class="item">
+     <div id="clock_dc" class="clock_container">
+    <div class="lbl">
+        UK</div>
+    
+    <div class="clockHolder">
+        <div class="rotatingWrapper">
+            <img class="hour" src="assets/img/clock/clock_hour.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="min" src="assets/img/clock/clock_min.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="sec" src="assets/img/clock/clock_sec.png" /></div>
+        <img class="clock" src="assets/img/clock/clock_face.png" />
+    </div>
+  
+</div>
+    </div>
+    <div class="item">
+      <div id="clock_hou" class="clock_container">
+    <div class="lbl">
+        USA</div>
+    
+    <div class="clockHolder">
+        <div class="rotatingWrapper">
+            <img class="hour" src="assets/img/clock/clock_hour.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="min" src="assets/img/clock/clock_min.png" /></div>
+        <div class="rotatingWrapper">
+            <img class="sec" src="assets/img/clock/clock_sec.png" /></div>
+        <img class="clock" src="assets/img/clock/clock_face.png" />
+    </div>
+  
+</div>
+    </div>
+  </div>
+  
+    
+  </div> -->
+
+  <!-- Controls 
+  <a class="left carousel-control ca_wd" ng-non-bindable data-target="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control ca_wd" ng-non-bindable data-target="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>-->
+</div>
+            <!---->
+       </div>
+      </div>
+  </div>
+  </div>
+</div>
+</section>

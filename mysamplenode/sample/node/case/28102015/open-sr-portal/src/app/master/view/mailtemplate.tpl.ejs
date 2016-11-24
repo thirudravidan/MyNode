@@ -1,0 +1,125 @@
+<section class="content-header">
+	<h1>Mail Template</h1>
+</section>
+<section class="content">
+	<div id="mailtemplatePage" class="box box-default boxdefault" ng-init="Datainit('getMailTemplate','i');">
+		<div class="box-body " id="accordion">
+			<div class="panel">
+				<div class="row collapse" id="createTpl">
+					<form id="frmmailtpl" name="frmmailtpl" class="form-box ui-formwizard" novalidate>
+						<div id="header" class="col-sm-12 col-md-12 col-lg-12">
+							<div class="col-md-6">
+								<h4> Add / Edit Mail Template </h4>
+							</div>
+							<div class="col-md-6">
+								&nbsp;
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12" >
+							<div class="box box-primary">           
+								<div class="box-body usercreate-form">
+									<form id="frmmailtpl" name="frmmailtpl" class="form-box ui-formwizard" novalidate>
+										<div class="col-md-12">
+											<div class="form-group" show-errors>
+												<label>Template Name</label>
+												<input type="text" class="form-control" placeholder="Enter ..." id="tplname" name="tplname" ng-model="frmData.tplname" required>
+											</div><!-- /.form-group -->                  
+										</div><!-- /.col -->
+										<div class="col-md-12">
+											<div class="form-group" show-errors>
+												<label>Subject</label>
+												<input type="text" class="form-control" placeholder="Enter ..." id="subject" name="subject" ng-model="frmData.subject" required>
+											</div><!-- /.form-group -->                  
+										</div><!-- /.col -->
+										<div class="col-md-12">
+											<div class="form-group">
+												<label>Message</label>
+												<textarea ckeditor="editorOptions" name="content" id="content" ng-model="frmData.content"></textarea>
+											</div><!-- /.form-group -->                  
+										</div><!-- /.col -->
+										<div class="col-md-12">
+											<div class="form-group" show-errors>
+												<label>Template Key</label>
+												<input type="text" ng-disabled="isTemplateKeyDis" class="form-control" placeholder="Enter ..." id="tkey" name="tkey" ng-model="frmData.tkey" required>
+											</div><!-- /.form-group -->                  
+										</div><!-- /.col -->
+										<div class="box-footer pull-right">
+											<div class="btn-group">
+												<button class="btn btn-block btn-default save_but" type="submit" ng-click="saveMailtemplate()">
+												<i class="fa fa-check position_left"></i> Save</button>
+											</div>
+											<div class="btn-group">
+												<button class="btn btn-block btn-default reset_but" type="button" data-toggle="collapse" data-target="#tplList" data-parent="#accordion" ng-click="clearfrm();">
+												<i class="fa fa-times position_left"></i> Cancel</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="panel">
+				<div class="row collapse in" id="tplList"> 
+					<div id="header" class="col-sm-12 col-md-12 col-lg-12">
+						<div class="col-md-6">
+							<h4> Template List </h4>
+						</div>
+						<div class="col-md-6">
+							<label ng-hide="isAddButtonEnabled" class="btn btn-success pull-right" data-toggle="collapse" data-target="#createTpl" data-parent="#accordion"> Add Template </label>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div class="box box-primary">           
+							<div class="box-body usercreate-form">
+								<table ng-table="tableParams" show-filter="false" class="table table-bordered table-striped">
+									<tr ng-repeat="tplDet in $data track by $index">
+										<td data-title="'Title'" header-class="text-left" sortable="'first_name'">
+											{{tplDet.mailtpl_name}}
+										</td>
+										<td data-title="'Subject'" header-class="text-left" sortable="'last_name'">
+											{{tplDet.mailtpl_subject}}
+										</td>
+										<td data-title="'Key'" header-class="text-left" sortable="'email'">
+											{{tplDet.mailtpl_key}}
+										</td>
+										<td data-title="'Action'" ng-if="!isEditButtonEnabled">
+											<a href="javascript://" data-toggle="collapse" data-target="#createTpl" data-parent="#accordion" ng-click="editMailtpl(tplDet);" class="fa fa-pencil-square-o"></a>
+										</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    <script type="text/ng-template" id="close">
+        <div class="triangle"></div>
+        <div class="ns-popover-tooltip" style="width:240px;">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary active" ng-click="chgOpt('subject')">
+                <input type="radio" name="insOpt" id="insOptSub" data-ng-model="insOpt" autocomplete="off" checked value="'subject'" ng-click="chgOpt(value)"> Subject
+              </label>
+              <label class="btn btn-primary" ng-click="chgOpt('message')">
+                <input type="radio" name="insOpt" id="insOptMsg" data-ng-model="insOpt" autocomplete="off" value="'message'" > Message
+              </label>
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <select class="ac-select stateList" ac-model="selectedAV" ac-options="s.aKey for s in AvList" 
+    ac-settings="{ loadOnOpen: true, minWidth: '200px' }" ac-change="AVSelected(value)"></select>
+                </div>
+            </div>
+            <!--<div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="hidePopover()">Close</button>
+                </div>
+            </div>-->
+          
+        </div>
+    </script>
+</section>

@@ -1,0 +1,43 @@
+<div id="header" class="col-sm-12 col-md-12 col-lg-12">
+	<div class="col-md-6">
+		<h4> Action Item </h4>
+	</div>
+	<div class="col-md-6">
+		<label ng-disabled="isAddButtonEnabled" class="btn btn-success pull-right" data-toggle="collapse" data-target="#aiCreate" data-parent="#accordion"> Add Action Item </label>
+	</div>
+</div>
+
+<div class="col-sm-12 col-md-12 col-lg-12">
+	<div class="box box-primary">           
+	  <div class="box-body asses-overflow">
+	    <table ng-table="tableParams" show-filter="false" class="table table-bordered table-striped">
+	      <tr ng-repeat="aiDet in $data track by $index">
+	        <td data-title="'Title'" header-class="text-left" sortable="'meeting_title'">
+	          {{aiDet.meeting_title}}
+	        </td>
+	        <td data-title="'Notes'" header-class="text-left" sortable="'user_id_fk'">
+	          {{aiDet.user_id_fk}}
+	        </td>
+	        <td data-title="'Notes'" header-class="text-left" sortable="'ai_notes'">
+	          {{ aiDet.ai_notes | limitTo: 50 }}{{aiDet.ai_notes.length > 50 ? '...' : ''}}
+	        </td>
+	        <td data-title="'Event Start'" header-class="text-left" sortable="'start_date_time'">
+	          {{aiDet.due_date | date:'MM-dd-yyyy'}}
+	        </td>
+	        <td data-title="'Remainder'" header-class="text-left" sortable="'reminder_days'">
+	          {{aiDet.reminder_days}}
+	        </td>
+	        <td data-title="'Status'" header-class="text-left" sortable="'status'" ng-switch="aiDet.status">
+	          	<span ng-switch-when="0" class="label label-warning">Yet To Start</span>
+	            <span ng-switch-when="1" class="label label-danger">In Progress</span>
+	            <span ng-switch-when="2" class="label label-success">Completed</span>
+	        </td>
+	        <td data-title="'Action'" header-class="text-left">
+	          <a ng-if="aiDet.created_by == loggedUserDet.user_role_id_fk" href="javascript://" ng-disabled="isEditButtonEnabled" data-toggle="collapse" data-target="#createMom" data-parent="#accordion" ng-click="editActionItem(momDet);" class="fa fa-pencil-square-o"></a>
+	          <a href="javascript://" data-toggle="collapse" data-target="#aiCreate" data-parent="#accordion" class="fa fa-eye"></a>
+	        </td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+</div>

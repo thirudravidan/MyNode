@@ -1,0 +1,31 @@
+<style type="text/css">
+ .form-control-feedback {
+    width: 58px !important;
+}
+</style>
+<section class="content-header">
+  <h1> Action Item  </h1>          
+</section>
+
+
+<section class="content">
+  <div id="actionitemPage" class="box box-default boxdefault" ng-init="getAllUser(); Datainit('getActionItemByUser','i');">
+    <div class="box-body" id="accordion">
+      <div class="panel">
+        <div class="row collapse in" id="aiList">
+          <ng-include src="'tools/view/actionItemList.tpl.ejs'"></ng-include>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="row collapse" id="aiView">
+          <ng-include src="'tools/view/actionItemView.tpl.ejs'"></ng-include>    
+        </div>
+      </div>
+      <div class="panel">
+        <div class="row collapse" id="aiCreate">
+          <ng-include src="'tools/view/actionItemCreate.tpl.ejs'"></ng-include>    
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

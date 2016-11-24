@@ -1,0 +1,23 @@
+<div>
+<p>
+Welcome To Login</p>
+<div>
+<form action="/login" method="POST" id="login-form">
+<input type="hidden" value="<%= csrf%>" name="_csrf" id="_csrf" /> 
+		<fieldset>
+					<p>
+						<label for="login-username">username</label>
+						<input type="text" id="login-username" name="username" class="round full-width-input" autofocus />
+					</p>
+					<p>
+						<label for="login-password">password</label>
+						<input type="password" id="login-password" name="password" class="round full-width-input" />
+					</p>
+					<p> <a href="#">Forgot my password</a>.</p>
+					<p> <a style="color:#FF0000; padding-top:5px;"><%- message%></a></p>
+					<button class="button round blue image-right ic-right-arrow" style="border:none">LOG IN</button>
+		</fieldset>
+
+            </form>
+</div>
+</div>

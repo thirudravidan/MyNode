@@ -1,0 +1,145 @@
+<section class="content-header">
+    <h1> Org Chart 
+    <div class="pull-right">
+            <button type="button" ng-hide="isAddButtonEnabled || orgData.length == 0" style="width: 19vw;" class="btn btn-primary" e-required editable-text="frmTemp.templateName" onbeforesave="checkName($data, frmTemp)"> Save As Template </button>
+        </div>
+        </h1>
+
+</section>
+
+<section class="content" ng-init="Datainit();">
+    <script type="text/ng-template" id="tree_item_renderer.html">
+        <span > 
+        <img ng-src="{{golobalconfigs.downloadURL+data.profileurl}}" class="prof_img">
+        <button type="button" ng-hide="data.parent_id == 0 || isEditButtonEnabled" class="fa fa-remove close_org" ng-click="rmNode(data);"></button>
+
+        <div class="name_desig">{{data.name}} <br/>{{data.designation}}</div>
+
+            <span class="edit-org">
+                <button type="button" ng-hide="isEditButtonEnabled" class="fa fa-edit edit_org" ng-click="addNode('upd',data);"></button>
+                <button type="button" ng-hide="isAddButtonEnabled" class="fa fa-user-plus prof_org" ng-click="addNode('ins',data);"></button>                
+                
+                <button type="button" class="fa fa-envelope mail_org" ng-click="openmail(data.email)" data-toggle="tooltip" data-placement="right" data-original-title="{{data.email}}"></button>
+            </span>
+        </span> 
+
+        <ul ng-show="data.children.length > 0">
+            <li ng-repeat = "data in data.children" level="{{data.level}}" ng-include= "'tree_item_renderer.html'">
+                <a href="javascript:void(0);"> {{data.name}} <br/>{{data.designation}} 
+                    <span class="edit-org">
+                        <button type="button" ng-hide="isEditButtonEnabled" class="fa fa-edit" ng-click="addNode('upd',data);"></button>
+                        <button type="button" ng-hide="isAddButtonEnabled" class="fa fa-user-plus" ng-click="addNode(data);"></button>
+                         <button type="button" ng-hide="isEditButtonEnabled" class="fa fa-remove close_org" ng-click="rmNode(data, $index);"></button>
+                    </span>
+                </a> 
+            </li>
+        </ul>
+    </script>
+    <!-- <a href="mailto:{{data.email}}" ></a> -->
+    <div class="box box-default boxdefault" >
+        <div class="box-body org-overflow" >
+          <div id="demo" ng-show="isshoworgchart" class="showcase scrollTo-demo">
+           <div class="orgcontent demo-yx">  
+                <div id="orgtree"  class="tree">
+                  <p>
+                    <ul>
+                        <li ng-repeat="data in orgData" level="{{data.level}}" ng-include="'tree_item_renderer.html'"></li>
+                    </ul>
+             </p>
+                </div>
+            </div>
+            </div>
+           
+       
+        <div id="orgcreate" ng-show="isshowTemplate" class="col-md-12">            
+            <div class="modal-body">
+                <form id="fromTemp" name="fromTemp" action="" method="post" class="form-box ui-formwizard" novalidate>
+                    <div>
+                        <div class="box-header with-border mar_bottom no-padding"><h4> Create Root Hierarchy </h4></div>
+                        <div class="col-md-4 mar_bottom form-group" show-errors>
+                        <label for="recipient-name" class="control-label">Template Name:</label>
+                        <select ng-disabled = "frmTemp.templates.length == 0" class="form-control" placeholder="Template Name" id="templateName" name="templateName" ng-model="frmTemp.tpl" ng-options="tpl.tpl_id_pk as tpl.tpl_name for tpl in frmTemp.templates" required>
+                            <option value="">--Select--</option>
+                        </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-12">
+            <div class="modal-footer">                
+                <button type="button" class="btn btn-primary" ng-disabled = "frmTemp.templates.length == 0" ng-click="loadTemplate(frmTemp)">Load Template</button>
+                <button type="button" class="btn btn-primary" ng-click="createNode()">Create New Template</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Org Chart</h4>
+            </div>
+            <div class="modal-body">
+                <form id="createOrg" name="createOrg" action="" method="post" class="form-box ui-formwizard" novalidate>
+                    <div class="form-group" show-errors>
+                        <label for="recipient-name" class="control-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" ng-model="frmData.name" required>
+                    </div>
+                    <div class="form-group" show-errors>
+                        <label for="message-text" class="control-label">Designation:</label>
+                        <input type="text" class="form-control" id="designation" name="designation" ng-model="frmData.designation" required>
+                    </div>
+                    <div class="form-group"  show-errors>
+                        <label>Email</label>
+                        <!-- ng-disabled="isEmail" -->
+                        <input  class="form-control" type="email" placeholder="Email" id="email" name="email" ng-model="frmData.email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Profile Image</label>
+                        <div class="overlay-layer"><i class="fa fa-cloud-upload"></i></div>
+                        <input type="file" class="upload_btn" ng-model="profPic" ngf-select="uploadImg($file)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                        <span ng-show="isInvalidFile">Invalid file format</span>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="saveNode()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Template Page Modal -->
+<!-- <div class="modal fade" id="tplModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Template</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Template Name:</label>
+                        <select class="form-control" placeholder="Template Name" id="templateName" name="templateName" ng-model="frmTemp.tpl" ng-options="tpl.tpl_id_pk as tpl.tpl_name for tpl in frmTemp.templates" required>
+                            <option value="">--Select--</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="loadTemplate(frmTemp)">Load Template</button>
+                <button type="button" class="btn btn-primary" ng-click="createNode()">Create New Template</button>
+            </div>
+        </div>
+    </div>
+</div> -->

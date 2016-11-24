@@ -1,0 +1,84 @@
+<style type="text/css">
+	
+</style>
+<section class="content-header">
+	<h1>File Repository</h1>          
+</section>
+<section class="content">
+ <div id="fileRepoPage" class="box box-default boxdefault" ng-init="getTaskDetails()">           
+	<div class="box-body">
+		<div class="row">
+			<div class="col-md-4">
+				<h4> Task Lists </h4>
+				<div class="box box-primary">           
+					<div class="box-body asses-overflow">
+				 <div
+				    data-angular-treeview="true"
+				    data-tree-id="abc"
+				    data-tree-model="treedata"
+				    data-node-id="TaskID"
+				    data-node-label="TaskName"
+				    data-node-children="children" >
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8">
+	
+		<!---->
+			<div class="box-header">
+                  <h3 class="box-title">Attachment</h3>
+                  <div class="box-tools col-md-6 no-padding">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" ng-model="searchkey" placeholder="Search" class="form-control input-sm pull-right" name="table_search">
+                      <div class="input-group-btn">
+                        <button type="submit" ng-click="doSearch();" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+			<!----> 
+		<div class="box box-success">   
+		      
+			
+			<div class="box-body asses-overflow pad-rght30">
+	             <div class="row">
+	             <div ng-repeat="attachDet in attachmentDetails" ng-show = "attachmentDetails.length > 0" >
+	                <div class="col-md-6 mar_bottom">
+	                 
+							      <div class="box box-solid box-info">
+							        <div class="box-header">
+							          <h3 class="box-title">{{attachDet.FileName}}</h3>
+							        </div><!-- /.box-header -->
+							        <div class="box-body">
+							          <div class="row">
+								          <div class="col-md-8">
+								          		<span class="description-header">File Size : </span>
+						                        <span class="description-text">{{attachDet.FileSize}}</span>
+
+							                        <div class="col-md-12 no-padding fnt-size">	                        	
+							                        	<a target="_self" href="{{HostingURL+attachDet.FilePath+attachDet.TempFileName}}" download="{{attachDet.TempFileName}}"><i class="fa fa-cloud-download"></i></a> 
+							                        </div>
+								          </div>
+								          <div class="col-md-4">
+								         		 <div class="text-center"><h3 style="margin:0;padding:0;"><img ng-src="{{HostingURL+attachDet.profilepicurl}}" class="user-image" alt="User Image"></h3></div>
+						                        <div class="text-center"><p>{{attachDet.UploadedBy}}</p></div>
+						                        <div class="text-center"><p>{{attachDet.UploadedDate | date:'dd-MM-yyyy HH:mm:ss'}}</p></div>
+								          </div>
+							          </div>
+							        </div><!-- /.box-body -->
+							      </div><!-- /.box -->
+							    
+	                  </div>
+	                </div>
+	                <div class="col-md-12"  ng-hide = "attachmentDetails.length > 0"> No Attachment Available</div>
+	              </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- /.box -->
+</div>
+</section>

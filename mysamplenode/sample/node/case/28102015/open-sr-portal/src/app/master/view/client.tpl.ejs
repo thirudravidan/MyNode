@@ -1,0 +1,172 @@
+<section class="content-header">
+          <h1>
+             Client
+          </h1>
+</section>
+<section class="content">
+  <div id="clientPage" class="box box-default boxdefault" ng-init="Datainit('getclientUnit')">
+    <div class="box-body" id="accordion">
+      <div class="panel">
+        <div class="row collapse" id="createUser">
+          <div class="col-md-12">
+       <form id="clientform" name="clientform" class="form-horizontal form-box ui-formwizard client-form col-md-12" novalidate>
+        <div class="row">
+         
+           <div class="col-md-6 client-form" show-errors>         
+              <label>Client Name</label>
+              <input type="text" class="form-control" placeholder="Enter ..." id="clientname" name="clientname" ng-model="frmData.clientname" required> 
+            </div><!-- /.col -->
+            <div class="col-md-12 mar_bottom" >
+              <div class="col-md-12 no-padding box-header with-border">
+                  <h3>Address</h3>
+              </div>
+            </div>
+            
+            <div class="col-md-6 mar_bottom" show-errors>                  
+                    <label>Street</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientstreet" name="clientstreet" ng-model="frmData.clientstreet" required>                   
+            </div><!-- /.col -->
+            <div class="col-md-6 mar_bottom" show-errors>                
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientcity" name="clientcity" ng-model="frmData.clientcity" required>                                  
+            </div><!-- /.col -->
+            <div class="col-md-6 mar_bottom" show-errors>                
+                    <label>State</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientstate" name="clientstate" ng-model="frmData.clientstate" required>                                 
+            </div><!-- /.col -->
+            <div class="col-md-6 mar_bottom" show-errors>                  
+                    <label>Country</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientcountry" name="clientcountry" ng-model="frmData.clientcountry" required>                             
+            </div><!-- /.col -->
+            <div class="col-md-6" show-errors>                
+                    <label>Location</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientlocation" name="clientlocation" ng-model="frmData.clientlocation" required>                              
+            </div><!-- /.col -->
+            
+            <div class="col-md-12 mar_bottom" >
+              <div class="col-md-12 no-padding box-header with-border">
+                    <h3>Contact</h3>
+              </div>
+            </div>
+            
+            <div class="col-md-4" show-errors>
+               
+                    <label>Phone Number</label>
+                    <input type="text" maxlength="10" class="form-control" placeholder="Enter ..." id="clientphone" name="clientphone" ng-model="frmData.clientphone" required>
+                            
+                </div><!-- /.col -->
+                <div class="col-md-4" show-errors>    
+                    <label>Fax Number</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientfax" name="clientfax" ng-model="frmData.clientfax" required>                             
+                </div><!-- /.col -->
+                <div class="col-md-4" show-errors>              
+                    <label>Email ID</label>
+                    <input type="email" class="form-control" placeholder="Enter ..." id="clientemailid" name="clientemailid" ng-model="frmData.clientemailid" required>                                  
+                </div><!-- /.col -->
+                
+                <div class="col-md-12 mar_bottom" show-errors>
+                  <div class="col-md-12 no-padding box-header with-border">
+                        <h3>Whom to contact</h3>
+                  </div>
+                </div>
+           
+                <div class="col-md-4" show-errors>           
+                    <label>Contact Person Name</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientcontactperson" name="clientcontactperson" ng-model="frmData.clientcontactperson" required>                            
+                </div><!-- /.col -->
+                <div class="col-md-4" show-errors>                
+                    <label>Contact Person Designation</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientcontactpersondesignation" name="clientcontactpersondesignation" ng-model="frmData.clientcontactpersondesignation" required>                             
+                </div><!-- /.col -->
+                <div class="col-md-4" show-errors>                 
+                    <label>Remarks</label>
+                    <input type="text" class="form-control" placeholder="Enter ..." id="clientremarks" name="clientremarks" ng-model="frmData.clientremarks" required>                        
+                </div><!-- /.col -->
+
+                <div class="box-footer col-md-12">                          
+                    <div class="btn-group">
+                      <button class="btn btn-block btn-default save_but" type="submit" ng-click="createClient()">
+                      <i class="fa fa-check position_left"></i> Save
+                       </button>
+                    
+                              </div>
+                              <div class="btn-group">
+                                <button class="btn btn-block btn-default cancel_but" type="submit" ng-click="clearfrm()" data-toggle="collapse" data-target="#userList" data-parent="#accordion">
+                                <i class="fa fa-times position_left"></i> Cancel
+                                </button>              
+                   
+                              </div> 
+                             
+                </div><!-- /.box-footer -->
+        </div>
+        </form>
+      </div>
+      </div>
+      </div>
+      <div class="panel">
+       
+           <div class="row collapse in" id="userList">
+              <div id="header" class="col-sm-12 col-md-12 col-lg-12">
+              <div class="col-md-6 no-padding">
+                <h4> Client List </h4>
+              </div>
+              <div class="col-md-6 no-padding">
+                <label ng-hide="isAddButtonEnabled" class="btn btn-success pull-right" data-toggle="collapse" data-target="#createUser" data-parent="#accordion"> Add Client </label>
+              </div>
+            </div>
+           <div class="col-md-12">         
+                <div class="col-md-12 client-overflow no-padding">
+                  <table id="tblClient" ng-table="tableClient" show-filter="false" class="table table-bordered table-striped box box-success">
+                    <tr ng-repeat="unitDet in $data track by $index">
+                      <td data-title="'Client Name'" header-class="text-left" sortable="'client_name'">
+                        {{unitDet.client_name}}
+                      </td>
+                       <td data-title="'Street'" header-class="text-left" sortable="'client_street'">
+                        {{unitDet.client_street}}
+                      </td>
+                       <td data-title="'Location'" header-class="text-left" sortable="'client_location'">
+                        {{unitDet.client_location}}
+                      </td>
+                      <td data-title="'City'" header-class="text-left" sortable="'client_city'">
+                        {{unitDet.client_city}}
+                      </td>
+                       <td data-title="'State'" header-class="text-left" sortable="'client_state'">
+                        {{unitDet.client_state}}
+                      </td>
+                        <td data-title="'Country'" header-class="text-left" sortable="'client_country'">
+                        {{unitDet.client_country}}
+                      </td>
+                       <td data-title="'Phone'" header-class="text-left" sortable="'client_phone'">
+                        {{unitDet.client_phone}}
+                      </td>
+                       <td data-title="'Fax'" header-class="text-left" sortable="'client_fax'">
+                        {{unitDet.client_fax}}
+                      </td>
+                         <td data-title="'Email id'" header-class="text-left" sortable="'client_emailid'">
+                        {{unitDet.client_emailid}}
+                      </td>
+                        <td data-title="'Contact Person'" header-class="text-left" sortable="'client_contact_person'">
+                        {{unitDet.client_contact_person}}
+                      </td>
+                       <td data-title="'Designation'" header-class="text-left" sortable="'client_contact_person_designation'">
+                        {{unitDet.client_contact_person_designation}}
+                      </td>
+                       <td data-title="'Remarks'" header-class="text-left" sortable="'client_remarks'">
+                        {{unitDet.client_remarks}}
+                      </td>
+                      <td data-title="'Action'" ng-if="!isEditButtonEnabled">
+                    <a href="javascript://"  ng-click="editUnit(unitDet)" class="fa fa-pencil-square-o" data-toggle="collapse" data-target="#createUser" data-parent="#accordion"></a>
+                    </td>
+                    </tr>
+                  </table>
+                </div>     
+                </div>
+                </div>
+           </div>
+      </div><!-- /.box-body -->
+    </div> 
+  </div><!-- /.box -->
+</section>
+
+
+

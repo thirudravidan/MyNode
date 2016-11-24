@@ -1,0 +1,576 @@
+<style type="text/css">
+  /* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 2px;
+  width: 17px; height: 17px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 3px; left: 4px;
+  font-size: 18px;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 1px dotted blue;
+}
+
+.content {
+    min-height: 550px;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #4778d9!important;
+}
+
+.box-widget {
+   /* width: 600px !important;*/
+}
+
+p {
+  padding: 5px 0 2px 8px !important;
+}
+
+.form-control-feedback {
+    width: 53px !important;
+}
+
+.active {
+  color: #dd4b39;
+}
+
+.tabz.tab-menu {
+  display:inline-block;
+  padding:1%;
+}
+
+.tabz {
+  list-style: none;
+}
+
+.box-comments .comment-text {
+    margin: 8px 7px !important;
+} 
+
+
+
+.attendess{
+  width: 500px;
+  margin: 20px auto 0 auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.category{
+  background-color: #ff4b46;
+  height: 60px;
+  line-height: 60px;
+  font-size: 25px;
+  padding-left: 20px;
+  color: white;
+}
+
+.sortable{
+  list-style-type: none;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.handle:hover{
+  cursor: move;
+}
+
+.sortable li{
+  background-color: white;
+  font-size: 18px;
+  line-height: 40px;
+  height: 40px;
+  padding: 11px 0 11px 20px;
+  margin-bottom: 2px;
+}
+
+li i.handle{
+  float:right;
+  line-height: 40px;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+input[type="checkbox"] { 
+  position: absolute;
+  opacity: 0;
+}
+
+/* Normal Track */
+input[type="checkbox"].ios-switch + div {
+  vertical-align: middle;
+  width: 40px;  height: 20px;
+  border: 1px solid rgba(0,0,0,.4);
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: .4s;
+  -webkit-transition-property: background-color, box-shadow;
+  box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
+}
+
+/* Checked Track (Blue) */
+input[type="checkbox"].ios-switch:checked + div {
+  width: 40px;
+  background-position: 0 0;
+  background-color: #3b89ec;
+  border: 1px solid #0e62cd;
+  box-shadow: inset 0 0 0 10px rgba(59,137,259,1);
+}
+
+/* Tiny Track */
+input[type="checkbox"].tinyswitch.ios-switch + div {
+  width: 34px;  height: 18px;
+}
+
+/* Big Track */
+input[type="checkbox"].bigswitch.ios-switch + div {
+  width: 50px;  height: 25px;
+}
+
+/* Green Track */
+input[type="checkbox"].green.ios-switch:checked + div {
+  background-color: #00e359;
+  border: 1px solid rgba(0, 162, 63,1);
+  box-shadow: inset 0 0 0 10px rgba(0,227,89,1);
+}
+
+/* Normal Knob */
+input[type="checkbox"].ios-switch + div > div {
+  float: left;
+  width: 18px; height: 18px;
+  border-radius: inherit;
+  background: #ffffff;
+  -webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: transform, background-color, box-shadow;
+  -moz-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+  -moz-transition-duration: 0.4s;
+  -moz-transition-property: transform, background-color;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
+/* Checked Knob (Blue Style) */
+input[type="checkbox"].ios-switch:checked + div > div {
+  -webkit-transform: translate3d(20px, 0, 0);
+  -moz-transform: translate3d(20px, 0, 0);
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Tiny Knob */
+input[type="checkbox"].tinyswitch.ios-switch + div > div {
+  width: 16px; height: 16px;
+  margin-top: 1px;
+}
+
+/* Checked Tiny Knob (Blue Style) */
+input[type="checkbox"].tinyswitch.ios-switch:checked + div > div {
+  -webkit-transform: translate3d(16px, 0, 0);
+  -moz-transform: translate3d(16px, 0, 0);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Big Knob */
+input[type="checkbox"].bigswitch.ios-switch + div > div {
+  width: 23px; height: 23px;
+  margin-top: 1px;
+}
+
+/* Checked Big Knob (Blue Style) */
+input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
+  -webkit-transform: translate3d(25px, 0, 0);
+  -moz-transform: translate3d(16px, 0, 0);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Green Knob */
+input[type="checkbox"].green.ios-switch:checked + div > div {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 162, 63,1);
+}
+.user-block .username, .user-block .description, .user-block .comment {
+    margin-left: 0px !important;
+}
+.ait {
+  background: #f4f4f4 none repeat scroll 0 0;
+    /*border-radius: 15px;*/
+border-radius: 4px;    
+border: 3px solid #f0edf0;
+    padding: 5px 0 8px;
+    font-size: 11.5px;
+}
+
+/**/
+#DivForHoverItem {
+    
+}
+
+#HiddenText {
+    display: none;
+}
+
+#DivForHoverItem:hover #HiddenText {
+     bottom: 16px;
+    display: block;
+    position: absolute;
+    right: 12px;
+    width: 15%;
+}
+
+.tagz {
+   margin-left:5px; 
+
+}
+
+.comment-text {
+    margin: 1px 10px;
+}
+.username {
+    font-size: 13px !important;
+}
+
+</style>
+
+
+<div class="asses-overflow pad-rght30">
+<section class="content" id="recurimentLess">
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="box-body">
+      <!-- Action View -->
+
+        <div class="box box-widget">  
+          <div class="box-header without-border">
+            <br>
+            <div class="user-block">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Title</label>
+                  {{momDetails.meeting_title}}
+                </div>
+              </div> 
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Location</label>
+                  {{momDetails.meeting_location}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">In Time</label>
+                  {{momDetails.start_date_time | date:'MM-dd-yyyy HH:MM'}}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Out Time</label>
+                  {{momDetails.start_date_time | date:'MM-dd-yyyy HH:MM'}}
+                </div>
+              </div> 
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Agenda</label>
+                  {{momDetails.comments}}
+                </div>
+              </div> 
+            </div> 
+          </div>
+          <!-- Action View -->
+        </div>
+      </div>
+    </div>
+
+    <div class="row" >   
+      <div class="col-md-8 ng-scope">
+        <div class="col-md-11"></div>
+        <div style="clear:both;"></div>
+        <div class="">
+        <div class="col-md-12 no-padding">
+          <div ng-app="tabs">
+            <section ng-controller="PanelController as panel">
+              <ul class="tab-triggers">
+                <li class="tabz tab-menu" ng-class="{ active:panel.isSelected(1) }" ng-click="panel.selectTab(1)"><i class="fa fa-play"></i> Minutes of Meeting</li>
+                <li class="tabz tab-menu" ng-class="{ active:panel.isSelected(2) }" ng-click="panel.selectTab(2)"><i class="fa fa-play"></i> Action Item</li>
+              </ul>
+              <ul class="panelz">
+                <li class="tabz" class="panel" ng-show="panel.isSelected(1)">
+                <!-- Notes -->
+                  <div class="box box-widget">
+                    <div class="box-header with-border">
+                      <div class="user-block">
+                        <span class="username">
+                          <a href="javascript://">Minutes of Meeting</a>
+                        </span>
+                        <span class="description">Shared publicly - 7:30 PM Today</span>
+                      </div>
+                    </div>
+                    <div class="box-comments">
+                      <div class="box-comment" ng-repeat="momDis in momDetails.discussion">
+                        <div class="comment-text">
+                          <span class="username">
+
+                          </span>
+                          {{momDis}}
+                        </div>
+                      </div>
+
+                      <div class="box-footer">
+                        <form method="post" action="#">
+                          <div class="input-group margin">
+                            <input class="form-control" type="text" name="discussNotes" id="discussNotes" ng-model="frmDiscuss.discussNotes">
+                            <span class="input-group-btn">
+                              <button ng-disabled="isEditButtonEnabled" class="btn btn-info btn-flat" type="button" ng-click="updateMomDiscusss(momDetails.meeting_mas_id_pk)">Enter</button>
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </li><!-- Notes -->
+
+                <li id="calenderPanel" class="tabz panel" ng-show="panel.isSelected(2)">
+                  <!-- Action Item -->
+                  <form id="frmActionItem" name="frmActionItem" class="form-box ui-formwizard" novalidate>
+                  <div class="box box-widget">  
+                    <div class="box-header without-border">
+                      <div class="user-block">
+                        <span class="username">
+                        <a href="javascript://">Action Item</a>
+                        </span>
+                        <span class="description">Tasks Alloted</span>
+                      </div>
+                      <div class="form-group" show-errors>
+                        <textarea class="form-control" placeholder="Enter ..." rows="3" ng-model="frmAIData.ainotes" id="ainotes" name="ainotes" required></textarea>
+                      </div>
+                    </div>             
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th style="width:20%">Due Date</th>
+                          <th>Status</th>
+                          <th style="width:10%">Reminder</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="form-group" show-errors>
+                              <tags-input ng-model="frmAIData.userId" max-tags="1" id="aiuserId" name="aiuserId" display-property="name" enforce-max-tags>
+                                <auto-complete source="loadUser($query)" min-length="0" debounce-delay="0"></auto-complete>
+                              </tags-input>
+								<!-- <select ng-model="frmAIData.userId" id="aiuserId" name="aiuserId" class="form-control" ng-options="usrDet.id as usrDet.name for usrDet in userList" required>
+									<option value="">Select</option>
+								</select> -->
+                            </div>
+                          </td>
+                          <td>
+                            <div class="input-group" show-errors>
+                              <span class="input-group-addon">
+                                <i class="fa fa-fw fa-calendar-check-o"></i>
+                              </span>
+                              <input calendar class="form-control dtpicker" type="text" placeholder="Date" id="aidue_date" name="aidue_date" ng-model="frmAIData.due_date" required>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group" show-errors>
+                              <select class="form-control" ng-model="frmAIData.status" id="aistatus" name="aistatus" ng-options="key as value for (key , value) in statuses" required>
+                                <option value="">Select</option>
+                              </select>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group" show-errors>
+                              <input class="form-control" type="number" ng-model="frmAIData.remainder" id="airemainder" name="airemainder" required>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <button ng-disabled="isAddButtonEnabled" class="btn btn-primary" type="submit" ng-click="saveActionItem(momDetails.meeting_mas_id_pk,frmActionItem)">Submit</button>     
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              	  </form>
+                  <!-- Action Item -->
+                  <br>
+                  <!-- Action View -->
+                  <div class="box box-widget " ng-repeat="aiRow in actionitemData">  
+                    <div class="box-header without-border">
+                    <div id="DivForHoverItem">
+                      <div class="user-block ait">
+                        <div class="comment-text">
+                       
+                          <span class="username">
+                            <span class="text"><strong>Assigned to </strong>  <small class="label label-default">{{getBindData(aiRow.user_id_fk,'user')}} </small></span>
+                            <span class="text-muted pull-right">{{aiRow.due_date | date:'MM-dd-yyyy'}}
+                            <small class="label label-success">
+                            <i class="fa fa-clock-o"></i>
+                            {{getBindData(aiRow.status,'status')}}
+                            </small></span>
+
+                          </span>
+                          {{aiRow.ai_notes}}
+                        </div>
+                        <br>
+                        <small class="label label-danger pull-left tagz">
+                        <i class="fa fa-clock-o"></i>
+                        {{aiRow.reminder_days}} days remaining
+                        </small>
+                         <a class="name pull-right" href="javascript://">
+                         
+                              <div id="HiddenText">
+                                
+                                 <small class="text-muted">
+                                    <div class="btn-group meeting-item-content-actions btn-group-sm">
+                                  <button ng-disabled="isEditButtonEnabled" class="btn btn-white meeting_content_edit_btn" data-original-title="Edit" type="button" data-toggle="tooltip" data-placement="bottom" value="1" title="Edit" ng-click="editActionItem(aiRow,$index);">
+                                  <i class="fa fa-pencil"></i>
+                                  </button>
+                                  <button ng-disabled="isAddButtonEnabled" class="btn btn-white task_comment_btn" data-original-title="Comment" type="button" data-toggle="tooltip" data-placement="bottom" value="2" title="Comment">
+                                  <i class="fa fa-comment-o"></i>
+                                  </button>
+                                  <button ng-disabled="isEditButtonEnabled" class="btn btn-white meeting_content_delete_btn" rel="2" data-original-title="Delete" type="button" data-toggle="tooltip" data-placement="bottom" value="3" title="Delete">
+                                  <i class="fa fa-trash-o"></i>
+                                  </button>
+                                  </div>
+                                    </small>
+                              </div>
+                     
+                      
+                        &nbsp;&nbsp;&nbsp;
+                        </a>
+                      </div>
+                      </div>
+                    </div> 
+                  </div>
+                  <!-- Action View -->
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <br><br> 
+      <div class="box box-widget"> 
+        <div class="box-header with-border">
+          <div class="user-block">
+            <span class="username">
+            <a href="javascript://">Attendees</a>
+            </span>
+            <span class="description">People present for the Meeting</span>
+          </div>
+        </div>
+
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th>Attendees{{pjoinee}}</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="arrRow in momDetails.t2">
+              <td>{{getBindData(arrRow.user_id_fk,'user')}}</td>
+              <td ng-switch="arrRow.present"> 
+                <span ng-switch-when="1">
+                  <a href="javascript://" ng-disabled="isEditButtonEnabled" ng-click="setPresent(0,arrRow.meeting_joinee_id_pk,$index)"><i class="fa fa-check" style="color:green"></i></a>
+                </span>
+                <span ng-switch-when="0">
+                  <a href="javascript://" ng-disabled="isEditButtonEnabled" ng-click="setPresent(1,arrRow.meeting_joinee_id_pk,$index)"><i class="fa fa-times" style="color:red"></i></a>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"> 
+                <div class="input-group margin col-md-12">
+                  <tags-input ng-model="frmJoinee.userids" display-property="name" add-from-autocomplete-only="true" min-tags="1" max-tags="1" allow-leftover-text="false" placeholder="-">
+                    <auto-complete source="loadUser($query)" min-length="0" debounce-delay="0"></auto-complete>
+                  </tags-input>
+                  <span class="input-group-btn">
+                  <button ng-disabled="isEditButtonEnabled" class="btn btn-success btn-flat" type="button" ng-click="addJoinee(momDetails.meeting_mas_id_pk);">Add</button>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="row">
+   <div class="col-md-12">
+      <div class="box-footer">
+        <div class="btn-group">
+            <button class="btn btn-block btn-default save_but" ng-click="Datainit('getMOMmeeting','i');" type="button"  data-toggle="collapse" data-target="#momList" data-parent="#accordion">
+            <i class="fa fa-check position_left"></i>Back</button>
+        </div>
+        <!-- <div class="btn-group">
+            <button class="btn btn-block btn-default reset_but" type="button">
+            <i class="fa fa-times position_left"></i>Cancel</button>
+        </div>
+      </div> -->
+  </div>
+</div>
+</div>
+

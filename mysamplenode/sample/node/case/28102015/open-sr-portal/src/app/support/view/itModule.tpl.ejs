@@ -1,0 +1,212 @@
+<section class="content-header">
+  <h1>
+        IT Resource Plan Request Form
+  </h1>          
+</section>
+<section class="content">
+<div id="itmodulePage" class="box box-default boxdefault client-overflow pad-rght30" ng-init="getTimezone(); Datainit('getItmodule','i')"> 
+  <div class="box-body">
+    <div class="row">
+      <form id="frmItmodule" name="frmItmodule" action="" method="post" class="form-box ui-formwizard" novalidate>
+      <div class="col-md-12 mar_bottom">
+        <h4> General </h4>
+        <div class="box box-primary">           
+          <div class="box-body">
+            <div class="col-md-12">
+              <div class="col-md-3">
+                <div class="form-group" show-errors> 
+                  <label>Account Manager</label>
+                  <input type="text" class="form-control" name="account_manager" id="account_manager" ng-model="frmData.account_manager" placeholder="Enter ..." required  />
+                </div>             
+              </div><!-- /.col -->
+              <div class="col-md-3">
+                <div class="form-group" show-errors>
+                  <label>Final Version</label>
+                  <input type="text" class="form-control" name="final_version" id="final_version" ng-model="frmData.final_version" placeholder="Enter ..." required />
+                </div>           
+              </div><!-- /.col -->
+              <div class="col-md-3">
+                <div class="form-group" show-errors>  
+                  <label>Work Time Zone</label>
+                  <select ng-disabled="isUserUpdate" class="form-control" placeholder="Time Zone" id="timezone_id_fk" name="timezone_id_fk" ng-model="frmData.timezone_id_fk" ng-options="tzone.timezone_id_pk as tzone.timezone_name for tzone in tzoneData" required>
+                    <option value="">--Select--</option>
+                  </select>
+                </div>             
+              </div><!-- /.col -->
+              <div class="col-md-3">
+                <div class="form-group" show-errors>
+                  <label>Expected Date of Roll Out</label>
+                  <input calendar type="text" class="form-control" name="roll_out_date" id="roll_out_date" ng-model="frmData.roll_out_date" placeholder="Enter ..." required>
+                </div>         
+              </div><!-- /.col -->                                            
+            </div> 
+
+            <div class="col-md-12">
+              <div class="col-md-12"><h3>Location</h3></div>
+              <div class="col-md-3">
+                <div class="form-group" show-errors>
+                  <label>Location of Operation</label>
+                  <input type="text" class="form-control" name="location" id="location" ng-model="frmData.location" placeholder="Enter ..." required>
+                </div>             
+              </div><!-- /.col -->
+            </div>
+
+            <div class="col-md-12">
+              <div class="col-md-12"><h3>Man Power</h3></div>
+              <div class="col-md-3">   
+                <div class="form-group" show-errors>      
+                  <label>No. of Positions</label>
+                  <input type="number" class="form-control" name="no_of_postion" id="no_of_postion" ng-model="frmData.no_of_postion" placeholder="Enter ..." required>
+                </div><!-- /.form-group --> 
+              </div>
+              <div class="col-md-5">    
+                <div class="form-group" show-errors>       
+                  <label>Employee Name / Employee ID / Email ID / Seat ID</label>
+                  <input type="text" class="form-control" name="emp_details" id="emp_details" ng-model="frmData.emp_details" placeholder="Enter ..." required> 
+                </div>   
+              </div><!-- /.form-group -->                 
+            </div><!-- /.col -->
+             
+
+            <div class="col-md-12">
+              <div class="col-md-12"><h3>Hardware & Software</h3></div>
+              <div class="col-md-3">
+                <div class="form-group" show-errors>
+                  <label>Number of Seats</label>
+                  <input type="number" class="form-control" name="hs_no_of_seat" id="hs_no_of_seat" ng-model="frmData.hs_no_of_seat" placeholder="Enter ..." required>
+                </div><!-- /.form-group --> 
+              </div>
+              <div class="col-md-3"> 
+                <div class="form-group" show-errors>               
+                  <label>Systems</label>
+                  <input type="number" class="form-control" name="hs_no_of_systems" id="hs_no_of_systems" ng-model="frmData.hs_no_of_systems" placeholder="Enter ..." required>
+                </div><!-- /.form-group -->                  
+              </div><!-- /.col -->
+            </div>
+
+                               
+              </div><!-- /.col -->
+            </div>
+          </div>
+      
+      </form>
+
+      <div class="col-md-12 mar_bottom" ng-repeat="catList in itCat">
+        <div class="col-md-11"><h4> {{catList.itrrf_ctgy_name}} </h4></div>
+        <div class="col-md-1"><button ng-disabled="isAddButtonEnabled" class="btn btn-default" ng-click="addItTrans($index,headList.idt_itrrf_trans_mas_id_pk,catList.itrrf_ctgy_id_pk)"><span class="glyphicon glyphicon-plus-sign"></span>Add</button></div>
+        <div style="clear:both;"></div>
+        <div class="box box-primary">           
+          <div class="box-body">
+            <table class="table table-bordered table-hover table-condensed">
+              <tr style="font-weight: bold">
+                <th width="30%">Name</th>
+                <th>Description</th>
+                <th>Remarks</th>
+                <th width="10%">Action</th>
+              </tr>
+              <tr ng-repeat="rowDet in headList.t2 | filter:{itrrf_ctgy_id_fk: catList.itrrf_ctgy_id_pk}">
+                <td>
+                  <span onbeforesave="checkValid($data)" editable-text="rowDet.itrrf_subctgy_name" e-name="itrrf_subctgy_name" e-form="rowform" e-required>
+                    {{ rowDet.itrrf_subctgy_name }}
+                  </span>
+                </td>
+                <td>
+                  <span onbeforesave="checkValid($data)" editable-text="rowDet.itrrf_trans_desc" e-name="itrrf_trans_desc" e-form="rowform" e-required>
+                    {{ rowDet.itrrf_trans_desc }}
+                  </span>
+                </td>
+                <td>
+                  <span onbeforesave="checkValid($data)" editable-text="rowDet.itrrf_trans_remarks" e-name="itrrf_trans_remarks" e-form="rowform" e-required>
+                    {{ rowDet.itrrf_trans_remarks }}
+                  </span>
+                </td>
+                <td nowrap>
+                  <!-- form -->
+                  <form editable-form name="rowform" onbeforesave="saveItmodultTrans($data,headList.idt_itrrf_trans_mas_id_pk, catList.itrrf_ctgy_id_pk, rowDet.itrrf_trans_id_pk, $index)" oncancel="cancelNewRow(rowDet.itrrf_trans_id_pk)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rowDet">{{$data}}
+                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary fa fa-floppy-o"></button>
+                    <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default fa fa-times"></button>
+                  </form>
+                  <div class="buttons" ng-show="!rowform.$visible">
+                    <button  ng-disabled="isEditButtonEnabled"class="btn btn-primary fa fa-pencil-square-o" ng-click="rowform.$show()"></button>
+                    <button ng-disabled="isEditButtonEnabled" class="btn btn-danger fa fa-trash" ng-click="removeItTrans(rowDet.itrrf_trans_id_pk)"></button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+  <div class="box-footer pull-right">                          
+                  <div class="btn-group">
+                    <button ng-disabled="isAddButtonEnabled" class="btn btn-block btn-default save_but" type="submit" ng-click="saveItmodule()">
+                    <i class="fa fa-check position_left"></i> Save
+                    </button>
+                  </div>
+                  <div class="btn-group">
+                    <button class="btn btn-block btn-default cancel_but" type="submit" ng-click="clearfrm()">
+                    <i class="fa fa-times position_left"></i> Cancel
+                    </button>
+                  </div>
+                </div><!-- /.box-footer -->
+    </div><!-- /.row -->    
+  
+  </div><!-- /.box -->          
+     
+</section>
+
+<script>
+$(document).ready(function () {
+    //$(document).ready(function () {
+
+       
+    // For ShortCut Keys - Ends Here 
+
+    //Add Case Tracker Validation
+    //acclocation callreason subcallreason localSupport actionTaken issueStatus escalationReason dealer
+    $('#frmItmodule').bootstrapValidator({
+        //live: 'disabled',
+        excluded: [':disabled'],
+        live: 'enabled',
+        message: 'This value is not valid',
+        container: 'tooltip',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            account_manager: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please Enter Account manager'
+                    }
+                }
+            },
+            final_version: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please Enter Final version'
+                    }
+                }
+            },
+            timezone_id_fk: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please Enter Time Zone'
+                    }
+                }
+            }
+        }
+    }).on('success.form.bv', function (e) {
+        // Prevent submit form
+        e.preventDefault();
+        angular.element(document.getElementById('itmodulePage')).scope().saveItmodule(); 
+    });
+
+    // Validate the form manually
+    $('#validateBtn').click(function() {
+        $('#frmItmodule').bootstrapValidator('validate');
+    });
+});
+
+</script>

@@ -1,0 +1,150 @@
+<style type="text/css">
+	.glyphicon { margin-right:5px; }
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border: 0;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+   
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
+
+</style>
+<section class="content-header">
+	<h1>File Repository</h1>          
+</section>
+<section class="content">
+ <div id="fileRepoPage" class="box box-default boxdefault" ng-init="getTaskDetails()">           
+	<div class="box-body">
+		<div class="row">
+			<div class="col-md-4">
+				<h4> Task Lists </h4>
+				<div class="box box-primary">           
+					<div class="box-body asses-overflow">
+				 <div
+				    data-angular-treeview="true"
+				    data-tree-id="abc"
+				    data-tree-model="treedata"
+				    data-node-id="TaskID"
+				    data-node-label="TaskName"
+				    data-node-children="children" >
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8">
+	
+		<!---->
+			<div class="box-header">
+                  <h3 class="box-title">Attachment</h3>
+                  <div class="box-tools col-md-6 no-padding">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" ng-model="searchkey" placeholder="Search" class="form-control input-sm pull-right" name="table_search">
+                      <div class="input-group-btn">
+                        <button type="submit" ng-click="doSearch();" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+			<!----> 
+			<div class="asses-overflow ">
+    <div class="well well-sm">
+        <strong>Category Title</strong>
+        <div class="btn-group">
+            <a href="javascript://" id="list" class="btn btn-default btn-sm" ng-click="gridlistView('list');"><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a href="javascript://" id="grid" class="btn btn-default btn-sm" ng-click="gridlistView('grid');"><span
+                class="glyphicon glyphicon-th"></span>Grid</a>
+        </div> 
+    </div>
+    <div id="products" class="row list-group">
+        <div class="item  col-xs-4 col-lg-6" ng-repeat="attachDet in attachmentDetails" ng-show = "attachmentDetails.length > 0">
+
+            <div class="thumbnail box box-solid box-info"  >
+              <div class="box-header">
+				<h3 class="box-title">{{attachDet.FileName}}</h3>
+			  </div><!-- /.box-header -->
+                <div class="caption">
+                   <div class="box-body">
+							          <div class="row">
+								          <div class="col-md-8">
+								          		<span class="description-header">File Size : </span>
+						                        <span class="description-text">{{attachDet.FileSize}}</span>
+
+							                        <div class="col-md-12 no-padding fnt-size">	                        	
+							                        	<a target="_self" href="{{HostingURL+attachDet.FilePath+attachDet.TempFileName}}" download="{{attachDet.TempFileName}}"><i class="fa fa-cloud-download"></i></a> 
+							                        </div>
+								          </div>
+								          <div class="col-md-4">
+								         		 <div class="text-center"><h3 style="margin:0;padding:0;"><img ng-src="{{HostingURL+attachDet.profilepicurl}}" class="user-image" alt="User Image"></h3></div>
+						                        <div class="text-center"><p>{{attachDet.UploadedBy}}</p></div>
+						                        <div class="text-center"><p>{{attachDet.UploadedDate | date:'dd-MMM-yyyy HH:mm:ss'}}</p></div>
+								          </div>
+							          </div>
+							        </div><!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+      
+       
+        
+       
+       
+    </div>
+</div>
+		<!---->
+			</div>
+		</div>
+	</div><!-- /.box -->
+</div>
+</section>

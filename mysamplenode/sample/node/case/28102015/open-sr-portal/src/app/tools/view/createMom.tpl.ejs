@@ -1,0 +1,286 @@
+<div class="col-sm-12 col-md-12 col-lg-12" >
+  <h4>Create User</h4>
+  <div class="box box-primary">           
+    <div class="box-body asses-overflow pad-rght30">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="exampleInputEmail1">People</label>
+            <tags-input ng-model="frmData.tags" display-property="name">
+              <auto-complete source="loadUser($query)" min-length="0" debounce-delay="0"></auto-complete>
+            </tags-input>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Title</label>
+            <input class="form-control" ng-model="frmData.momtitle" placeholder="Title">
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Location</label>
+            <input class="form-control" ng-model="frmData.momlocation" placeholder="Location">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Start Date</label>
+            <input calendar id="startDate" class="form-control dtpicker" ng-model="frmData.momstartdate" placeholder="Date">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Start Time</label>
+            <select ng-model="frmData.momstarttime" class="form-control">
+            <option>12:00 AM</option>
+            <option>12:30 AM</option>
+            <option>01:00 Am</option>
+            <option>01:30 AM</option>
+            <option>02:00 AM</option>
+            <option>02:30 AM</option>
+            <option>03:00 AM</option>
+            <option>03:30 AM</option>
+            <option>04:00 AM</option>
+            <option>04:30 AM</option>
+            <option>05:00 AM</option>
+            <option>05:30 AM</option>
+            <option>06:00 AM</option>
+            <option>06:30 AM</option>
+            <option>07:00 AM</option>
+            <option>07:30 AM</option>
+            <option>08:00 AM</option>
+            <option>08:30 AM</option>
+            <option>09:00 AM</option>
+            <option>09:30 AM</option>
+            <option>10:00 AM</option>
+            <option>10:30 AM</option>
+            <option>11:00 AM</option>
+            <option>11:30 AM</option>
+            <option>12:00 PM</option>
+            <option>12:30 PM</option>
+            <option>01:00 PM</option>
+            <option>01:30 PM</option>
+            <option>02:00 PM</option>
+            <option>02:30 PM</option>
+            <option>03:00 PM</option>
+            <option>03:30 PM</option>
+            <option>04:00 PM</option>
+            <option>04:30 PM</option>
+            <option>05:00 PM</option>
+            <option>05:30 PM</option>
+            <option>06:00 PM</option>
+            <option>06:30 PM</option>
+            <option>07:00 PM</option>
+            <option>07:30 PM</option>
+            <option>08:00 PM</option>
+            <option>08:30 PM</option>
+            <option>09:00 PM</option>
+            <option>09:30 PM</option>
+            <option>10:00 PM</option>
+            <option>10:30 PM</option>
+            <option>11:00 PM</option>
+            <option>11:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">End Date</label>
+            <input calendar id="endDate" class="form-control  dtpicker" ng-model="frmData.momenddate" placeholder="Date">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">End Time</label>
+            <select ng-model="frmData.momendtime" class="form-control">
+            <option>12:00 AM</option>
+            <option>12:30 AM</option>
+            <option>01:00 AM</option>
+            <option>01:30 AM</option>
+            <option>02:00 AM</option>
+            <option>02:30 AM</option>
+            <option>03:00 AM</option>
+            <option>03:30 AM</option>
+            <option>04:00 AM</option>
+            <option>04:30 AM</option>
+            <option>05:00 AM</option>
+            <option>05:30 AM</option>
+            <option>06:00 AM</option>
+            <option>06:30 AM</option>
+            <option>07:00 AM</option>
+            <option>07:30 AM</option>
+            <option>08:00 AM</option>
+            <option>08:30 AM</option>
+            <option>09:00 AM</option>
+            <option>09:30 AM</option>
+            <option>10:00 AM</option>
+            <option>10:30 AM</option>
+            <option>11:00 AM</option>
+            <option>11:30 AM</option>
+            <option>12:00 PM</option>
+            <option>12:30 PM</option>
+            <option>01:00 PM</option>
+            <option>01:30 PM</option>
+            <option>02:00 PM</option>
+            <option>02:30 PM</option>
+            <option>03:00 PM</option>
+            <option>03:30 PM</option>
+            <option>04:00 PM</option>
+            <option>04:30 PM</option>
+            <option>05:00 PM</option>
+            <option>05:30 PM</option>
+            <option>06:00 PM</option>
+            <option>06:30 PM</option>
+            <option>07:00 PM</option>
+            <option>07:30 PM</option>
+            <option>08:00 PM</option>
+            <option>08:30 PM</option>
+            <option>09:00 PM</option>
+            <option>09:30 PM</option>
+            <option>10:00 PM</option>
+            <option>10:30 PM</option>
+            <option>11:00 PM</option>
+            <option>11:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Time Zone</label>
+            <select ng-model="frmData.momtimezone"  class="form-control">
+            <option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
+            <option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
+            <option value="America/Anchorage">(GMT-09:00) Alaska</option>
+            <option value="America/Tijuana">(GMT-08:00) Baja California</option>
+            <option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US and Canada)</option>
+            <option value="America/Phoenix">(GMT-07:00) Arizona</option>
+            <option value="America/Chihuahua">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+            <option value="America/Denver">(GMT-07:00) Mountain Time (US and Canada)</option>
+            <option value="America/Belize">(GMT-06:00) Central America</option>
+            <option value="America/Chicago">(GMT-06:00) Central Time (US and Canada)  </option>
+            <option value="America/Mexico_City">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+            <option value="America/Regina">(GMT-06:00) Saskatchewan</option>
+            <option value="America/Bogota">(GMT-05:00) Bogota, Lima, Quito</option>
+            <option value="America/New_York">(GMT-05:00) Eastern Time (US and Canada)</option>
+            <option value="America/Indiana/Indianapolis">(GMT-05:00) Indiana (East)</option>
+            <option value="America/Caracas">(GMT-04:30) Caracas</option>
+            <option value="America/Asuncion">(GMT-04:00) Asuncion</option>
+            <option value="America/Halifax">(GMT-04:00) Atlantic Time (Canada)</option>
+            <option value="America/Cuiaba">(GMT-04:00) Cuiaba</option>
+            <option value="America/Manaus">(GMT-04:00) Georgetown, La Paz, Manaus, San Juan</option>
+            <option value="America/Santiago">(GMT-04:00) Santiago</option>
+            <option value="America/St_Johns">(GMT-03:30) Newfoundland and Labrador</option>
+            <option value="America/Sao_Paulo">(GMT-03:00) Brasilia</option>
+            <option value="America/Buenos_Aires">(GMT-03:00) Buenos Aires </option>
+            <option value="America/Cayenne">(GMT-03:00) Cayenne, Fortaleza</option>
+            <option value="America/Godthab">(GMT-03:00) Greenland</option>
+            <option value="America/Montevideo">(GMT-03:00) Montevideo</option>
+            <option value="America/Bahia">(GMT-03:00) Salvador</option>
+            <option value="America/Noronha">(GMT-02:00) Mid-Atlantic</option>
+            <option value="Atlantic/Azores">(GMT-01:00) Azores</option>
+            <option value="Atlantic/Cape_Verde">(GMT-01:00) Cape Verde Islands</option>
+            <option value="Europe/London">(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
+            <option value="Africa/Casablanca">(GMT) Casablanca, Monrovia</option>
+            <option value="Europe/Amsterdam">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+            <option value="Europe/Belgrade">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+            <option value="Europe/Brussels">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+            <option value="Europe/Warsaw">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+            <option value="Africa/Algiers">(GMT+01:00) West Central Africa</option>
+            <option value="Africa/Windhoek">(GMT+01:00) Windhoek</option>
+            <option value="Europe/Athens">(GMT+02:00) Athens, Bucharest</option>
+            <option value="Asia/Beirut">(GMT+02:00) Beirut</option>
+            <option value="Africa/Cairo">(GMT+02:00) Cairo</option>
+            <option value="Asia/Damascus">(GMT+02:00) Damascus</option>
+            <option value="EET">(GMT+02:00) Eastern Europe</option>
+            <option value="Africa/Harare">(GMT+02:00) Harare, Pretoria</option>
+            <option value="Europe/Helsinki">(GMT+02:00) Helsinki, Kiev, Riga, Sofia, Tallinn, Vilnius</option>
+            <option value="Asia/Istanbul">(GMT+02:00) Istanbul</option>
+            <option value="Asia/Jerusalem">(GMT+02:00) Jerusalem</option>
+            <option value="Asia/Amman">(GMT+03:00) Amman</option>
+            <option value="Asia/Baghdad">(GMT+03:00) Baghdad</option>
+            <option value="Europe/Kaliningrad">(GMT+03:00) Kalinigrad, Minsk</option>
+            <option value="Asia/Kuwait">(GMT+03:00) Kuwait, Riyadh</option>
+            <option value="Africa/Nairobi">(GMT+03:00) Nairobi</option>
+            <option value="Asia/Tehran">(GMT+03:30) Tehran</option>
+            <option value="Asia/Muscat">(GMT+04:00) Abu Dhabi, Muscat</option>
+            <option value="Asia/Baku">(GMT+04:00) Baku</option>
+            <option value="Europe/Moscow">(GMT+04:00) Moscow, St. Petersburg, Volgograd</option>
+            <option value="Indian/Mauritius">(GMT+04:00) Port Louis</option>
+            <option value="Asia/Tbilisi">(GMT+04:00) Tblisi</option>
+            <option value="Asia/Yerevan">(GMT+04:00) Yerevan</option>
+            <option value="Asia/Kabul">(GMT+04:30) Kabul</option>
+            <option value="Asia/Karachi">(GMT+05:00) Islamabad, Karachi</option>
+            <option value="Asia/Tashkent">(GMT+05:00) Tashkent</option>
+            <option value="Asia/Kolkata" selected="selected">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+            <option value="Asia/Colombo">(GMT+05:30) Sri Jayawardenepura</option>
+            <option value="Asia/Katmandu">(GMT+05:45) Kathmandu</option>
+            <option value="Asia/Almaty">(GMT+06:00) Astana</option>
+            <option value="Asia/Dhaka">(GMT+06:00) Dhaka</option>
+            <option value="Asia/Yekaterinburg">(GMT+06:00) Ekaterinburg</option>
+            <option value="Asia/Rangoon">(GMT+06:30) Yangon (Rangoon)</option>
+            <option value="Asia/Bangkok">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+            <option value="Asia/Novosibirsk">(GMT+07:00) Novosibirsk</option>
+            <option value="Asia/Chongqing">(GMT+08:00) Beijing, Chongqing, Hong Kong SAR, Urumqi</option>
+            <option value="Asia/Krasnoyarsk">(GMT+08:00) Krasnoyarsk</option>
+            <option value="Asia/Kuala_Lumpur">(GMT+08:00) Kuala Lumpur, Singapore</option>
+            <option value="Australia/Perth">(GMT+08:00) Perth</option>
+            <option value="Asia/Taipei">(GMT+08:00) Taipei</option>
+            <option value="Asia/Ulaanbaatar">(GMT+08:00) Ulaanbaatar</option>
+            <option value="Asia/Irkutsk">(GMT+09:00) Irkutsk</option>
+            <option value="Asia/Tokyo">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+            <option value="Asia/Seoul">(GMT+09:00) Seoul</option>
+            <option value="Australia/Adelaide">(GMT+09:30) Adelaide</option>
+            <option value="Australia/Darwin">(GMT+09:30) Darwin</option>
+            <option value="Australia/Brisbane">(GMT+10:00) Brisbane</option>
+            <option value="Australia/Canberra">(GMT+10:00) Canberra, Melbourne, Sydney</option>
+            <option value="Pacific/Guam">(GMT+10:00) Guam, Port Moresby</option>
+            <option value="Australia/Hobart">(GMT+10:00) Hobart</option>
+            <option value="Asia/Yakutsk">(GMT+10:00) Yakutsk</option>
+            <option value="Pacific/Guadalcanal">(GMT+11:00) Solomon Islands, New Caledonia</option>
+            <option value="Asia/Vladivostok">(GMT+11:00) Vladivostok</option>
+            <option value="Pacific/Auckland">(GMT+12:00) Auckland, Wellington</option>
+            <option value="Pacific/Fiji">(GMT+12:00) Fiji Islands, Kamchatka, Marshall Islands</option>
+            <option value="Asia/Magadan">(GMT+12:00) Magadan</option>
+            <option value="Pacific/Tongatapu">(GMT+13:00) Nuku&#039;alofa</option>
+            <option value="Pacific/Apia">(GMT+13:00) Samoa</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+          <textarea id="compose-textarea" ng-model="frmData.momcomments" class="form-control" style="height: 150px"></textarea>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group pull-right">
+            <div class="btn btn-default btn-file">
+              <div class="button" ngf-select ng-model="files" ngf-multiple="true"><i class="fa fa-paperclip"></i>&nbsp;&nbsp;Attachment</div>
+            </div>
+            <p class="help-block">Max. 32MB</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="box-footer">
+        <div class="pull-right">
+          <button class="btn btn-default" data-toggle="collapse" data-target="#momList" data-parent="#accordion"><i class="fa fa-pencil"></i> Cancel</button>
+          <button type="submit" data-toggle="collapse" data-target="#momList" data-parent="#accordion" class="btn btn-primary" ng-click="saveMeeting();"><i class="fa fa-envelope-o"></i> Send Later</button>
+          <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+        </div>
+      </div><!-- /.box-footer -->
+
+    </div>
+  </div>
+</div>

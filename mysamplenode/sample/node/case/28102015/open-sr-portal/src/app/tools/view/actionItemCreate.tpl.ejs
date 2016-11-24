@@ -1,0 +1,400 @@
+<style type="text/css">
+  /* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 2px;
+  width: 17px; height: 17px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 3px; left: 4px;
+  font-size: 18px;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 1px dotted blue;
+}
+
+.content {
+    min-height: 550px;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #4778d9!important;
+}
+
+.box-widget {
+   /* width: 600px !important;*/
+}
+
+p {
+  padding: 5px 0 2px 8px !important;
+}
+
+.form-control-feedback {
+    width: 53px !important;
+}
+
+.active {
+  color: #dd4b39;
+}
+
+.tabz.tab-menu {
+  display:inline-block;
+  padding:1%;
+}
+
+.tabz {
+  list-style: none;
+}
+
+.box-comments .comment-text {
+    margin: 8px 7px !important;
+} 
+
+
+
+.attendess{
+  width: 500px;
+  margin: 20px auto 0 auto;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.category{
+  background-color: #ff4b46;
+  height: 60px;
+  line-height: 60px;
+  font-size: 25px;
+  padding-left: 20px;
+  color: white;
+}
+
+.sortable{
+  list-style-type: none;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.handle:hover{
+  cursor: move;
+}
+
+.sortable li{
+  background-color: white;
+  font-size: 18px;
+  line-height: 40px;
+  height: 40px;
+  padding: 11px 0 11px 20px;
+  margin-bottom: 2px;
+}
+
+li i.handle{
+  float:right;
+  line-height: 40px;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+input[type="checkbox"] { 
+  position: absolute;
+  opacity: 0;
+}
+
+/* Normal Track */
+input[type="checkbox"].ios-switch + div {
+  vertical-align: middle;
+  width: 40px;  height: 20px;
+  border: 1px solid rgba(0,0,0,.4);
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: .4s;
+  -webkit-transition-property: background-color, box-shadow;
+  box-shadow: inset 0 0 0 0px rgba(0,0,0,0.4);
+}
+
+/* Checked Track (Blue) */
+input[type="checkbox"].ios-switch:checked + div {
+  width: 40px;
+  background-position: 0 0;
+  background-color: #3b89ec;
+  border: 1px solid #0e62cd;
+  box-shadow: inset 0 0 0 10px rgba(59,137,259,1);
+}
+
+/* Tiny Track */
+input[type="checkbox"].tinyswitch.ios-switch + div {
+  width: 34px;  height: 18px;
+}
+
+/* Big Track */
+input[type="checkbox"].bigswitch.ios-switch + div {
+  width: 50px;  height: 25px;
+}
+
+/* Green Track */
+input[type="checkbox"].green.ios-switch:checked + div {
+  background-color: #00e359;
+  border: 1px solid rgba(0, 162, 63,1);
+  box-shadow: inset 0 0 0 10px rgba(0,227,89,1);
+}
+
+/* Normal Knob */
+input[type="checkbox"].ios-switch + div > div {
+  float: left;
+  width: 18px; height: 18px;
+  border-radius: inherit;
+  background: #ffffff;
+  -webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: transform, background-color, box-shadow;
+  -moz-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+  -moz-transition-duration: 0.4s;
+  -moz-transition-property: transform, background-color;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
+/* Checked Knob (Blue Style) */
+input[type="checkbox"].ios-switch:checked + div > div {
+  -webkit-transform: translate3d(20px, 0, 0);
+  -moz-transform: translate3d(20px, 0, 0);
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Tiny Knob */
+input[type="checkbox"].tinyswitch.ios-switch + div > div {
+  width: 16px; height: 16px;
+  margin-top: 1px;
+}
+
+/* Checked Tiny Knob (Blue Style) */
+input[type="checkbox"].tinyswitch.ios-switch:checked + div > div {
+  -webkit-transform: translate3d(16px, 0, 0);
+  -moz-transform: translate3d(16px, 0, 0);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Big Knob */
+input[type="checkbox"].bigswitch.ios-switch + div > div {
+  width: 23px; height: 23px;
+  margin-top: 1px;
+}
+
+/* Checked Big Knob (Blue Style) */
+input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
+  -webkit-transform: translate3d(25px, 0, 0);
+  -moz-transform: translate3d(16px, 0, 0);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172,1);
+}
+
+/* Green Knob */
+input[type="checkbox"].green.ios-switch:checked + div > div {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 162, 63,1);
+}
+.user-block .username, .user-block .description, .user-block .comment {
+    margin-left: 0px !important;
+}
+.ait {
+  background: #f4f4f4 none repeat scroll 0 0;
+    /*border-radius: 15px;*/
+border-radius: 4px;    
+border: 3px solid #f0edf0;
+    padding: 5px 0 8px;
+    font-size: 11.5px;
+}
+
+/**/
+#DivForHoverItem {
+    
+}
+
+#HiddenText {
+    display: none;
+}
+
+#DivForHoverItem:hover #HiddenText {
+     bottom: 16px;
+    display: block;
+    position: absolute;
+    right: 12px;
+    width: 15%;
+}
+
+.tagz {
+   margin-left:5px; 
+
+}
+
+.comment-text {
+    margin: 1px 10px;
+}
+.username {
+    font-size: 13px !important;
+}
+
+</style>
+
+<div class="col-sm-12 col-md-12 col-lg-12 actic-overflow">
+    <div class="box-body no-padding">
+      <form id="frmActionItem" name="frmActionItem" class="form-box ui-formwizard box box-widget mar_bottom" novalidate>
+                  
+                    <div class="box-header without-border">
+                      <div class="user-block">
+                        <span class="username no-margin">
+                        <a href="javascript://">Action Item</a>
+                        </span>
+                        <span class="description no-margin">Tasks Alloted</span>
+                      </div>
+                      <div class="form-group" show-errors>
+                        <textarea class="form-control" placeholder="Enter ..." rows="3" ng-model="frmAIData.ainotes" id="ainotes" name="ainotes" required></textarea>
+                      </div>
+                    </div>             
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th style="width:20%">Due Date</th>
+                          <th>Status</th>
+                          <th style="width:10%">Reminder</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td width="30%">
+                            <div class="form-group">
+                              <tags-input ng-model="frmAIData.userId" max-tags="1" display-property="name" enforce-max-tags>
+                                <auto-complete source="loadUser($query)" min-length="0" debounce-delay="0"></auto-complete>
+                              </tags-input>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="input-group" show-errors>
+                              <span class="input-group-addon">
+                                <i class="fa fa-fw fa-calendar-check-o"></i>
+                              </span>
+                              <input calendar class="form-control dtpicker" type="text" placeholder="Date" id="aidue_date" name="aidue_date" ng-model="frmAIData.due_date" required>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group" show-errors>
+                              <select class="form-control" ng-model="frmAIData.status" id="aistatus" name="aistatus" ng-options="key as value for (key , value) in statuses" required>
+                                <option value="">Select</option>
+                              </select>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group" show-errors>
+                              <input class="form-control" type="number" ng-model="frmAIData.remainder" id="airemainder" name="airemainder" required>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group"><!-- ng-hide="isAddButtonEnabled" -->
+                              <button class="btn btn-primary" type="submit" ng-click="saveActionItem(1,frmActionItem)">Submit</button> 
+                              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#aiList" data-parent="#accordion">Cancel</button>     
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </form>
+                  <!-- Action View -->
+                  <div class="" >  
+                    <div class="box-header without-border">
+                    <div id="DivForHoverItem">
+                      <div class="user-block ait">
+                        <div class="comment-text">
+                       
+                          <span class="username">
+                            <span class="text"><i class="fa fa-comments-o"></i><strong> Nagaraj Muthuvaradhan  15:24 pm, 18/02/2016 </strong> </span>
+                            
+
+                          </span>
+                        
+                        </div>
+                        <br>
+                        <p class="pull-left">
+                        This is a test comments
+                        </p>
+                         <a class="name pull-right" href="javascript://">
+                         
+                              <div id="HiddenText">
+                                
+                                 <small class="text-muted">
+                                    <div class="btn-group meeting-item-content-actions btn-group-sm">
+                                  <button ng-disabled="isEditButtonEnabled" class="btn btn-white meeting_content_edit_btn" data-original-title="Edit" type="button" data-toggle="tooltip" data-placement="bottom" value="1" title="Edit" ng-click="editActionItem(aiRow,$index);">
+                                  <i class="fa fa-pencil"></i>
+                                  </button>
+                                  <button ng-disabled="isAddButtonEnabled" class="btn btn-white task_comment_btn" data-original-title="Comment" type="button" data-toggle="tooltip" data-placement="bottom" value="2" title="Comment">
+                                  <i class="fa fa-comment-o"></i>
+                                  </button>
+                                  <button ng-disabled="isEditButtonEnabled" class="btn btn-white meeting_content_delete_btn" rel="2" data-original-title="Delete" type="button" data-toggle="tooltip" data-placement="bottom" value="3" title="Delete">
+                                  <i class="fa fa-trash-o"></i>
+                                  </button>
+                                  </div>
+                                    </small>
+                              </div>
+                     
+                      
+                        &nbsp;&nbsp;&nbsp;
+                        </a>
+                      </div>
+                      </div>
+                    </div> 
+                  </div>
+                  <!-- Action View -->
+
+    </div>
+</div>

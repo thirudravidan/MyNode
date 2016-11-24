@@ -1,0 +1,383 @@
+<style type="text/css">
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+.item-wrapper a{
+    display: inline !important;     
+}
+
+.item-wrapper{
+    display: inline;
+    position: relative;
+}
+
+    .item-wrapper form {
+        position: absolute;
+        top: -53px;
+        background: #FFF;
+        border: 1px solid #AAA;
+        border-radius: 5px;
+        padding: 7px;
+        width: 220px;
+        display: inline-block;
+        left: 50%;
+        margin-left: -110px;
+        z-index: 101;
+    }
+
+    .item-wrapper form:before{
+        content:"";
+        width: 0; 
+        height: 0; 
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;	
+        border-top: 10px solid #AAA;
+        position:absolute;
+        bottom:-10px;
+        left:100px;
+    }
+
+    .item-wrapper form:after{
+        content:"";
+        width:0;
+        height:0;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;	
+        border-top: 9px solid #FFF;
+        position:absolute;
+        bottom:-9px;
+        left:101px;
+    }
+
+.editable-input{
+     width:114px !important;   
+}
+
+select.editable-input{
+ width: 114px; 
+}
+
+</style>
+<section class="content-header">
+	<h1> Capex </h1>          
+</section>
+<section class="content">
+	<div id="capexPage" class="box box-default boxdefault client-overflow pad-rght30" ng-init="Datainit('getCapex','i')"> 
+		<div class="box-body">
+			<div class="row"> 
+				<div class="col-md-12 mar_bottom">
+					<h4> Budgetary Detail for  ASUS (Email- Chat) - @ India - 16 Seats & 16 HC (15 FTE & 1 TL) </h4>
+					<div class="box box-primary">           
+						<div class="box-body">
+							<table class="table table-bordered">
+								<tr>
+									<th>Budgetary Detail </th>
+									<th>Total </th> 
+								</tr>
+								<tr>
+									<td>CAPEX Total</td>
+									<td>{{ capexTot.tot }}</td>                    
+								</tr>
+								<tr>                   
+									<td> OPEX  Total(Per annum)</td>
+									<td>{{ opexTot.tot }}</td>
+								</tr>
+								<tr>                      
+									<td>Grand Total  </td>
+									<td>{{ Overall }}</td>
+								</tr>
+							</table> <br />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 mar_bottom">
+					<div class="col-md-11"><h4> CAPEX for ASUS (Email- Chat) - @ AMBIT - 16 Seats & 16 HC (15 FTE & 1 TL) </h4></div>
+					<div class="col-md-1"><button ng-show="btnNew" ng-disabled="isAddButtonEnabled" class="btn btn-default" ng-click="addCapexTrans('capex',capexMas.t_co_trans_mas_id_pk)"><span class="glyphicon glyphicon-plus-sign"></span>Add</button></div>
+					<div style="clear:both;"></div>
+					<div class="box box-danger">           
+						<div class="box-body">
+							<table class="table table-bordered table-hover table-condensed">
+								<tr style="font-weight: bold">
+									<th>#</th>
+									<th>Item Description</th>
+									<th>Qty</th>
+									<th>Unit Cost</th>
+									<th>Total</th>
+									<th width="17%">EDD after PO is released</th>
+									<th>Comments</th>
+									<th nowrap>Seat Cost Y/N</th>
+									<th>File</th>
+									<th ng-show="showStatus">Status</th>
+									<th ng-show="itShow">Work Status</th>
+									<th ng-show="showCols" width="10%">Action</th>
+								</tr>
+								<tr ng-repeat="rowDet in capexTrans.capex">
+									<td>
+										<span editable-text="rowDet.t_co_serial_no" e-name="t_co_serial_no" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.t_co_serial_no }}
+										</span>
+									</td>
+									<td>
+										<span editable-text="rowDet.item_desc" e-name="item_desc" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.item_desc }}
+										</span>
+									</td>
+									<td>
+										<span editable-number="rowDet.item_qty" e-name="item_qty" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.item_qty }}
+										</span>
+									</td>
+									<td>
+										<span editable-number="rowDet.unit_cost" e-name="unit_cost" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.unit_cost }}
+										</span>
+									</td>
+									<td nowrap>
+										<span ng-model="rowform.$data.total" e-name="total" e-form="rowform">
+				                            {{ calculateData(rowform.$data) }}
+				                        </span>
+									</td>
+									<td>
+										<span onbeforesave="checkValid($data)" editable-bsdate="rowDet.delivery_date" e-datepicker-popup="dd-MM-yyyy" e-name="delivery_date" e-form="rowform">{{ (rowDet.delivery_date | date:"dd-MM-yyyy") || 'empty' }}</span>  
+									</td>
+									<td>
+										<span editable-text="rowDet.comments" e-name="comments" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.comments }}
+										</span>
+									</td>
+									<td nowrap>
+										<span editable-select="rowDet.seat_cost" e-name="seat_cost" e-form="rowform" e-ng-options="s.value as s.text for s in seatcost_yn" onbeforesave="checkValid($data)">
+								          {{ seatcost(rowDet) }}
+								        </span>
+									</td>
+									<td nowrap>
+										<button ng-show="rowform.$visible" class="file-input btn btn-primary btn-file fa fa-upload" type="file" ngf-select="uploadFiles($file, $invalidFiles,rowDet.t_co_trans_id_pk)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"></button>
+										
+										<span ng-show="!rowform.$visible && rowDet.filename !='' && rowDet.filename != null">
+				                            <a target="_self" href="{{HostingURL}}download/capex/{{rowDet.filename}}" download="{{rowDet.filename}}"><i class="fa fa-cloud-download fa-2x"></i></a>
+				                        </span>
+									</td>
+									<td ng-show="showStatus" nowrap ng-switch="rowDet.status">
+										<a ng-show="statusEdit" href="javascript://" ng-click="saveCapexStatusPop('capex','status',rowDet.t_co_trans_id_pk,$index,rowDet.status,rowDet.status_comments)" data-original-title="{{rowDet.status_comments}}" data-toggle="tooltip" data-placement="bottom">
+											<span ng-switch-when="0" class="label label-warning">Pending</span>
+                                            <span ng-switch-when="1" class="label label-success">Agree</span>
+                                            <span ng-switch-when="2" class="label label-danger">Dispute</span>
+										</a>
+										<span ng-hide="statusEdit" data-original-title="{{rowDet.status_comments}}" data-toggle="tooltip" data-placement="bottom">
+											<span ng-switch-when="0" class="label label-warning">Pending</span>
+                                            <span ng-switch-when="1" class="label label-success">Agree</span>
+                                            <span ng-switch-when="2" class="label label-danger">Dispute</span>
+										</span>
+									</td>
+									<td ng-show="itShow" nowrap ng-switch="rowDet.itstatus">
+										<a ng-show="itEdit" href="javascript://" editable-select="rowDet.itstatus" disabled buttons="no" e-ng-options="s.value as s.text for s in wstatus" onbeforesave="saveCapexITStatus('capex','itstatus',$data,rowDet.t_co_trans_id_pk,$index)">
+											<span ng-switch-when="0" class="label label-danger">Yet To Start</span>
+                                            <span ng-switch-when="1" class="label label-warning">WIP</span>
+                                            <span ng-switch-when="2" class="label label-success">Deployed</span>
+										</a>
+										<span ng-hide="itEdit">
+											<span ng-switch-when="0" class="label label-danger">Yet To Start</span>
+                                            <span ng-switch-when="1" class="label label-warning">WIP</span>
+                                            <span ng-switch-when="2" class="label label-success">Deployed</span>
+										</span>
+									</td>
+									<td ng-show="showCols" nowrap>
+										<!-- form -->
+										<form editable-form name="rowform" onbeforesave="saveCapexTrans($data, 'capex',capexMas.t_co_trans_mas_id_pk, rowDet.t_co_trans_id_pk, $index)" oncancel="cancelNewRow(rowDet.t_co_trans_id_pk,'capex', $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rowDet">
+											<button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary fa fa-floppy-o"></button>
+											<button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default fa fa-times"></button>
+										</form>
+										<div ng-if="rowDet.status != 1" class="buttons" ng-show="!rowform.$visible">
+											<button ng-disabled="isEditButtonEnabled" class="btn btn-primary fa fa-pencil-square-o" ng-click="rowform.$show()"></button>
+											<button ng-disabled="isEditButtonEnabled" class="btn btn-danger fa fa-trash" ng-click="removeCapex('capex',rowDet.t_co_trans_id_pk)"></button>
+										</div>
+									</td>
+								</tr>
+							</table> <br />
+							<table class="table table-bordered">
+								<tr>
+									<td>Grand Total CAPEX</td>
+									<td>{{ capexTot.tot }}</td>
+								</tr>
+							</table> <br />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 mar_bottom">
+					<div class="col-md-11"><h4> OPEX for ASUS (Email- Chat) - @ AMBIT - 16 Seats & 16 HC (15 FTE & 1 TL) </h4></div>
+					<div class="col-md-1"><button ng-show="btnNew" ng-disabled="isAddButtonEnabled" class="btn btn-default" ng-click="addCapexTrans('opex',capexMas.t_co_trans_mas_id_pk)"><span class="glyphicon glyphicon-plus-sign"></span>Add</button></div>
+					<div style="clear:both;"></div>
+					<div class="box box-success">           
+						<div class="box-body">
+							<table class="table table-bordered table-hover table-condensed">
+								<tr style="font-weight: bold">
+									<th>#</th>
+									<th>Item Description</th>
+									<th>Qty</th>
+									<th>Unit Cost</th>
+									<th nowrap>Total</th>
+									<th width="17%">EDD after PO is released</th>
+									<th>Comments</th>
+									<th nowrap>Seat Cost Y/N</th>
+									<th>File</th>
+									<th ng-show="showStatus">Status</th>
+									<th ng-show="itShow">Work Status</th>
+									<th ng-show="showCols" width="10%">Action</th>
+								</tr>
+								<tr ng-repeat="rowDet in capexTrans.opex">
+									<td>
+										<span editable-text="rowDet.t_co_serial_no" e-name="t_co_serial_no" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.t_co_serial_no }}
+										</span>
+									</td>
+									<td>
+										<span editable-text="rowDet.item_desc" e-name="item_desc" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.item_desc }}
+										</span>
+									</td>
+									<td>
+										<span editable-number="rowDet.item_qty" e-name="item_qty" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.item_qty }}
+										</span>
+									</td>
+									<td>
+										<span editable-number="rowDet.unit_cost" e-name="unit_cost" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.unit_cost }}
+										</span>
+									</td>
+									<td nowrap>
+										<span ng-model="rowform.$data.total" e-name="total" e-form="rowform">
+				                            {{ calculateData(rowform.$data) }}
+				                        </span>
+									</td>
+									<td>
+										<span onbeforesave="checkValid($data)" editable-bsdate="rowDet.delivery_date" e-datepicker-popup="dd-MM-yyyy" e-name="delivery_date" e-form="rowform">{{ (rowDet.delivery_date | date:"dd-MM-yyyy") || 'empty' }}</span>  
+									</td>
+									<td>
+										<span editable-text="rowDet.comments" e-name="comments" e-form="rowform" e-required onbeforesave="checkValid($data)">
+										{{ rowDet.comments }}
+										</span>
+									</td>
+									<td nowrap>
+										<span editable-select="rowDet.seat_cost" e-name="seat_cost" e-form="rowform" e-ng-options="s.value as s.text for s in seatcost_yn" onbeforesave="checkValid($data)">
+								          {{ seatcost(rowDet) }}
+								        </span>
+									</td>
+									<td nowrap>
+										<button ng-show="rowform.$visible" class="file-input btn btn-primary btn-file fa fa-upload" type="file" ngf-select="uploadFiles($file, $invalidFiles,rowDet.t_co_trans_id_pk)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB"></button>
+										
+										<span ng-show="!rowform.$visible && rowDet.filename !='' && rowDet.filename != null">
+				                            <a target="_self" href="{{HostingURL}}download/capex/{{rowDet.filename}}" download="{{rowDet.filename}}"><i class="fa fa-cloud-download fa-2x"></i></a>
+				                        </span>
+									</td>
+									<td ng-show="showStatus" nowrap ng-switch="rowDet.status">
+										<a ng-show="statusEdit" href="javascript://" ng-click="saveCapexStatusPop('opex','status',rowDet.t_co_trans_id_pk,$index,rowDet.status,rowDet.status_comments)" data-original-title="{{rowDet.status_comments}}" data-toggle="tooltip" data-placement="bottom">
+											<span ng-switch-when="0" class="label label-warning">Pending</span>
+                                            <span ng-switch-when="1" class="label label-success">Agree</span>
+                                            <span ng-switch-when="2" class="label label-danger">Dispute</span>
+										</a>
+										<span ng-hide="statusEdit" data-original-title="{{rowDet.status_comments}}" data-toggle="tooltip" data-placement="bottom">
+											<span ng-switch-when="0" class="label label-warning">Pending</span>
+                                            <span ng-switch-when="1" class="label label-success">Agree</span>
+                                            <span ng-switch-when="2" class="label label-danger">Dispute</span>
+										</span>
+									</td>
+									<td ng-show="itShow" nowrap ng-switch="rowDet.itstatus">
+										<a ng-show="itEdit" href="javascript://" editable-select="rowDet.itstatus" disabled buttons="no" e-ng-options="s.value as s.text for s in wstatus" onbeforesave="saveCapexITStatus('opex','itstatus',$data,rowDet.t_co_trans_id_pk,$index)">
+											<span ng-switch-when="0" class="label label-danger">Yet To Start</span>
+                                            <span ng-switch-when="1" class="label label-warning">WIP</span>
+                                            <span ng-switch-when="2" class="label label-success">Deployed</span>
+										</a>
+										<span ng-hide="itEdit">
+											<span ng-switch-when="0" class="label label-danger">Yet To Start</span>
+                                            <span ng-switch-when="1" class="label label-warning">WIP</span>
+                                            <span ng-switch-when="2" class="label label-success">Deployed</span>
+										</span>
+									</td>
+									<td ng-show="showCols" nowrap>
+										<!-- form -->
+										<form editable-form name="rowform" onbeforesave="saveCapexTrans($data, 'opex',capexMas.t_co_trans_mas_id_pk, rowDet.t_co_trans_id_pk, $index)" oncancel="cancelNewRow(rowDet.t_co_trans_id_pk,'opex', $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == rowDet">
+											<button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary fa fa-floppy-o"></button>
+											<button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default fa fa-times"></button>
+										</form>
+										<div ng-if="rowDet.status != 1" class="buttons" ng-show="!rowform.$visible">
+											<button ng-disabled="isEditButtonEnabled" class="btn btn-primary fa fa-pencil-square-o" ng-click="rowform.$show()"></button>
+											<button ng-disabled="isEditButtonEnabled" class="btn btn-danger fa fa-trash" ng-click="removeCapex('opex',rowDet.t_co_trans_id_pk)"></button>
+										</div>
+									</td>
+								</tr>
+							</table> <br />
+							<table class="table table-bordered">
+								<tr>
+									<td>Grand Total OPEX</td>
+									<td>{{ opexTot.tot }}</td>
+								</tr>
+							</table> <br />
+						</div>
+					</div>
+				</div>
+
+			</div><!-- /.row -->
+
+			<div class="box-footer">                          
+				<div class="btn-group" ng-show="btnsignOff"> <!-- ng-disabled="isAddButtonEnabled" -->
+					<button class="btn btn-block btn-default save_but" type="button" ng-click="signoffCapex()">
+                    <i class="fa fa-check position_left"></i> {{btnName}}
+                    </button>
+				</div>
+				<div class="btn-group">
+					<button ng-disabled="isEditButtonEnabled" class="btn btn-block btn-default reset_but" type="button" ng-click="sendBack()">
+                    <i class="fa fa-times position_left"></i> Back</button>
+				</div>
+			</div><!-- /.box-footer -->
+
+		</div><!-- /.box -->   
+		<!-- Modal -->
+		<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		    <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                <h4 class="modal-title" id="myModalLabel">Change Status</h4>
+		            </div>
+		            <div class="modal-body">
+		                <form id="createOrg" name="createOrg" action="" method="post" class="form-box ui-formwizard">
+		                    <div class="form-group">
+		                        <label for="recipient-name" class="control-label">Status:</label>
+		                        <select ng-change="setComments(frmStatus.status);" class="form-control" id="cstatus" name="cstatus" ng-model="frmStatus.status" ng-options="s.value as s.text for s in statuses">
+									<option value="">--Select--</option>
+								</select>
+		                    </div>
+		                    <div class="form-group">
+		                        <label for="message-text" class="control-label">Comments:</label>
+		                        <textarea  ng-disabled="isStatusComments" class="form-control" placeholder="Enter Comments" rows="3" ng-model="frmStatus.scomments" id="scomments" name="scomments"></textarea>
+		                    </div>
+		                    
+		                </form>
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		                <button type="button" class="btn btn-primary" ng-click="saveCapexStatus()">Save changes</button>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</section>

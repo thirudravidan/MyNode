@@ -1,0 +1,313 @@
+ <style>
+ .hideelement {
+     visibility: hidden
+  }
+  .dropdown-menu {    background-color: #f5f5f5 !important;
+    border: 1px solid #e3e3e3 !important;  }
+  </style>
+  <script type="text/ng-template" id="customTemplate.html">
+  <a>
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+      <i>({{match.model.Emp_Code}})</i>
+  </a>
+</script>
+<section class="content-header">
+	<h1>User Creation</h1>          
+</section>
+<section class="content">
+	<div id="userCreation" class="box box-default boxdefault" ng-init="getuserRole();loadData();getCDMEmployee();">
+		<div class="box-body" id="accordion">
+			<div class="panel">
+				<div class="row collapse" id="createUser">
+					<form id="userCreatefrm" name="userCreatefrm" class="form-box ui-formwizard" novalidate>
+						<div class="col-sm-12 col-md-12 col-lg-12" >
+							<h4>Create User</h4>
+							<div class="box box-primary">           
+								<div class="box-body createuser-form">
+									<form id="frmUserCreate" class="form-box ui-formwizard">
+										<div class="row">
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group" show-errors>
+												<label>User Type</label>
+												<select ng-disabled="isUserUpdate" ng-change="userTypeChange(frmData.userType);" class="form-control" placeholder="User Type" id="userType" name="userType" ng-model="frmData.userType" ng-options="userType.user_type_id_pk as userType.user_type_name for userType in frmLoad.userType" required>
+													<option value="">--Select--</option>
+												</select>
+											</div>
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group">
+												<label>Search Employee</label>												
+        										<input ng-disabled="isEmployeeSerach" type="text" ng-model="selectedEmpDetails" placeholder="Search Employee" typeahead="emp as emp.Emp_Name for emp in cdmEmployeeDetails | filter:$viewValue | limitTo:10" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label)' typeahead-template-url="customTemplate.html" class="form-control" >
+        										<i class="icon-search nav-search-icon"></i>								
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group" show-errors>
+												<label>First Name</label>
+												<input ng-disabled="isFirstName" class="form-control" type="text" placeholder="First Name" id="firstName" name="firstName" ng-model="frmData.firstName" required>
+											</div>
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group">
+												<label>Last Name</label>
+												<input ng-disabled="isLastName" class="form-control" type="text" placeholder="Last Name" id="lastName" name="lastName" ng-model="frmData.lastName">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group"  show-errors>
+												<label>Email</label>
+												<!-- ng-disabled="isEmail" -->
+												<input  class="form-control" type="email" placeholder="Email" id="email" name="email" ng-model="frmData.email" required>
+											</div>
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group" show-errors>
+												<label>Mobile No</label>
+												<input class="form-control" type="number" placeholder="Mobile No" id="mobileNo" name="mobileNo" ng-model="frmData.mobileNo" min="0000000000" max="9999999999" maxlength="10" required>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group" show-errors>
+												<label>User Role</label>
+												<select ng-disabled="isUserUpdate" class="form-control" placeholder="User Role" id="usrRole" name="usrRole" ng-model="frmData.usrRole" ng-options="usrRole.user_role_id_pk as usrRole.user_role_name for usrRole in frmLoad.userRoleDet" required>
+													<option value="">--Select--</option>
+												</select>
+											</div>
+											<div class="col-sm-12 col-md-6 col-lg-6 mar_bottom form-group" show-errors>
+												<label>Division</label>
+												<select ng-disabled="isUserUpdate" class="form-control" placeholder="Division" id="division" name="division" ng-model="frmData.division" ng-options="division.division_id_pk as division.division_name for division in frmLoad.division" multiple required>
+												</select>
+											</div>
+											 <div class="col-md-5 profile_img">
+											 <label>Profile Image</label>
+											 <div class="overlay-layer"><i class="fa fa-cloud-upload"></i></div>
+										    <input type="file" class="upload_btn" ng-model="profPic" ngf-select="uploadImg($file)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+										    <span ng-show="isInvalidFile">Invalid file format</span>
+										    </div>
+										</div>
+										<div class="box-footer pull-right">
+											<div class="btn-group">
+												<button class="btn btn-block btn-default save_but" type="submit" ng-click="createUser()" data-toggle="collapse" data-target="#userList" data-parent="#accordion">
+												<i class="fa fa-check position_left"></i> Save</button>
+											</div>
+											<div class="btn-group">
+												<button class="btn btn-block btn-default cancel_but" type="button" ng-click="clearfrm()">
+												<i class="fa fa-refresh position_left"></i> Reset</button>
+											</div>
+											<div class="btn-group">
+												<button class="btn btn-block btn-default reset_but" type="button" data-toggle="collapse" data-target="#userList" data-parent="#accordion">
+												<i class=" fa fa-times position_left"></i> Cancel</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--Project Map Start-->
+			<div class="panel">
+				<div class="row collapse createuser-form" id="projMap">
+				  	<div class="col-md-12 mar_bottom">
+						<div class="box-header with-border">
+							<h3 class="pull-left no-margin">{{aclHeader}}</h3>
+							<div class="pull-right">
+							 	<button class="btn btn-block btn-default reset_but col-md-1" type="button" data-toggle="collapse" data-target="#userList" data-parent="#accordion"><i class="fa fa-angle-left position_left"></i> Back </button>
+							</div>
+						</div>
+					</div>
+					<!-- DashBoard Map Start -->					
+					<div id="editAcl" class="col-md-8 no-padding table_access" ng-show="isShowDashboardAcl">
+						<div id="header" class="col-sm-12 col-md-12 col-lg-12">
+							<div class="col-md-5 pull-left">
+								<h4> Edit Dashboard Access  </h4>
+							</div>
+							<div class="col-md-5 no-padding pull-right">
+								<div class="btn-group">
+								  <h4 class="pull-left"> Name : </h4>
+								  <h4 class="pull-left"> &nbsp;&nbsp; {{editedProjName}}</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div class="box box-primary">           
+								<div class="box-body editacess-scroll">
+									 <table class="table table-bordered table-hover table-condensed">
+								<thead>	 
+							    <tr style="font-weight: bold">
+									<td>Name</td>
+									<td>Status</td>
+							    </tr>
+							    </thead>
+							    <tr ng-repeat="dashDet in userDashboardDetails">
+									<td>
+										<span>
+							          		{{ dashDet.db_name }}
+							        	</span>
+									</td>
+									<td nowrap  ng-switch="dashDet.STATUS" data-title="'Status'" header-class="text-left" sortable="'status'">
+											<span ng-switch-when="0" style="color:#FF0000;">
+												<button ng-hide="isEditButtonEnabled"  type="button" class="btn btn-danger btn-xs" ng-click="chgDashStatus(dashDet,dashDet.STATUS);"><i class="fa fa-lock fa-3"></i> Disabled</button>
+												<span ng-show="isEditButtonEnabled" class="label label-danger"><i class="fa fa-lock fa-3"></i> Disabled</span>
+											</span>
+											<span ng-switch-when="1" style="color:#499849;">
+												<button type="button" ng-hide="isEditButtonEnabled" class="btn btn-success btn-xs" ng-click="chgDashStatus(dashDet,dashDet.STATUS);"><i class="fa fa-unlock fa-3"></i> Enabled</button>
+												<span ng-show="isEditButtonEnabled" class="label label-success"><i class="fa fa-unlock fa-3"></i> Enabled</span>
+											</span>
+										</td>																		
+								</tr>
+							</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- DashBoard Map End -->
+
+					<div class="col-md-4 no-padding proj_table" ng-show="isShowProjectMapping">
+						<div id="header" class="col-sm-12 col-md-12 col-lg-12">
+							<div class="col-md-9 pull-left">
+								<h4 class="pull-left"> Name : </h4> <h4 class="pull-left"> &nbsp;&nbsp; {{mappingusrName}} </h4>
+							</div>
+							<div ng-hide="isAddButtonEnabled" class="col-md-1 no-padding pull-left">
+								<div class="btn-group">
+								  <button  type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    Project <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu">
+								    <li ng-repeat="mapproj in mappingProjects"><a href="javascript://" ng-click="mapUserProject(mapproj);">{{mapproj.project_name}}</a></li>
+								  </ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div class="box box-primary">           
+								<div class="box-body editacess-scroll">
+									 <table ng-table="mappedProjLst" show-filter="false" class="table table-bordered table-striped box box-success">
+										<tr ng-repeat="mapPro in $data track by $index">
+											<td data-title="'Project Name'" header-class="text-left" sortable="'project_name'">
+												{{mapPro.project_name}}
+											</td>
+											<td data-title="'Division'" header-class="text-left" sortable="'division_name'">
+												{{mapPro.division_name}}
+											</td>
+											<td data-title="'Action'" header-class="text-left" sortable="'project_name'">
+												<a href="javascript://" ng-click="showProEditACL(mapPro.project_id_pk,mapPro.user_id_fk,mapPro.project_name);" class="fa fa-pencil-square-o" ></a>
+											</td>
+										</tr>
+					                  </table>									
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="editAcl" class="col-md-8 no-padding table_access" ng-show="isShowEditAcl">
+						<div id="header" class="col-sm-12 col-md-12 col-lg-12">
+							<div class="col-md-5 pull-left">
+								<h4> Edit ACL Access  </h4>
+							</div>
+							<div class="col-md-5 no-padding pull-right">
+								<div class="btn-group">
+								  <h4 class="pull-left"> {{aclEditHeader}} </h4>
+								  <h4 class="pull-left"> &nbsp;&nbsp; {{editedProjName}}</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div class="box box-primary">           
+								<div class="box-body editacess-scroll">
+									 <table class="table table-bordered table-hover table-condensed">
+								<thead>	 
+							    <tr style="font-weight: bold">
+									<td>Bucket Name</td>
+									<td>Module</td>
+									<td>Access</td>
+									<td ng-hide="isEditButtonEnabled">Action</td>
+							    </tr>
+							    </thead>
+							    <tr ng-repeat="acldet in editACLLst">
+									<td>
+										<span>
+							          		{{ acldet.bucket_name }}
+							        	</span>
+									</td>
+									<td>
+										<span>
+							          		{{ acldet.module_name }}
+							        	</span>
+									</td>
+									<td>
+										<span editable-select="acldet.acl_id_pk" e-name="acl_id_pk" e-form="rowform" e-required e-ng-options="acl.acl_id_pk as acl.acl_name for acl in aclMaster">
+							          		{{ showSelVal(acldet.acl_id_pk) }}
+							        	</span>
+									</td>									
+									<td nowrap ng-hide="isEditButtonEnabled">
+										<!-- form -->
+								        <form editable-form name="rowform" onbeforesave="updateACL($data,acldet.project_id_fk,acldet.user_id_pk,acldet.module_id_pk)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == acldet">
+								          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary fa fa-floppy-o"></button>
+								          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btn-default fa fa-times"></button>
+								        </form>
+								        <div class="buttons" ng-show="!rowform.$visible">
+								          <button class="btn btn-primary fa fa-pencil-square-o" ng-click="rowform.$show()"></button>
+								        </div>
+									</td>
+								</tr>
+							</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> 
+			<!--Project Map End-->
+			<div class="panel">
+				<div class="row collapse in" id="userList">
+					<div id="header" class="col-sm-12 col-md-12 col-lg-12">
+						<div class="col-md-6">
+							<h4> User List </h4>
+						</div>
+						<div class="col-md-6">
+							<label ng-hide="isAddButtonEnabled" class="btn btn-success pull-right" data-toggle="collapse" ng-click="clearfrm();isUserUpdate = false;" data-target="#createUser" data-parent="#accordion"> Add User </label>
+						</div>						
+					</div>
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div class="box box-primary">           
+							<div class="box-body">
+								<table ng-table="userLst" show-filter="false" class="table table-bordered table-striped">
+									<tr ng-repeat="userDet in $data">
+										<td data-title="'First Name'" header-class="text-left" sortable="'first_name'">
+											{{userDet.first_name}}
+										</td>
+										<td data-title="'Last Name'" header-class="text-left" sortable="'last_name'">
+											{{userDet.last_name}}
+										</td>
+										<td data-title="'Email'" header-class="text-left" sortable="'email'">
+											{{userDet.email}}
+										</td>
+										<td data-title="'Mobile No'" header-class="text-left" sortable="'mobile_no'">
+											{{userDet.mobile_no}}
+										</td>
+										<td data-title="'User Type'" header-class="text-left" sortable="'user_type_id_fk'">
+											{{userDet.user_type_name}}
+										</td>
+										<td data-title="'Division'" header-class="text-left" sortable="'division'">
+											{{userDet.division_name}}
+										</td>
+										<td nowrap  ng-switch="userDet.status" data-title="'Status'" header-class="text-left" sortable="'status'">
+											<span ng-switch-when="0" style="color:#FF0000;">
+												<button ng-hide="isEditButtonEnabled"  type="button" class="btn btn-danger btn-xs" ng-click="chgUserStatus(userDet,userDet.status);"><i class="fa fa-lock fa-3"></i> Disabled</button>
+												<span ng-show="isEditButtonEnabled" class="label label-danger"><i class="fa fa-lock fa-3"></i> Disabled</span>
+											</span>
+											<span ng-switch-when="1" style="color:#499849;">
+												<button type="button" ng-hide="isEditButtonEnabled" class="btn btn-success btn-xs" ng-click="chgUserStatus(userDet,userDet.status);"><i class="fa fa-unlock fa-3"></i> Enabled</button>
+												<span ng-show="isEditButtonEnabled" class="label label-success"><i class="fa fa-unlock fa-3"></i> Enabled</span>
+											</span>
+										</td>
+										<td data-title="'Action'" class="text-center">
+											<a href="javascript://" title="Edit User" data-toggle="collapse" data-target="#createUser" data-parent="#accordion" ng-hide="isEditButtonEnabled" ng-click="editUser(userDet);" class="fa fa-pencil-square-o"></a>
+											<a href="javascript://" title="Map Project" data-toggle="collapse" data-parent="#accordion" data-target="#projMap" ng-click="addProjectMapping(userDet);" class="fa fa-sitemap"></a>
+											<a href="javascript://" title="User Map" data-toggle="collapse" data-parent="#accordion" data-target="#projMap" ng-click="showUserACL(userDet);" class="fa fa-map-marker"></a>
+											<a href="javascript://" title="User Dashboard" data-toggle="collapse" data-parent="#accordion" data-target="#projMap" ng-click="showDashboardACL(userDet);" class="fa fa-tachometer"></a>
+										</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</section>

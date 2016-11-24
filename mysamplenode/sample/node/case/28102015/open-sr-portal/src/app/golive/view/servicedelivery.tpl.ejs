@@ -1,0 +1,168 @@
+<section class="content-header">
+<div class="row">
+    <div class="col-md-12">
+          <h4 class="pull-left">
+            Service Delivery 
+          
+          </h4>  
+       <div class="pull-right">
+        <button type="button" ng-hide="isAddButtonEnabled" style="width: 19vw;" class="btn btn-primary" editable-text="newMetrics" onbeforesave="saveNewMetrics($data)"> Add New Metrics </button>
+        </div>  
+    </div> 
+</div>        
+</section>
+<!-- <section class="content">
+<div id="servicedelivery" class="box box-default boxdefault" ng-init="getProjectLiveDate();getProjectMetricDetails();">
+<div class="box-body">
+<div class="col-md-12 ng-scope">
+    <div ng-app="tabs">
+	    <div ng-controller="ServicePanelController as panel">
+		    <ul class="tab-triggers" >
+		    	<li class="tabz tab-menu" ng-repeat="metrics in serviceMetrics"   ng-class="{ active:panel.isSelected($index) }" ng-click="panel.selectTab($index)"><i class="fa fa-play"></i> {{metrics.metrics_name}}</li>		    	
+		    </ul>
+		    <ul class="panelz">
+			    <li class="panel" ng-repeat="metrics in serviceMetrics" ng-show="panel.isSelected($index)"> 
+				    <div class="col-md-12 mar_bottom">
+				    <div class="col-md-12">
+				    <div class="row">
+                        <div class="col-md-4">
+                        <h4 ng-hide="!isEditButtonEnabled">{{metrics.metrics_name}}</h4>
+                        <a ng-hide="isEditButtonEnabled" href="#" editable-text="metrics.metrics_name" onbeforesave="updateMetrics($data,metrics.service_delivery_id_pk,metrics.metrics_name,$index)">
+                            {{metrics.metrics_name}}
+                        </a>
+                        </div>
+                         <div class="col-md-7 pull-right text-right">
+                            <div class="timeline-header">Threshold :
+                            <h4 ng-hide="!isEditButtonEnabled">{{metrics.metrics_threshold}}</h4>
+                            <a ng-hide="isEditButtonEnabled" href="#" e-min="10" editable-number="metrics.metrics_threshold" onbeforesave="updateThreshold($data,metrics.service_delivery_id_pk,metrics.metrics_threshold,$index)">
+                            {{metrics.metrics_threshold}}
+                        </a>
+                        </div>
+                        </div>
+                    </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 no-padding">
+                            <div class="box">           
+                                <div class="box-body csat-scroll"> 
+                                    <table class="table table-bordered table-striped"  cellpadding="0" cellspacing="0">                               
+                                    <thead>                             
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Scores</th>
+                                        <th>Comments</th>
+                                        <th ng-hide="isEditButtonEnabled">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="metval in metrics.metricDet">
+                                        <td>
+                                            <span>
+                                                {{ metval.formattedDate }}
+                                            </span>
+                                        </td>
+                                        <td>                                       
+                                            <span onbeforesave="checkValid($data)" e-min="10" editable-number="metval.service_evaluation" e-name="serviceEvaluation_{{metval.service_delivery_trans_id || 'n'}}" e-form="rowform" e-required >
+                                            {{ metval.service_evaluation }}
+                                            </span>
+                                        </td> 
+                                        <td>
+                                            <span editable-text="metval.comments" e-name="comments" e-form="rowform" e-required >
+                                            {{ metval.comments }}
+                                            </span>
+                                        </td>                                  
+                                        <td nowrap ng-hide="isEditButtonEnabled">                                            
+                                            <form editable-form name="rowform" onbeforesave="saveMetrics($data,metval.service_delivery_trans_id,metval.service_date,metrics.service_delivery_id_pk)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == metval">
+                                              <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary fa fa-floppy-o"></button>
+                                              <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btn-default fa fa-times"></button>
+                                            </form>
+                                            <div class="buttons" ng-show="!rowform.$visible">
+                                              <button class="btn btn-primary fa fa-pencil-square-o"  ng-click="rowform.$show()"></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                 
+                                </table>
+                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				    </div>
+			    </li>
+		    </ul>
+	    </div>
+    </div>
+ </div>
+</div>
+</div>
+</section> -->
+
+<section class="content">
+<div id="servicedelivery" class="box box-default boxdefault" ng-init="getProjectLiveDate();getProjectMetricDetails();">
+<div class="box-body">
+<div class="col-md-12 ng-scope">
+    <div class="col-sm-12 col-md-12 col-lg-12 no-padding servicecsat-scroll">               
+     
+            
+        <div id="constrainer">
+            <div class="scrolltable">
+                <table class="header">
+                    <thead>
+                        <tr>
+                                <th>Metrics</th>
+                                <th>Threshold</th>
+                                <th ng-repeat="cols in dateRange">{{cols.frmtDate}}</th>
+                                <th ng-hide="isEditButtonEnabled">Action</th>
+                            </tr>
+                    </thead>
+                    </table>
+                <div class="body">
+                    <table>
+                        <tbody>
+                        <tr ng-repeat="metrics in serviceMetrics">
+                                <td><h4 ng-hide="!isEditButtonEnabled">{{metrics.metrics_name}}</h4>
+                                <a ng-hide="isEditButtonEnabled" href="#" editable-text="metrics.metrics_name" onbeforesave="updateMetrics($data,metrics.service_delivery_id_pk,metrics.metrics_name,$index)">
+                                    {{metrics.metrics_name}}
+                                </a></td>
+                                <td>
+                                    <h4 ng-hide="!isEditButtonEnabled">{{metrics.metrics_threshold}}</h4>
+                                    <a ng-hide="isEditButtonEnabled" href="#" editable-text="metrics.metrics_threshold" onbeforesave="updateThreshold($data,metrics.service_delivery_id_pk,metrics.metrics_threshold,$index)">
+                                    {{metrics.metrics_threshold}}
+                                </a>
+                                </td>
+                                <!-- <td ng-repeat="metval in metrics.metricDet"> -->
+                                <td ng-repeat="metval in metrics.metricDet">
+                                    <span  editable-text="metval.service_evaluation" e-name="serviceEvaluation_{{metval.service_date}}_{{metval.service_delivery_trans_id || 'n'}}" e-form="rowform">
+                                    {{ metval.service_evaluation }}
+                                    </span>
+                                </td> 
+                                <!-- <td>
+                                    <span editable-text="metval.comments" e-name="comments" e-form="rowform" e-required >
+                                    {{ metval.comments }}
+                                    </span>
+                                </td> -->                                  
+                                <td nowrap ng-hide="isEditButtonEnabled">                                            
+                                    <form editable-form name="rowform" onbeforesave="saveMetrics($data,metval.service_delivery_trans_id,metval.service_date,metrics.service_delivery_id_pk)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == metval">
+                                      <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary fa fa-floppy-o"></button>
+                                      <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btn-default fa fa-times"></button>
+                                    </form>
+                                    <div class="buttons" ng-show="!rowform.$visible">
+                                      <button class="btn btn-primary fa fa-pencil-square-o"  ng-click="rowform.$show()"></button>
+                                      <button ng-hide="isAddButtonEnabled" class="btn btn-danger fa fa-trash" ng-click="removeMetrics(metrics.service_delivery_id_pk,metrics.metrics_name)"></button>
+                                    </div>
+                                </td>
+                            </tr>      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+                
+    </div>
+ </div>
+</div>
+</div>
+</section>

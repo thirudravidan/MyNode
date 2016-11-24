@@ -1,0 +1,230 @@
+<style type="text/css">
+  .calen_mar{
+    margin-left: 10px;
+  }
+</style>
+<style type="text/css">
+.cal_top{
+  margin-top: 25px;
+}
+        table{ width:100%;}
+        a:hover
+        {
+            text-decoration: none;
+        }
+        .holidaylisttd{vertical-align: top; padding-top:15px; text-align:left; padding-left:10px;   }
+        .holidaylist
+        {
+             height: 178px;
+             margin-bottom: 20px;
+             margin-top: 20px;
+             overflow: auto;
+             width: 100%;
+        }
+        #holidaypicker
+        {
+            height: 0px;
+        }
+        .holidaylist .date
+        {
+             color: #807e7e;
+            float: left;
+            font-size: 8pt;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .holidaylist .message
+        {
+            border-bottom: 1px solid #e5e5e5;
+            color: #24adda;
+            float: left;
+            font-size: 10pt;
+            font-weight: bold;
+            width: 98%;
+            word-wrap: break-word;
+            padding-bottom: 5px;
+        }
+        
+        .holidaylist .hdr{color: #f8803f;
+            font-size: 10pt;
+            font-weight: bold;}
+        
+        .holidaylist .glyphicon-remove
+        {
+              background: #dd4b39 none repeat scroll 0 0;
+              border-radius: 20px;
+              color: #fff;
+              cursor: pointer;
+              float: right;
+              font-size: 10px;
+              margin-right: 10px;
+              margin-top: -32px;
+              padding: 4px;
+        }
+        .monyear.title{ cursor:auto;}
+        .colmdwid{
+            float: left;
+            width: 6%;
+        }
+    </style>
+<section class="content-header">
+          <h1>
+            Location Calender    
+          </h1>          
+</section>
+<section class="content">
+<div class="box box-default boxdefault" ng-init="loadLocations();getYears();">           
+  <div class="row">
+    <div class="col-md-12">
+    <div class="mar_bottom"></div>
+       <div class="col-md-3">
+            <div class="form-group">
+              <label>Location</label>
+               <select name="calendarLoc"  ng-model="frmData.seleLocation" id="drpLoc" ng-change="changeLocation(frmData.seleLocation);" class="form-control" ng-options="locDet.LocationID as locDet.LocationName for locDet in LocationDetails" required>
+              <option value="">--Select--</option>
+            </select>
+            </div><!-- /.form-group -->                  
+        </div><!-- /.col -->
+         <div class="col-md-3">
+            <div class="form-group">          
+              <div class="input-group">
+                <div class="form-group">
+                  <label>For the Year</label>
+                  <select ng-disabled="isYearSelect" class="form-control" ng-model="frmData.selectedYear" ng-options="key as value for (key,value) in years" ng-change="changeYear(frmData.selectedYear);"></select>
+              </div><!-- /.form-group -->  
+                <!-- <div class="input-group-addon">
+                  <i class="fa fa-clock-o"></i>
+                </div>
+                <input type="text" ng-model="frmData.selectedYear" ng-change="changeYear();" yearcalendar class="form-control pull-right" id="reservationtime"> -->
+              </div><!-- /.input group -->
+            </div><!-- /.form-group -->                  
+          </div><!-- /.col --> 
+          <div class="col-md-6 cal_top">
+            <div class="pull-right">                          
+                <div class="btn-group">
+                  <button class="btn btn-block btn-default save_but" type="submit" ng-click="insertHolidays();">
+                  <i class="fa fa-check position_left"></i> Save
+                </button>
+                </div>
+                <!-- <div class="btn-group">
+                  <button class="btn btn-block btn-default cancel_but" type="submit">
+                  <i class="fa fa-times position_left"></i> Cancel
+                  </button>
+                </div>  -->
+              </div><!-- /.box-footer -->
+          </div>       
+        
+ 
+  <div class="col-md-12 box box-danger" ng-show="isshowCalendar">
+  <div class="mar_bottom col-md-12"></div>
+  <div class="col-md-12 no-padding">
+            <div class="form-group">
+              <div class="col-md-12"><label>Week Off Days*</label></div>
+              <div class="col-md-12">
+                <!-- <div ng-repeat="item in weekDays">
+                  <div class="col-md-1 no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"> <input type="checkbox" checkbox-group> </label>
+                        <p class="pull-left calen_mar">{{item.value}}</p>
+                    </div>
+                  </div>
+               </div> -->
+               <div class="weekdays" >
+                  <div class="colmdwid no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"><input type="checkbox" value="0" name="week" /> </label>
+                        <p class="pull-left calen_mar">Sun</p>
+                    </div>
+                  </div>
+                  <div class="colmdwid no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"><input type="checkbox" value="1" name="week" /> </label>
+                        <p class="pull-left calen_mar">Mon</p>
+                    </div>
+                  </div>
+                  <div class="colmdwid no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"><input type="checkbox" value="2" name="week" /> </label>
+                        <p class="pull-left calen_mar">Tue</p>
+                    </div>
+                  </div>
+                  <div class="colmdwid no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"><input type="checkbox" value="3" name="week" /> </label>
+                        <p class="pull-left calen_mar">Wed</p>
+                    </div>
+                  </div>
+                  <div class="colmdwid no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"><input type="checkbox" value="4" name="week" /> </label>
+                        <p class="pull-left calen_mar">Thu</p>
+                    </div>
+                  </div>
+                  <div class="colmdwid no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"><input type="checkbox" value="5" name="week" /> </label>
+                        <p class="pull-left calen_mar">Fri</p>
+                    </div>
+                  </div>
+                  <div class="colmdwid no-padding">
+                    <div class="pull-left">
+                        <label class="pull-left"><input type="checkbox" value="6"  name="week" /> </label>
+                        <p class="pull-left calen_mar">Sat</p>
+                    </div>
+                  </div>
+               </div>
+              </div>
+            </div><!-- /.form-group -->                  
+        </div><!-- /.col -->  
+        <!---->
+        <div class="pull-left col-md-4">
+        <div>
+         <div class="Calendercontent">
+              <div colspan="2" style="width:100%;">
+                  <input type="text" id="holidaypicker" gldp-id="mydate" style="visibility: hidden;" />
+                  <div gldp-el="mydate" style="width: 330px; height: 280px;">  </div>
+              </div>
+          </div>       
+        
+         </div>  
+
+         <div class="popover fade right  editable-container editable-popup " role="tooltip"
+        id="popover149148" style="top: 131px; z-index: 10000; left: 988.859375px; display: block;width: 200px;">
+        <div class="arrow">
+        </div>
+        <h3 class="popover-title">
+            Enter Holiday</h3>
+          <div class="popover-content">
+                  <!--<div class="editable-input" style="position: relative;">
+                      <input type="text" class="form-control input-sm" placeholder="required" style="padding-right: 24px;" /></div>
+                  <div class="editable-buttons">
+                      <button type="button" class="btn btn-primary btn-sm editable-submit">
+                          <i class="glyphicon glyphicon-ok"></i>
+                      </button>
+                      <button type="button" class="btn btn-default btn-sm editable-cancel">
+                          <i class="glyphicon glyphicon-remove"></i>
+                      </button>
+                  </div>-->
+              </div>
+          </div>
+</div>
+<div class="pull-left col-md-4">
+<div class="box box-solid box-success holiday_top">
+        <div class="box-header">
+          <h3 class="box-title">Holiday List</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <div class="holidaylist"> </div> 
+        </div><!-- /.box-body -->
+      </div>
+  
+</div>
+<div class="mar_bottom col-md-12"></div>
+        <!---->
+  </div>
+
+  </div>  
+
+</div><!-- /.box -->
+<div class="mar_bottom"></div>
+</section>

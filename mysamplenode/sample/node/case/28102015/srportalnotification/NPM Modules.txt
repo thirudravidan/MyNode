@@ -1,0 +1,15 @@
+In Use
+-------
+1. Mysql
+2. MD5
+3. Reminder
+4. Forever
+5. sp-logger
+6. nodemailer (NEW)
+
+
+Not In Use
+----------
+1. Carrier
+2. ini
+3. Jquery

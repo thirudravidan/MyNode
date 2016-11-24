@@ -1,0 +1,63 @@
+<section class="content-header">
+	<h1> Assessment </h1>          
+</section>
+<section class="content">
+	<div id="assessmentPage" class="box box-default boxdefault" ng-init="Datainit('getAssessment');"> 
+		<div class="box-body">
+			<div class="row"> 
+
+				<div class="col-md-12 mar_bottom">
+					<h4> Assessment List </h4>
+					<div class="box box-success">           
+						<div class="box-body asses-overflow">
+							<div class="col-md-12">
+               				<table ng-table="tableParams" class="table table-bordered">
+							  <thead>
+							  	<tr>
+					                <th class="sortable" ng-class="{
+					                    'sort-asc': tableParams.isSortBy('name', 'asc'),
+					                    'sort-desc': tableParams.isSortBy('name', 'desc')
+					                  }"
+					                    ng-click="tableParams.sorting({'name' : tableParams.isSortBy('name', 'asc') ? 'desc' : 'asc'})" rowspan="2">
+					                     First Name
+					                </th>
+					                <th class="sortable" ng-class="{
+					                    'sort-asc': tableParams.isSortBy('name', 'asc'),
+					                    'sort-desc': tableParams.isSortBy('name', 'desc')
+					                  }"
+					                    ng-click="tableParams.sorting({'name' : tableParams.isSortBy('name', 'asc') ? 'desc' : 'asc'})" rowspan="2">
+					                     Last Name
+					                </th>
+					                <th class="sortable" ng-class="{
+					                    'sort-asc': tableParams.isSortBy('name', 'asc'),
+					                    'sort-desc': tableParams.isSortBy('name', 'desc')
+					                  }"
+					                    ng-click="tableParams.sorting({'name' : tableParams.isSortBy('name', 'asc') ? 'desc' : 'asc'})" rowspan="2">
+					                     Emp Id
+					                </th>
+					                <th ng-repeat="cols in colHeader" colspan="{{cols.sub.length}}" class="text-center">{{cols.assessment_ctgy_name}}</th>
+					            </tr>
+					            <tr>
+					            	<th ng-repeat="scols in subCat" class="text-center">{{scols.assessment_subctgy_name}}</th>
+					            </tr>
+							  </thead>
+							  <tbody>
+							  	<tr ng-repeat="cRow in $data">
+							  		<td>{{cRow.t2.resource_first_name}}</td>
+							  		<td>{{cRow.t2.resource_last_name}}</td>
+							  		<td>{{cRow.emp_id}}</td>
+							  		<td ng-if="cRow.t4" ng-repeat="cScore in cRow.t4">{{cScore.score_percentage}}</td>
+							  		<td ng-if="!cRow.t4" ng-repeat="scols in subCat">0</td>
+							  	</tr>
+							  </tbody>
+							</table>	               
+							</div><!-- /.col -->	
+						</div>
+					</div>
+				</div>
+
+			</div><!-- /.row -->
+
+		</div><!-- /.box -->   
+	</div>
+</section>
